@@ -1263,7 +1263,7 @@
 											"top": 606,
 											"width": 199.42431640625,
 											"height": 13,
-											"text": "-ObraSocial",
+											"text": "-ObraSocial: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1893,7 +1893,7 @@
 											"top": 1318,
 											"width": 159.3388671875,
 											"height": 13,
-											"text": "-Usuario",
+											"text": "-Usuario: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1910,7 +1910,7 @@
 											"top": 1333,
 											"width": 159.3388671875,
 											"height": 13,
-											"text": "-Password",
+											"text": "-Password: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1927,7 +1927,7 @@
 											"top": 1348,
 											"width": 159.3388671875,
 											"height": 13,
-											"text": "-Email",
+											"text": "-Email: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1944,7 +1944,7 @@
 											"top": 1363,
 											"width": 159.3388671875,
 											"height": 13,
-											"text": "-NombreCompleto",
+											"text": "-NombreCompleto: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1961,7 +1961,7 @@
 											"top": 1378,
 											"width": 159.3388671875,
 											"height": 13,
-											"text": "-Domicilio",
+											"text": "-Domicilio: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1978,7 +1978,7 @@
 											"top": 1393,
 											"width": 159.3388671875,
 											"height": 13,
-											"text": "-DNI",
+											"text": "-DNI: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1995,7 +1995,7 @@
 											"top": 1408,
 											"width": 159.3388671875,
 											"height": 13,
-											"text": "-FechaNacimiento",
+											"text": "-FechaNacimiento: Date",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2244,7 +2244,7 @@
 											"top": 1326,
 											"width": 119,
 											"height": 13,
-											"text": "-Nombre",
+											"text": "-Nombre: String",
 											"horizontalAlignment": 0
 										}
 									],
@@ -6165,7 +6165,7 @@
 											"top": 104,
 											"width": 294,
 											"height": 13,
-											"text": "+crearPractica(unaPractica: PracticaDTO)",
+											"text": "+crearPractica()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -7032,7 +7032,7 @@
 											"top": 1184,
 											"width": 253.72216796875,
 											"height": 13,
-											"text": "+crearSucursal(unaSucursal: SucursalDTO)",
+											"text": "+crearSucursal()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -9268,7 +9268,7 @@
 								"$ref": "AAAAAAFF+qBtyKM79qY="
 							},
 							"font": "Arial;13;0",
-							"left": 376,
+							"left": 368,
 							"top": 1192,
 							"width": 145,
 							"height": 38,
@@ -10323,7 +10323,8 @@
 								"$ref": "AAAAAAF7TJkyjlOTj7I="
 							},
 							"name": "ObraSocial",
-							"visibility": "private"
+							"visibility": "private",
+							"type": "String"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10697,7 +10698,8 @@
 								"$ref": "AAAAAAF7TJoTSlPtBVs="
 							},
 							"name": "Usuario",
-							"visibility": "private"
+							"visibility": "private",
+							"type": "String"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10707,7 +10709,7 @@
 							},
 							"name": "Password",
 							"visibility": "private",
-							"type": ""
+							"type": "String"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10717,7 +10719,7 @@
 							},
 							"name": "Email",
 							"visibility": "private",
-							"type": ""
+							"type": "String"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10726,7 +10728,8 @@
 								"$ref": "AAAAAAF7TJoTSlPtBVs="
 							},
 							"name": "NombreCompleto",
-							"visibility": "private"
+							"visibility": "private",
+							"type": "String"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10736,7 +10739,7 @@
 							},
 							"name": "Domicilio",
 							"visibility": "private",
-							"type": ""
+							"type": "String"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10746,7 +10749,7 @@
 							},
 							"name": "DNI",
 							"visibility": "private",
-							"type": ""
+							"type": "String"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10755,7 +10758,8 @@
 								"$ref": "AAAAAAF7TJoTSlPtBVs="
 							},
 							"name": "FechaNacimiento",
-							"visibility": "private"
+							"visibility": "private",
+							"type": "Date"
 						}
 					],
 					"operations": [
@@ -10832,7 +10836,8 @@
 								"$ref": "AAAAAAF7TJpfslQYxHg="
 							},
 							"name": "Nombre",
-							"visibility": "private"
+							"visibility": "private",
+							"type": "String"
 						}
 					]
 				},
@@ -12109,20 +12114,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF7wkGdxNVh9rU="
 							},
-							"name": "crearPractica",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAF7wkH4k9gaG4Y=",
-									"_parent": {
-										"$ref": "AAAAAAF7wkHADdbzJrw="
-									},
-									"name": "unaPractica",
-									"type": {
-										"$ref": "AAAAAAF7wjM1ESyYX5k="
-									}
-								}
-							]
+							"name": "crearPractica"
 						}
 					]
 				},
@@ -12262,18 +12254,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF7wkYf+iFs2BE="
 							},
-							"name": "crearSucursal",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAF7wkZ2CSTHkCs=",
-									"_parent": {
-										"$ref": "AAAAAAF7wkZCDSNYWHE="
-									},
-									"name": "unaSucursal",
-									"type": "SucursalDTO"
-								}
-							]
+							"name": "crearSucursal"
 						}
 					]
 				},
