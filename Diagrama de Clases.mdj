@@ -2951,12 +2951,12 @@
 										"$ref": "AAAAAAF7VniRV24LId0="
 									},
 									"font": "Arial;13;0",
-									"left": 238,
-									"top": 870,
+									"left": 256,
+									"top": 846,
 									"width": 59.6298828125,
 									"height": 13,
-									"alpha": -1.23651643217568,
-									"distance": 66.48308055437865,
+									"alpha": -1.6105571324994679,
+									"distance": 45.0111097397076,
 									"hostEdge": {
 										"$ref": "AAAAAAF7VniRWG4PV3c="
 									},
@@ -5635,7 +5635,7 @@
 											"visible": false,
 											"fillColor": "#d8f2ff",
 											"font": "Arial;13;0",
-											"left": 64,
+											"left": -128,
 											"top": -16,
 											"height": 13
 										},
@@ -5647,9 +5647,9 @@
 											},
 											"fillColor": "#d8f2ff",
 											"font": "Arial;13;1",
-											"left": 205,
+											"left": 109,
 											"top": 367,
-											"width": 246.5302734375,
+											"width": 435.34130859375,
 											"height": 13,
 											"text": "PeticionController"
 										},
@@ -5662,7 +5662,7 @@
 											"visible": false,
 											"fillColor": "#d8f2ff",
 											"font": "Arial;13;0",
-											"left": 64,
+											"left": -128,
 											"top": -16,
 											"width": 73.67724609375,
 											"height": 13,
@@ -5677,7 +5677,7 @@
 											"visible": false,
 											"fillColor": "#d8f2ff",
 											"font": "Arial;13;0",
-											"left": 64,
+											"left": -128,
 											"top": -16,
 											"height": 13,
 											"horizontalAlignment": 1
@@ -5685,9 +5685,9 @@
 									],
 									"fillColor": "#d8f2ff",
 									"font": "Arial;13;0",
-									"left": 200,
+									"left": 104,
 									"top": 360,
-									"width": 256.5302734375,
+									"width": 445.34130859375,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF7wkCFkMrvlBU="
@@ -5713,9 +5713,9 @@
 									},
 									"fillColor": "#d8f2ff",
 									"font": "Arial;13;0",
-									"left": 200,
+									"left": 104,
 									"top": 385,
-									"width": 256.5302734375,
+									"width": 445.34130859375,
 									"height": 10
 								},
 								{
@@ -5739,19 +5739,19 @@
 											},
 											"fillColor": "#d8f2ff",
 											"font": "Arial;13;0",
-											"left": 205,
+											"left": 109,
 											"top": 400,
-											"width": 246.5302734375,
+											"width": 435.34130859375,
 											"height": 13,
-											"text": "+crearPeticion(unaPeticion: PeticionDTO)",
+											"text": "+crearPeticion(Paciente: Paciente, ObraSocial: String, Practicas: collection)",
 											"horizontalAlignment": 0
 										}
 									],
 									"fillColor": "#d8f2ff",
 									"font": "Arial;13;0",
-									"left": 200,
+									"left": 104,
 									"top": 395,
-									"width": 256.5302734375,
+									"width": 445.34130859375,
 									"height": 23
 								},
 								{
@@ -5766,7 +5766,7 @@
 									"visible": false,
 									"fillColor": "#d8f2ff",
 									"font": "Arial;13;0",
-									"left": 32,
+									"left": -64,
 									"top": -8,
 									"width": 10,
 									"height": 10
@@ -5783,7 +5783,7 @@
 									"visible": false,
 									"fillColor": "#d8f2ff",
 									"font": "Arial;13;0",
-									"left": 32,
+									"left": -64,
 									"top": -8,
 									"width": 10,
 									"height": 10
@@ -5792,9 +5792,9 @@
 							"fillColor": "#d8f2ff",
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 200,
+							"left": 104,
 							"top": 360,
-							"width": 256.5302734375,
+							"width": 445.34130859375,
 							"height": 105,
 							"nameCompartment": {
 								"$ref": "AAAAAAF7wkCFkMruiKA="
@@ -5833,7 +5833,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 312,
+									"left": 311,
 									"top": 513,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -5854,7 +5854,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 297,
+									"left": 296,
 									"top": 513,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -5875,7 +5875,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 341,
+									"left": 340,
 									"top": 514,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -5896,7 +5896,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 312,
+									"left": 311,
 									"top": 543,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -5917,7 +5917,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 299,
+									"left": 298,
 									"top": 540,
 									"height": 13,
 									"alpha": 0.7853981633974483,
@@ -5937,7 +5937,7 @@
 										"$ref": "AAAAAAF7wkEbr89A94o="
 									},
 									"font": "Arial;13;0",
-									"left": 331,
+									"left": 330,
 									"top": 547,
 									"width": 19.5126953125,
 									"height": 13,
@@ -5960,7 +5960,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 312,
+									"left": 311,
 									"top": 485,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -5980,7 +5980,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 298,
+									"left": 297,
 									"top": 487,
 									"height": 13,
 									"alpha": -0.7853981633974483,
@@ -5999,7 +5999,7 @@
 										"$ref": "AAAAAAF7wkEbr89BneU="
 									},
 									"font": "Arial;13;0",
-									"left": 336,
+									"left": 335,
 									"top": 480,
 									"width": 7.22998046875,
 									"height": 13,
@@ -6047,7 +6047,7 @@
 								"$ref": "AAAAAAF7TJkyjlOVArA="
 							},
 							"lineStyle": 1,
-							"points": "328:575;327:465",
+							"points": "327:575;326:465",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF7wkEbsM9Edfs="
@@ -7544,7 +7544,7 @@
 											"fillColor": "#d8f2ff",
 											"font": "Arial;13;0",
 											"left": 96,
-											"top": -176,
+											"top": -160,
 											"height": 13
 										},
 										{
@@ -7556,7 +7556,7 @@
 											"fillColor": "#d8f2ff",
 											"font": "Arial;13;1",
 											"left": 389,
-											"top": 1119,
+											"top": 1127,
 											"width": 253.72216796875,
 											"height": 13,
 											"text": "SucursalController"
@@ -7571,7 +7571,7 @@
 											"fillColor": "#d8f2ff",
 											"font": "Arial;13;0",
 											"left": 96,
-											"top": -176,
+											"top": -160,
 											"width": 73.67724609375,
 											"height": 13,
 											"text": "(from Model)"
@@ -7586,7 +7586,7 @@
 											"fillColor": "#d8f2ff",
 											"font": "Arial;13;0",
 											"left": 96,
-											"top": -176,
+											"top": -160,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
@@ -7594,7 +7594,7 @@
 									"fillColor": "#d8f2ff",
 									"font": "Arial;13;0",
 									"left": 384,
-									"top": 1112,
+									"top": 1120,
 									"width": 263.72216796875,
 									"height": 25,
 									"stereotypeLabel": {
@@ -7622,7 +7622,7 @@
 									"fillColor": "#d8f2ff",
 									"font": "Arial;13;0",
 									"left": 384,
-									"top": 1137,
+									"top": 1145,
 									"width": 263.72216796875,
 									"height": 10
 								},
@@ -7648,7 +7648,7 @@
 											"fillColor": "#d8f2ff",
 											"font": "Arial;13;0",
 											"left": 389,
-											"top": 1152,
+											"top": 1160,
 											"width": 253.72216796875,
 											"height": 13,
 											"text": "+crearSucursal(unaSucursal: SucursalDTO)",
@@ -7658,7 +7658,7 @@
 									"fillColor": "#d8f2ff",
 									"font": "Arial;13;0",
 									"left": 384,
-									"top": 1147,
+									"top": 1155,
 									"width": 263.72216796875,
 									"height": 23
 								},
@@ -7675,7 +7675,7 @@
 									"fillColor": "#d8f2ff",
 									"font": "Arial;13;0",
 									"left": 48,
-									"top": -88,
+									"top": -80,
 									"width": 10,
 									"height": 10
 								},
@@ -7692,7 +7692,7 @@
 									"fillColor": "#d8f2ff",
 									"font": "Arial;13;0",
 									"left": 48,
-									"top": -88,
+									"top": -80,
 									"width": 10,
 									"height": 10
 								}
@@ -7701,7 +7701,7 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 							"left": 384,
-							"top": 1112,
+							"top": 1120,
 							"width": 263.72216796875,
 							"height": 97,
 							"nameCompartment": {
@@ -7742,7 +7742,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 422,
-									"top": 1083,
+									"top": 1087,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -7763,7 +7763,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 411,
-									"top": 1094,
+									"top": 1097,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -7784,7 +7784,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 443,
-									"top": 1062,
+									"top": 1066,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -7804,8 +7804,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 436,
-									"top": 1097,
+									"left": 439,
+									"top": 1104,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -7825,8 +7825,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 425,
-									"top": 1105,
+									"left": 428,
+									"top": 1112,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -7845,8 +7845,8 @@
 										"$ref": "AAAAAAF7wkaBxCVR0/o="
 									},
 									"font": "Arial;13;0",
-									"left": 455,
-									"top": 1080,
+									"left": 458,
+									"top": 1088,
 									"width": 7.22998046875,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -7868,8 +7868,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 409,
-									"top": 1070,
+									"left": 406,
+									"top": 1071,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -7888,8 +7888,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 402,
-									"top": 1082,
+									"left": 398,
+									"top": 1081,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -7907,7 +7907,7 @@
 										"$ref": "AAAAAAF7wkaBxCVSY3U="
 									},
 									"font": "Arial;13;0",
-									"left": 417,
+									"left": 414,
 									"top": 1048,
 									"width": 19.5126953125,
 									"height": 13,
@@ -7955,7 +7955,7 @@
 								"$ref": "AAAAAAF7wkYf/SFu6bk="
 							},
 							"lineStyle": 1,
-							"points": "465:1111;402:1048",
+							"points": "468:1119;399:1048",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF7wkaBxiVVUCw="
@@ -11574,10 +11574,28 @@
 									"_parent": {
 										"$ref": "AAAAAAF7wkCvecxf9F0="
 									},
-									"name": "unaPeticion",
+									"name": "Paciente",
 									"type": {
-										"$ref": "AAAAAAF7wjNtAC66OPY="
+										"$ref": "AAAAAAF7TJigxFMTbgg="
 									}
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF8cZswAjrAuvI=",
+									"_parent": {
+										"$ref": "AAAAAAF7wkCvecxf9F0="
+									},
+									"name": "ObraSocial",
+									"type": "String"
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF8cZswAzrBEok=",
+									"_parent": {
+										"$ref": "AAAAAAF7wkCvecxf9F0="
+									},
+									"name": "Practicas",
+									"type": "collection"
 								}
 							]
 						}
