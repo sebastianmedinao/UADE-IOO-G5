@@ -1,4 +1,4 @@
-package com.UADE;
+package com.UADE.model;
 
 public class Valor {
     private String interpretacion;

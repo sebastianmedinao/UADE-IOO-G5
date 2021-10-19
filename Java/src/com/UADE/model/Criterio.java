@@ -1,8 +1,5 @@
-package com.UADE;
+package com.UADE.model;
 
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Criterio {
     private Enum sexo;

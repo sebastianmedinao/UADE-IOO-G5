@@ -1,6 +1,5 @@
-package com.UADE;
+package com.UADE.model;
 
-import javax.xml.transform.Result;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
