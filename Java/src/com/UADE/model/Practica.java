@@ -20,4 +20,39 @@ public class Practica {
         this.nombre = nombre;
         this.tiempoEstimado = tiempoEstimado;
     }
+
+
+    //Getters y Setters
+
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Integer getTiempoEstimado() {
+        return tiempoEstimado;
+    }
+
+    public void setTiempoEstimado(Integer tiempoEstimado) {
+        this.tiempoEstimado = tiempoEstimado;
+    }
+
+    public List<Criterio> getCriterios() {
+        return criterios;
+    }
+
+    public void setCriterios(List<Criterio> criterios) {
+        this.criterios = criterios;
+    }
 }

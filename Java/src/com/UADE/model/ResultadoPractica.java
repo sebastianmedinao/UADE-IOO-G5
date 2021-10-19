@@ -16,4 +16,39 @@ public class ResultadoPractica {
         this.transcripcion = transcripcion;
         this.estado = estado;
     }
+
+
+    //Getters y Setters
+
+    public Float getResultadoNumerico() {
+        return resultadoNumerico;
+    }
+
+    public void setResultadoNumerico(Float resultadoNumerico) {
+        this.resultadoNumerico = resultadoNumerico;
+    }
+
+    public String getResultadoLiteral() {
+        return resultadoLiteral;
+    }
+
+    public void setResultadoLiteral(String resultadoLiteral) {
+        this.resultadoLiteral = resultadoLiteral;
+    }
+
+    public String getTranscripcion() {
+        return transcripcion;
+    }
+
+    public void setTranscripcion(String transcripcion) {
+        this.transcripcion = transcripcion;
+    }
+
+    public Enumeration getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Enumeration estado) {
+        this.estado = estado;
+    }
 }

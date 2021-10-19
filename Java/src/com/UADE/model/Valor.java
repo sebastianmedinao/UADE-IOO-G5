@@ -16,4 +16,46 @@ public class Valor {
         this.unidadMedida = unidadMedida;
         this.reservado = reservado;
     }
+
+    //Getters y Setters
+
+    public String getInterpretacion() {
+        return interpretacion;
+    }
+
+    public void setInterpretacion(String interpretacion) {
+        this.interpretacion = interpretacion;
+    }
+
+    public Float getReferenciaInferior() {
+        return referenciaInferior;
+    }
+
+    public void setReferenciaInferior(Float referenciaInferior) {
+        this.referenciaInferior = referenciaInferior;
+    }
+
+    public Float getReferenciaSuperior() {
+        return referenciaSuperior;
+    }
+
+    public void setReferenciaSuperior(Float referenciaSuperior) {
+        this.referenciaSuperior = referenciaSuperior;
+    }
+
+    public String getUnidadMedida() {
+        return unidadMedida;
+    }
+
+    public void setUnidadMedida(String unidadMedida) {
+        this.unidadMedida = unidadMedida;
+    }
+
+    public Boolean getReservado() {
+        return reservado;
+    }
+
+    public void setReservado(Boolean reservado) {
+        this.reservado = reservado;
+    }
 }

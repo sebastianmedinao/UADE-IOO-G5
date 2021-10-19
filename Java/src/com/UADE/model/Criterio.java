@@ -16,4 +16,45 @@ public class Criterio {
         this.edadHasta = edadHasta;
     }
 
+    //Getters y Setters
+
+    public Enum getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(Enum sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getCondicionesPreexistentes() {
+        return condicionesPreexistentes;
+    }
+
+    public void setCondicionesPreexistentes(String condicionesPreexistentes) {
+        this.condicionesPreexistentes = condicionesPreexistentes;
+    }
+
+    public Integer getEdadDesde() {
+        return edadDesde;
+    }
+
+    public void setEdadDesde(Integer edadDesde) {
+        this.edadDesde = edadDesde;
+    }
+
+    public Integer getEdadHasta() {
+        return edadHasta;
+    }
+
+    public void setEdadHasta(Integer edadHasta) {
+        this.edadHasta = edadHasta;
+    }
+
+    public Valor getValor() {
+        return valor;
+    }
+
+    public void setValor(Valor valor) {
+        this.valor = valor;
+    }
 }

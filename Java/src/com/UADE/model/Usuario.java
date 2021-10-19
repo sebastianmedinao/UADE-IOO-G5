@@ -27,5 +27,72 @@ public class Usuario {
         this.fechaDeNacimiento = fechaDeNacimiento;
         this.rolSistema = rolSistema;
     }
+
+
+
+    //Getters y Setters
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public Date getFechaDeNacimiento() {
+        return fechaDeNacimiento;
+    }
+
+    public void setFechaDeNacimiento(Date fechaDeNacimiento) {
+        this.fechaDeNacimiento = fechaDeNacimiento;
+    }
+
+    public Enumeration getRolSistema() {
+        return rolSistema;
+    }
+
+    public void setRolSistema(Enumeration rolSistema) {
+        this.rolSistema = rolSistema;
+    }
 }
 

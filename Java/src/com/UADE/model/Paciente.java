@@ -27,4 +27,70 @@ public class Paciente {
         this.sexo = sexo;
         this.edad = edad;
     }
+
+
+    //Getters y Setters
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Enumeration getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(Enumeration sexo) {
+        this.sexo = sexo;
+    }
+
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
+
+    public List<Peticion> getPeticiones() {
+        return peticiones;
+    }
+
+    public void setPeticiones(List<Peticion> peticiones) {
+        this.peticiones = peticiones;
+    }
 }
