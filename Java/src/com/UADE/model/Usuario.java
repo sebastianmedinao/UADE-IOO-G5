@@ -1,4 +1,4 @@
-package com.UADE;
+package com.UADE.model;
 
 import java.util.Date;
 import java.util.Enumeration;

@@ -1,4 +1,4 @@
-package ui;
+package com.UADE.view;
 
 import javax.swing.*;
 
