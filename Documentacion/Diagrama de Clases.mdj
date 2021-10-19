@@ -135,7 +135,7 @@
 											"top": 1014,
 											"width": 167,
 											"height": 13,
-											"text": "-Código",
+											"text": "-Código: Int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -11106,7 +11106,7 @@
 							},
 							"name": "Código",
 							"visibility": "private",
-							"type": ""
+							"type": "Int"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -14255,7 +14255,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF8ceebJ9r1e00="
 									},
-									"name": "Código"
+									"name": "Código",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -14263,7 +14264,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF8ceebJ9r1e00="
 									},
-									"name": "CodigoSuplente"
+									"name": "CodigoSuplente",
+									"type": ""
 								}
 							]
 						}
@@ -14578,9 +14580,9 @@
 														"$ref": "AAAAAAF8ccmv3mToqic="
 													},
 													"font": "Arial;13;0",
-													"left": 221.07177734375,
+													"left": 219.61181640625,
 													"top": 269,
-													"width": 165.76611328125,
+													"width": 150.8427734375,
 													"height": 13,
 													"text": "Si Código Paciente Coincide"
 												},
@@ -14593,7 +14595,7 @@
 													"font": "Arial;13;1",
 													"left": 197,
 													"top": 269,
-													"width": 19.07177734375,
+													"width": 17.61181640625,
 													"height": 13,
 													"text": "opt"
 												},
@@ -14679,9 +14681,9 @@
 														"$ref": "AAAAAAF8cgpPdlRc/R0="
 													},
 													"font": "Arial;13;0",
-													"left": 195.578125,
+													"left": 194.11181640625,
 													"top": 181,
-													"width": 110.12255859375,
+													"width": 96.3037109375,
 													"height": 13,
 													"text": "Por Cada Paciente"
 												},
@@ -14694,7 +14696,7 @@
 													"font": "Arial;13;1",
 													"left": 165,
 													"top": 181,
-													"width": 25.578125,
+													"width": 24.11181640625,
 													"height": 13,
 													"text": "loop"
 												},
@@ -14780,9 +14782,9 @@
 														"$ref": "AAAAAAF8cbybHhYGRbA="
 													},
 													"font": "Arial;13;0",
-													"left": 32.72998046875,
+													"left": 30.55908203125,
 													"top": 13,
-													"width": 214.17333984375,
+													"width": 191.5947265625,
 													"height": 13,
 													"text": "tienePeticionesFinalizadas(Paciente)"
 												},
@@ -14795,7 +14797,7 @@
 													"font": "Arial;13;1",
 													"left": 13,
 													"top": 13,
-													"width": 14.72998046875,
+													"width": 12.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -15286,9 +15288,9 @@
 														"$ref": "AAAAAAF8cciog2SfNjg="
 													},
 													"font": "Arial;13;0",
-													"left": 243.578125,
+													"left": 242.11181640625,
 													"top": 317,
-													"width": 178.05517578125,
+													"width": 157.67919921875,
 													"height": 13,
 													"text": "Por Cada Peticion de Paciente"
 												},
@@ -15301,7 +15303,7 @@
 													"font": "Arial;13;1",
 													"left": 213,
 													"top": 317,
-													"width": 25.578125,
+													"width": 24.11181640625,
 													"height": 13,
 													"text": "loop"
 												},
@@ -15387,9 +15389,9 @@
 														"$ref": "AAAAAAF8ccs1kmUwJvg="
 													},
 													"font": "Arial;13;0",
-													"left": 269.07177734375,
+													"left": 267.61181640625,
 													"top": 429,
-													"width": 183.1015625,
+													"width": 165.28369140625,
 													"height": 13,
 													"text": "Si EstadoPeticion es Finalizado"
 												},
@@ -15402,7 +15404,7 @@
 													"font": "Arial;13;1",
 													"left": 245,
 													"top": 429,
-													"width": 19.07177734375,
+													"width": 17.61181640625,
 													"height": 13,
 													"text": "opt"
 												},
@@ -16604,9 +16606,9 @@
 														"$ref": "AAAAAAF8cdG+KWeol+U="
 													},
 													"font": "Arial;13;0",
-													"left": 32.72998046875,
+													"left": 30.55908203125,
 													"top": 13,
-													"width": 214.16064453125,
+													"width": 192.3310546875,
 													"height": 13,
 													"text": "tienePeticionesFinalizadas(Sucursal)"
 												},
@@ -16619,7 +16621,7 @@
 													"font": "Arial;13;1",
 													"left": 13,
 													"top": 13,
-													"width": 14.72998046875,
+													"width": 12.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -17226,9 +17228,9 @@
 														"$ref": "AAAAAAF8cdsh/MD+0Gc="
 													},
 													"font": "Arial;13;0",
-													"left": 251.578125,
+													"left": 250.11181640625,
 													"top": 173,
-													"width": 178.04248046875,
+													"width": 158.41552734375,
 													"height": 13,
 													"text": "Por Cada Peticion de Sucursal"
 												},
@@ -17241,7 +17243,7 @@
 													"font": "Arial;13;1",
 													"left": 221,
 													"top": 173,
-													"width": 25.578125,
+													"width": 24.11181640625,
 													"height": 13,
 													"text": "loop"
 												},
@@ -17550,9 +17552,9 @@
 														"$ref": "AAAAAAF8ceRQBNcBg9I="
 													},
 													"font": "Arial;13;0",
-													"left": 277.07177734375,
+													"left": 275.61181640625,
 													"top": 293,
-													"width": 183.1015625,
+													"width": 165.28369140625,
 													"height": 13,
 													"text": "Si EstadoPeticion es Finalizado"
 												},
@@ -17565,7 +17567,7 @@
 													"font": "Arial;13;1",
 													"left": 253,
 													"top": 293,
-													"width": 19.07177734375,
+													"width": 17.61181640625,
 													"height": 13,
 													"text": "opt"
 												},
@@ -18135,9 +18137,9 @@
 														"$ref": "AAAAAAF8dtS5LuvFqPs="
 													},
 													"font": "Arial;13;0",
-													"left": 235.578125,
+													"left": 234.11181640625,
 													"top": 493,
-													"width": 219.943359375,
+													"width": 198.8310546875,
 													"height": 13,
 													"text": "Por cada Petición de SucursalABorrar"
 												},
@@ -18150,7 +18152,7 @@
 													"font": "Arial;13;1",
 													"left": 205,
 													"top": 493,
-													"width": 25.578125,
+													"width": 24.11181640625,
 													"height": 13,
 													"text": "loop"
 												},
@@ -18236,9 +18238,9 @@
 														"$ref": "AAAAAAF8ceYf0Nie6Ro="
 													},
 													"font": "Arial;13;0",
-													"left": 32.72998046875,
+													"left": 30.55908203125,
 													"top": 13,
-													"width": 146.9453125,
+													"width": 136.02734375,
 													"height": 13,
 													"text": "eliminarSucursal(Código)"
 												},
@@ -18251,7 +18253,7 @@
 													"font": "Arial;13;1",
 													"left": 13,
 													"top": 13,
-													"width": 14.72998046875,
+													"width": 12.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -18745,9 +18747,9 @@
 														"$ref": "AAAAAAF8cewNT2UP1No="
 													},
 													"font": "Arial;13;0",
-													"left": 235.578125,
+													"left": 234.11181640625,
 													"top": 181,
-													"width": 110.10986328125,
+													"width": 97.0400390625,
 													"height": 13,
 													"text": "Por Cada Sucursal"
 												},
@@ -18760,7 +18762,7 @@
 													"font": "Arial;13;1",
 													"left": 205,
 													"top": 181,
-													"width": 25.578125,
+													"width": 24.11181640625,
 													"height": 13,
 													"text": "loop"
 												},
@@ -19069,9 +19071,9 @@
 														"$ref": "AAAAAAF8ce2AW2VbZy4="
 													},
 													"font": "Arial;13;0",
-													"left": 245.07177734375,
+													"left": 243.61181640625,
 													"top": 285,
-													"width": 111.5634765625,
+													"width": 103.55908203125,
 													"height": 13,
 													"text": "Si Coincide Código"
 												},
@@ -19084,7 +19086,7 @@
 													"font": "Arial;13;1",
 													"left": 221,
 													"top": 285,
-													"width": 19.07177734375,
+													"width": 17.61181640625,
 													"height": 13,
 													"text": "opt"
 												},
@@ -19286,9 +19288,9 @@
 														"$ref": "AAAAAAF8cfHjJmerhNI="
 													},
 													"font": "Arial;13;0",
-													"left": 245.07177734375,
+													"left": 243.61181640625,
 													"top": 581,
-													"width": 189.60791015625,
+													"width": 168.52734375,
 													"height": 13,
 													"text": "Si EstadoPeticion es En proceso"
 												},
@@ -19301,7 +19303,7 @@
 													"font": "Arial;13;1",
 													"left": 221,
 													"top": 581,
-													"width": 19.07177734375,
+													"width": 17.61181640625,
 													"height": 13,
 													"text": "opt"
 												},
@@ -19529,9 +19531,9 @@
 														"$ref": "AAAAAAF8dtQBE+uijl4="
 													},
 													"font": "Arial;13;0",
-													"left": 245.07177734375,
+													"left": 243.61181640625,
 													"top": 381,
-													"width": 162.88427734375,
+													"width": 149.052734375,
 													"height": 13,
 													"text": "Si Coincide CódigoSuplente"
 												},
@@ -19544,7 +19546,7 @@
 													"font": "Arial;13;1",
 													"left": 221,
 													"top": 381,
-													"width": 19.07177734375,
+													"width": 17.61181640625,
 													"height": 13,
 													"text": "opt"
 												},
@@ -20386,9 +20388,9 @@
 														"$ref": "AAAAAAF8chT2SHlT5fU="
 													},
 													"font": "Arial;13;0",
-													"left": 32.72998046875,
+													"left": 30.55908203125,
 													"top": 13,
-													"width": 169.8349609375,
+													"width": 155.52734375,
 													"height": 13,
 													"text": "peticionesConValoresCriticos"
 												},
@@ -20401,7 +20403,7 @@
 													"font": "Arial;13;1",
 													"left": 13,
 													"top": 13,
-													"width": 14.72998046875,
+													"width": 12.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -21243,9 +21245,9 @@
 														"$ref": "AAAAAAF8dttQlPd1YZQ="
 													},
 													"font": "Arial;13;0",
-													"left": 291.578125,
+													"left": 290.11181640625,
 													"top": 157,
-													"width": 102.892578125,
+													"width": 91.974609375,
 													"height": 13,
 													"text": "Por cada Peticion"
 												},
@@ -21258,7 +21260,7 @@
 													"font": "Arial;13;1",
 													"left": 261,
 													"top": 157,
-													"width": 25.578125,
+													"width": 24.11181640625,
 													"height": 13,
 													"text": "loop"
 												},
@@ -22685,9 +22687,9 @@
 														"$ref": "AAAAAAF8duTHZjLoNPE="
 													},
 													"font": "Arial;13;0",
-													"left": 323.578125,
+													"left": 322.11181640625,
 													"top": 261,
-													"width": 162.1416015625,
+													"width": 143.2255859375,
 													"height": 13,
 													"text": "Por cada ResultadoPractica"
 												},
@@ -22700,7 +22702,7 @@
 													"font": "Arial;13;1",
 													"left": 293,
 													"top": 261,
-													"width": 25.578125,
+													"width": 24.11181640625,
 													"height": 13,
 													"text": "loop"
 												},
@@ -22786,9 +22788,9 @@
 														"$ref": "AAAAAAF8duY/kTMPLnk="
 													},
 													"font": "Arial;13;0",
-													"left": 341.07177734375,
+													"left": 339.61181640625,
 													"top": 477,
-													"width": 503.912109375,
+													"width": 460.75439453125,
 													"height": 13,
 													"text": "Si ResultadoNumerico < ReferenciaInferior o ResultadoNumerico > ReferenciaSuperior"
 												},
@@ -22801,7 +22803,7 @@
 													"font": "Arial;13;1",
 													"left": 317,
 													"top": 477,
-													"width": 19.07177734375,
+													"width": 17.61181640625,
 													"height": 13,
 													"text": "opt"
 												},
@@ -23779,9 +23781,9 @@
 														"$ref": "AAAAAAF8drjj1wjwSVw="
 													},
 													"font": "Arial;13;0",
-													"left": 32.72998046875,
+													"left": 30.55908203125,
 													"top": 13,
-													"width": 107.22802734375,
+													"width": 96.31640625,
 													"height": 13,
 													"text": "resultadosPeticion"
 												},
@@ -23794,7 +23796,7 @@
 													"font": "Arial;13;1",
 													"left": 13,
 													"top": 13,
-													"width": 14.72998046875,
+													"width": 12.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -24752,9 +24754,9 @@
 														"$ref": "AAAAAAF8dvBgykxfOjw="
 													},
 													"font": "Arial;13;0",
-													"left": 243.578125,
+													"left": 242.11181640625,
 													"top": 165,
-													"width": 105.78076171875,
+													"width": 94.87548828125,
 													"height": 13,
 													"text": "Por Cada Peticion"
 												},
@@ -24767,7 +24769,7 @@
 													"font": "Arial;13;1",
 													"left": 213,
 													"top": 165,
-													"width": 25.578125,
+													"width": 24.11181640625,
 													"height": 13,
 													"text": "loop"
 												},
@@ -25076,9 +25078,9 @@
 														"$ref": "AAAAAAF8dvE0U0ysGOc="
 													},
 													"font": "Arial;13;0",
-													"left": 253.07177734375,
+													"left": 251.61181640625,
 													"top": 261,
-													"width": 108.67529296875,
+													"width": 100.658203125,
 													"height": 13,
 													"text": "Si Código coincide"
 												},
@@ -25091,7 +25093,7 @@
 													"font": "Arial;13;1",
 													"left": 229,
 													"top": 261,
-													"width": 19.07177734375,
+													"width": 17.61181640625,
 													"height": 13,
 													"text": "opt"
 												},
@@ -25177,9 +25179,9 @@
 														"$ref": "AAAAAAF8dvIpmE1kyCo="
 													},
 													"font": "Arial;13;0",
-													"left": 283.578125,
+													"left": 282.11181640625,
 													"top": 301,
-													"width": 230.07421875,
+													"width": 204.60107421875,
 													"height": 13,
 													"text": "Por cada ResultadoPractica de Peticion"
 												},
@@ -25192,7 +25194,7 @@
 													"font": "Arial;13;1",
 													"left": 253,
 													"top": 301,
-													"width": 25.578125,
+													"width": 24.11181640625,
 													"height": 13,
 													"text": "loop"
 												},
@@ -25834,9 +25836,9 @@
 														"$ref": "AAAAAAF8dvSVhlrDsDc="
 													},
 													"font": "Arial;13;0",
-													"left": 293.07177734375,
+													"left": 291.61181640625,
 													"top": 453,
-													"width": 96.3798828125,
+													"width": 84.0400390625,
 													"height": 13,
 													"text": "Si es Reservado"
 												},
@@ -25849,7 +25851,7 @@
 													"font": "Arial;13;1",
 													"left": 269,
 													"top": 453,
-													"width": 19.07177734375,
+													"width": 17.61181640625,
 													"height": 13,
 													"text": "opt"
 												},
