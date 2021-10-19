@@ -28,3 +28,4 @@ public class Usuario {
         this.rolSistema = rolSistema;
     }
 }
+

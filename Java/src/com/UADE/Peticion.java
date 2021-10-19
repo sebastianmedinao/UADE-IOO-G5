@@ -29,4 +29,70 @@ public class Peticion {
         this.fechaEstimadaEntrega = fechaEstimadaEntrega;
         this.estadoPeticion = estadoPeticion;
     }
+
+
+    // Getters y setters
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getObraSocial() {
+        return obraSocial;
+    }
+
+    public void setObraSocial(String obraSocial) {
+        this.obraSocial = obraSocial;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaEstimadaEntrega() {
+        return fechaEstimadaEntrega;
+    }
+
+    public void setFechaEstimadaEntrega(Date fechaEstimadaEntrega) {
+        this.fechaEstimadaEntrega = fechaEstimadaEntrega;
+    }
+
+    public Enumeration getEstadoPeticion() {
+        return estadoPeticion;
+    }
+
+    public void setEstadoPeticion(Enumeration estadoPeticion) {
+        this.estadoPeticion = estadoPeticion;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public List<Practica> getPracticas() {
+        return practicas;
+    }
+
+    public void setPracticas(List<Practica> practicas) {
+        this.practicas = practicas;
+    }
+
+    public List<ResultadoPractica> getResultadosPracticas() {
+        return resultadosPracticas;
+    }
+
+    public void setResultadosPracticas(List<ResultadoPractica> resultadosPracticas) {
+        this.resultadosPracticas = resultadosPracticas;
+    }
 }
