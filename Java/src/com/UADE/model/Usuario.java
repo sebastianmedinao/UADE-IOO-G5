@@ -12,12 +12,11 @@ public class Usuario {
     private String domicilio;
     private String dni;
     private Date fechaDeNacimiento;
-    private Enumeration rolSistema;
+    private RolSistema rolSistema;
 
     public Usuario(String usuario, String password, String email,
                    String nombreCompleto, String domicilio, String dni,
-                   Date fechaDeNacimiento, Enumeration rolSistema)
-    {
+                   Date fechaDeNacimiento, RolSistema rolSistema) {
         this.usuario = usuario;
         this.password = password;
         this.email = email;
@@ -29,8 +28,8 @@ public class Usuario {
     }
 
 
-
     //Getters y Setters
+
     public String getUsuario() {
         return usuario;
     }
@@ -87,11 +86,11 @@ public class Usuario {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
-    public Enumeration getRolSistema() {
+    public RolSistema getRolSistema() {
         return rolSistema;
     }
 
-    public void setRolSistema(Enumeration rolSistema) {
+    public void setRolSistema(RolSistema rolSistema) {
         this.rolSistema = rolSistema;
     }
 }

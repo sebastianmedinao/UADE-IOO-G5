@@ -10,13 +10,13 @@ public class Paciente {
     private String nombreCompleto;
     private String domicilio;
     private String email;
-    private Enumeration sexo;
+    private Sexo sexo;
     private Integer edad;
     private static int numeradorCodigoPaciente = 0;
 
     private List<Peticion> peticiones = new ArrayList<Peticion>();
 
-    public Paciente(Integer codigo, String dni, String nombreCompleto, String domicilio, String email, Enumeration sexo, Integer edad)
+    public Paciente(Integer codigo, String dni, String nombreCompleto, String domicilio, String email, Sexo sexo, Integer edad)
     {
         numeradorCodigoPaciente++;
         this.codigo = Integer.valueOf(numeradorCodigoPaciente);
@@ -30,6 +30,8 @@ public class Paciente {
 
 
     //Getters y Setters
+
+
     public Integer getCodigo() {
         return codigo;
     }
@@ -70,11 +72,11 @@ public class Paciente {
         this.email = email;
     }
 
-    public Enumeration getSexo() {
+    public Sexo getSexo() {
         return sexo;
     }
 
-    public void setSexo(Enumeration sexo) {
+    public void setSexo(Sexo sexo) {
         this.sexo = sexo;
     }
 

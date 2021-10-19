@@ -11,7 +11,7 @@ public class Peticion {
     private String obraSocial;
     private Date fechaInicio;
     private Date fechaEstimadaEntrega;
-    private Enumeration estadoPeticion;
+    private EstadoPeticion estadoPeticion;
     private Paciente paciente;
 
     private static int numeradorCodigoPeticion = 0;
@@ -19,7 +19,7 @@ public class Peticion {
     private List<ResultadoPractica> resultadosPracticas = new ArrayList<ResultadoPractica>();
 
 
-    public Peticion(Integer codigo, String obraSocial, Date fechaInicio, List practicas, Date fechaEstimadaEntrega, Enumeration estadoPeticion)
+    public Peticion(Integer codigo, String obraSocial, Date fechaInicio, List practicas, Date fechaEstimadaEntrega, EstadoPeticion estadoPeticion)
     {
         numeradorCodigoPeticion++;
         this.codigo = Integer.valueOf(numeradorCodigoPeticion);
@@ -31,6 +31,7 @@ public class Peticion {
 
 
     // Getters y setters
+
     public Integer getCodigo() {
         return codigo;
     }
@@ -63,11 +64,11 @@ public class Peticion {
         this.fechaEstimadaEntrega = fechaEstimadaEntrega;
     }
 
-    public Enumeration getEstadoPeticion() {
+    public EstadoPeticion getEstadoPeticion() {
         return estadoPeticion;
     }
 
-    public void setEstadoPeticion(Enumeration estadoPeticion) {
+    public void setEstadoPeticion(EstadoPeticion estadoPeticion) {
         this.estadoPeticion = estadoPeticion;
     }
 

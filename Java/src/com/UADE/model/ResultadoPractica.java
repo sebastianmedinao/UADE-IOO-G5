@@ -7,9 +7,9 @@ public class ResultadoPractica {
     private Float resultadoNumerico;
     private String resultadoLiteral;
     private String transcripcion;
-    private Enumeration estado;
+    private EstadoResultado estado;
 
-    public ResultadoPractica(Float resultadoNumerico, String resultadoLiteral, String transcripcion, Enumeration estado)
+    public ResultadoPractica(Float resultadoNumerico, String resultadoLiteral, String transcripcion, EstadoResultado estado)
     {
         this.resultadoNumerico = resultadoNumerico;
         this.resultadoLiteral = resultadoLiteral;
@@ -44,11 +44,11 @@ public class ResultadoPractica {
         this.transcripcion = transcripcion;
     }
 
-    public Enumeration getEstado() {
+    public EstadoResultado getEstado() {
         return estado;
     }
 
-    public void setEstado(Enumeration estado) {
+    public void setEstado(EstadoResultado estado) {
         this.estado = estado;
     }
 }
