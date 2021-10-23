@@ -7,9 +7,9 @@ public class TestUI {
     private JLabel lblTest;
     private JButton button1;
 
-    public static void main(String[] args) {
+    public TestUI() {
         JFrame root = new JFrame("Test Title");
-        root.setContentPane(new TestUI().InicioTest);
+        //root.setContentPane(new TestUI().InicioTest);
         root.setLocationRelativeTo(null);
         root.setSize(400, 400);
         root.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
