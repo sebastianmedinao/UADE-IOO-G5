@@ -9,7 +9,7 @@ public class TestUI {
 
     public TestUI() {
         JFrame root = new JFrame("Test Title");
-        //root.setContentPane(new TestUI().InicioTest);
+        root.setContentPane(InicioTest);
         root.setLocationRelativeTo(null);
         root.setSize(400, 400);
         root.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
