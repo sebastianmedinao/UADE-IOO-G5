@@ -1,9 +1,6 @@
 package com.UADE.model;
 
-import java.util.Enumeration;
-
 public class ResultadoPractica {
-
     private Float resultadoNumerico;
     private String resultadoLiteral;
     private String transcripcion;
@@ -16,9 +13,6 @@ public class ResultadoPractica {
         this.transcripcion = transcripcion;
         this.estado = estado;
     }
-
-
-    //Getters y Setters
 
     public Float getResultadoNumerico() {
         return resultadoNumerico;

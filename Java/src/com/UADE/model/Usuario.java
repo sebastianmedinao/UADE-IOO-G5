@@ -1,23 +1,21 @@
 package com.UADE.model;
 
 import java.util.Date;
-import java.util.Enumeration;
 
 public class Usuario {
-
-    private String usuario;
+    private String nombreUsuario;
     private String password;
     private String email;
     private String nombreCompleto;
     private String domicilio;
-    private String dni;
+    private Integer dni;
     private Date fechaDeNacimiento;
     private RolSistema rolSistema;
 
-    public Usuario(String usuario, String password, String email,
-                   String nombreCompleto, String domicilio, String dni,
+    public Usuario(String nombreUsuario, String password, String email,
+                   String nombreCompleto, String domicilio, Integer dni,
                    Date fechaDeNacimiento, RolSistema rolSistema) {
-        this.usuario = usuario;
+        this.nombreUsuario = nombreUsuario;
         this.password = password;
         this.email = email;
         this.nombreCompleto = nombreCompleto;
@@ -27,15 +25,12 @@ public class Usuario {
         this.rolSistema = rolSistema;
     }
 
-
-    //Getters y Setters
-
-    public String getUsuario() {
-        return usuario;
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
     public String getPassword() {
@@ -70,11 +65,11 @@ public class Usuario {
         this.domicilio = domicilio;
     }
 
-    public String getDni() {
+    public Integer getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(Integer dni) {
         this.dni = dni;
     }
 

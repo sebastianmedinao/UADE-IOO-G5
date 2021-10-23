@@ -1,6 +1,5 @@
 package com.UADE.model;
 
-
 public class Criterio {
     private Enum sexo;
     private String condicionesPreexistentes;
@@ -15,8 +14,6 @@ public class Criterio {
         this.edadDesde = edadDesde;
         this.edadHasta = edadHasta;
     }
-
-    //Getters y Setters
 
     public Enum getSexo() {
         return sexo;

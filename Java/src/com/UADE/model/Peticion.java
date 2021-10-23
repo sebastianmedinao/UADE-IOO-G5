@@ -2,22 +2,19 @@ package com.UADE.model;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Enumeration;
 import java.util.List;
 
 public class Peticion {
-
+    private static int numeradorCodigoPeticion = 0;
     private Integer codigo;
     private String obraSocial;
     private Date fechaInicio;
     private Date fechaEstimadaEntrega;
     private EstadoPeticion estadoPeticion;
     private Paciente paciente;
-
-    private static int numeradorCodigoPeticion = 0;
+    private Sucursal sucursal;
     private List<Practica> practicas = new ArrayList<Practica>();
     private List<ResultadoPractica> resultadosPracticas = new ArrayList<ResultadoPractica>();
-
 
     public Peticion(Integer codigo, String obraSocial, Date fechaInicio, List practicas, Date fechaEstimadaEntrega, EstadoPeticion estadoPeticion)
     {
@@ -28,9 +25,6 @@ public class Peticion {
         this.fechaEstimadaEntrega = fechaEstimadaEntrega;
         this.estadoPeticion = estadoPeticion;
     }
-
-
-    // Getters y setters
 
     public Integer getCodigo() {
         return codigo;

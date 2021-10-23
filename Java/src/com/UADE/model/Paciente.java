@@ -1,10 +1,10 @@
 package com.UADE.model;
 
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
 public class Paciente {
+    private static int numeradorCodigoPaciente = 0;
     private Integer codigo;
     private String dni;
     private String nombreCompleto;
@@ -12,8 +12,6 @@ public class Paciente {
     private String email;
     private Sexo sexo;
     private Integer edad;
-    private static int numeradorCodigoPaciente = 0;
-
     private List<Peticion> peticiones = new ArrayList<Peticion>();
 
     public Paciente(Integer codigo, String dni, String nombreCompleto, String domicilio, String email, Sexo sexo, Integer edad)
@@ -27,10 +25,6 @@ public class Paciente {
         this.sexo = sexo;
         this.edad = edad;
     }
-
-
-    //Getters y Setters
-
 
     public Integer getCodigo() {
         return codigo;
