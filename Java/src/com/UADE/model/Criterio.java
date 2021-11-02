@@ -1,26 +1,26 @@
 package com.UADE.model;
 
 public class Criterio {
-    private Enum sexo;
+    private Sexo sexo;
     private String condicionesPreexistentes;
     private Integer edadDesde;
     private Integer edadHasta;
     private Valor valor;
 
-    public Criterio(Enum sexo, String condicionesPreexistentes, Integer edadDesde, Integer edadHasta)
+    public Criterio(Sexo sexo, String condicionesPreexistentes, Integer edadDesde, Integer edadHasta)
     {
-        this.sexo = sexo;
+        setSexo(sexo);
         this.condicionesPreexistentes = condicionesPreexistentes;
         this.edadDesde = edadDesde;
         this.edadHasta = edadHasta;
     }
 
-    public Enum getSexo() {
+    public Sexo getSexo() {
         return sexo;
     }
 
-    public void setSexo(Enum sexo) {
-        this.sexo = sexo;
+    public void setSexo(Sexo sexoB) {
+        sexo = sexoB;
     }
 
     public String getCondicionesPreexistentes() {
@@ -54,7 +54,7 @@ public class Criterio {
         return valor;
     }
 
-    public void setValor(Valor valor) {
-        this.valor = valor;
+    public void setValor(Valor valorX) {
+        valor = valorX;
     }
 }
