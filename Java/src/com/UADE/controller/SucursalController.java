@@ -1,6 +1,5 @@
 package com.UADE.controller;
 
-import com.UADE.model.RolSistema;
 import com.UADE.model.Sucursal;
 import com.UADE.util.SucursalDAO;
 
