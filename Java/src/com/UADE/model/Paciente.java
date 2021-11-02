@@ -26,6 +26,8 @@ public class Paciente {
         this.edad = edad;
     }
 
+
+    // Getters y Setters
     public Integer getCodigo() {
         return codigo;
     }

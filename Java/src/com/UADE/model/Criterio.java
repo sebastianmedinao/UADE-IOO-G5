@@ -31,6 +31,9 @@ public class Criterio {
         this.condicionesPreexistentes = condicionesPreexistentes;
     }
 
+
+
+    // Getters y Setters
     public Integer getEdadDesde() {
         return edadDesde;
     }

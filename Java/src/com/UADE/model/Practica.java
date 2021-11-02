@@ -18,6 +18,8 @@ public class Practica {
         this.tiempoEstimado = tiempoEstimado;
     }
 
+
+    // Getters y Setters
     public Integer getCodigo() {
         return codigo;
     }

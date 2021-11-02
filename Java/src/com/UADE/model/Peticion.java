@@ -30,6 +30,8 @@ public class Peticion {
         return codigo;
     }
 
+
+    // Getters y Setters
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
