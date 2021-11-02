@@ -1,0 +1,1 @@
+{"nombreUsuario":"admin","password":"1234","email":"uade@uade.edu.ar","nombreCompleto":"administrador","domicilio":"lima 1","dni":10444322,"fechaDeNacimiento":"Nov 2, 2021, 6:55:17 PM","rolSistema":"ADMINISTRADOR"}

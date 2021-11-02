@@ -13,7 +13,7 @@ public class TestUI {
     private JButton button1;
     private UsuarioController usercontroller;
 
-    public TestUI() {
+    public TestUI() throws Exception {
         JFrame root = new JFrame("Test Title");
         root.setContentPane(InicioTest);
         root.setLocationRelativeTo(null);
