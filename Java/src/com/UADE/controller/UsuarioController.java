@@ -12,12 +12,12 @@ import java.util.List;
 
 public class UsuarioController {
     private List<Usuario> usuarios = new ArrayList<Usuario>();
-    private UsuarioDAO uDAO;
+    private UsuarioDAO DAO;
 
     public UsuarioController() throws Exception {
-        uDAO = new UsuarioDAO(Usuario.class, "usuario.txt");
+        DAO = new UsuarioDAO(Usuario.class, "usuario.txt");
 
-        usuarios = uDAO.getAll();
+        usuarios = DAO.getAll();
 
         this.nuevoUsuario("admin", "1234", "uade@uade.edu.ar", "administrador", "lima 1", 10444322, new Date(), RolSistema.ADMINISTRADOR);
     }
@@ -26,7 +26,7 @@ public class UsuarioController {
         if (buscarUsuarioPorNombreUsuario(nombreUsuario) == null && buscarUsuarioPorDNI(dni) == null) {
             Usuario u = new Usuario(nombreUsuario, password, email, nombreCompleto, domicilio, dni, fechaDeNacimiento, rolSistema);
             this.usuarios.add(u);
-            uDAO.save(u);
+            DAO.save(u);
             return true;
         } else {
             return false;

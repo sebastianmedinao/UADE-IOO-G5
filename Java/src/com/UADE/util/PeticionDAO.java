@@ -1,4 +1,10 @@
 package com.UADE.util;
 
-public class PeticionDAO {
+import com.UADE.model.Peticion;
+
+public class PeticionDAO extends GenericDAO<Peticion> {
+
+    public PeticionDAO(Class<Peticion> clase, String file) throws Exception {
+        super(clase, file);
+    }
 }
