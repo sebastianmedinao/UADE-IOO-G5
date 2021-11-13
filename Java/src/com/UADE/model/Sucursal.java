@@ -10,10 +10,10 @@ public class Sucursal {
     private String telefono;
     private List<Usuario> usuarios = new ArrayList<Usuario>();
 
-    public Sucursal(Integer codigo, String direccion, String telefono)
+    public Sucursal(String direccion, String telefono)
     {
         numeradorCodigoSucursal++;
-        this.codigo = Integer.valueOf(numeradorCodigoSucursal);
+        this.codigo = numeradorCodigoSucursal;
         this.direccion = direccion;
         this.telefono = telefono;
     }
@@ -22,10 +22,6 @@ public class Sucursal {
     // Getters y Setters
     public Integer getCodigo() {
         return codigo;
-    }
-
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
     }
 
     public String getDireccion() {

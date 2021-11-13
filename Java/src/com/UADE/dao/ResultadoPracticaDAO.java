@@ -1,4 +1,4 @@
-package com.UADE.util;
+package com.UADE.dao;
 
 import com.UADE.model.ResultadoPractica;
 

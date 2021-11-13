@@ -1,21 +1,20 @@
 package com.UADE.controller;
 
+import com.UADE.dto.UsuarioDTO;
 import com.UADE.model.RolSistema;
 import com.UADE.model.Usuario;
-import com.UADE.util.GenericDAO;
-import com.UADE.util.UsuarioDAO;
+import com.UADE.dao.UsuarioDAO;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class UsuarioController {
     private List<Usuario> usuarios = new ArrayList<Usuario>();
-    private UsuarioDAO DAO;
+    private final UsuarioDAO DAO;
 
     public UsuarioController() throws Exception {
-        DAO = new UsuarioDAO(Usuario.class, "usuario.txt");
+        DAO = new UsuarioDAO(Usuario.class, "Usuario.dao");
 
         usuarios = DAO.getAll();
 
@@ -33,34 +32,43 @@ public class UsuarioController {
         }
     }
 
-    public Usuario buscarUsuarioPorNombreUsuario(String nombreUsuario) {
-        Usuario u = null;
+    public UsuarioDTO buscarUsuarioPorNombreUsuario(String nombreUsuario) {
+        UsuarioDTO udto = null;
 
         for (Usuario i : this.usuarios) {
             if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0) {
-                u = i;
+                udto = new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema());
                 break;
             }
         }
 
-        return u;
+        return udto;
     }
 
-    public Usuario buscarUsuarioPorDNI(Integer dni) {
-        Usuario u = null;
+    public UsuarioDTO buscarUsuarioPorDNI(Integer dni) {
+        UsuarioDTO udto = null;
 
         for (Usuario i : this.usuarios) {
             if (dni.intValue() == i.getDni().intValue()) {
-                u = i;
+                udto = new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema());
                 break;
             }
         }
 
-        return u;
+        return udto;
     }
 
-    private Boolean login(String usuario, String password) {
-        return false;
+    public UsuarioDTO buscarUsuarioPorCredenciales(String nombreUsuario, String clave) {
+        UsuarioDTO udto = null;
+
+        for (Usuario i : this.usuarios) {
+            if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0 && clave.compareToIgnoreCase(i.getPassword()) == 0) {
+                udto = new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema());
+                break;
+            }
+        }
+
+        return udto;
     }
 }
 

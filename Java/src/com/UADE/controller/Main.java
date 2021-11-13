@@ -1,12 +1,8 @@
 package com.UADE.controller;
 
-import com.UADE.model.RolSistema;
-import com.UADE.view.TestUI;
+import com.UADE.view.LoginUI;
 
 import javax.swing.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -22,6 +18,6 @@ public class Main {
     }
 
     public static void createAndShowGUI() throws Exception {
-        new TestUI();
+        new LoginUI();
     }
 }
