@@ -50,7 +50,19 @@ public class MaestroSucursalesUI {
         borrarSucursalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                sucursalc.eliminarSucursal((Integer) listSucursales.getSelectedValue());
+                try {
+                    sucursalc.eliminarSucursal((Integer) listSucursales.getSelectedValue());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                
+                frame.dispose();
+
+                try {
+                    new MaestroSucursalesUI();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
         });
     }

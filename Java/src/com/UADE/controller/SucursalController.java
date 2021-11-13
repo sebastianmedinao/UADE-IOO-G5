@@ -1,7 +1,9 @@
 package com.UADE.controller;
 
+import com.UADE.dto.UsuarioDTO;
 import com.UADE.model.Sucursal;
 import com.UADE.dao.SucursalDAO;
+import com.UADE.model.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +27,23 @@ public class SucursalController {
         return sucursal.getCodigo();
     }
 
-    public void eliminarSucursal(Integer codigo) {
+    public void eliminarSucursal(Integer codigo) throws Exception {
+        System.out.println(codigo);
 
+        Sucursal sucABorrar = null;
+
+        for (Sucursal i : this.sucursales) {
+            if (codigo.intValue() == i.getCodigo().intValue()) {
+                sucABorrar = i;
+                break;
+            }
+        }
+
+        // Faltan reglas de negocio
+
+        sucursales.remove(sucABorrar);
+
+        DAO.saveAll(sucursales);
     }
 
     public List<Integer> obtenerListaSucursales() {
@@ -38,4 +55,5 @@ public class SucursalController {
 
         return suclist;
     }
+
 }
