@@ -19,8 +19,13 @@ public class SucursalController {
         sucursales = DAO.getAll();
     }
 
+    private Integer getNuevoCodigo() {
+        Sucursal lastsuc = sucursales.get(sucursales.size() - 1);
+        return lastsuc.getCodigo() + 1;
+    }
+
     public Integer nuevaSucursal(String direccion, String telefono) throws Exception {
-        Sucursal sucursal = new Sucursal(direccion, telefono);
+        Sucursal sucursal = new Sucursal(this.getNuevoCodigo(), direccion, telefono);
         sucursales.add(sucursal);
 
         DAO.saveAll(sucursales);
@@ -69,11 +74,11 @@ public class SucursalController {
         }
     }
 
-    public List<Integer> obtenerListaSucursales() {
-        List<Integer> suclist = new ArrayList<Integer>();
+    public List<DatosSucursalDTO> obtenerListaSucursales() {
+        List<DatosSucursalDTO> suclist = new ArrayList<DatosSucursalDTO>();
 
         for (Sucursal i : sucursales) {
-            suclist.add(i.getCodigo());
+            suclist.add(new DatosSucursalDTO(i.getCodigo(), i.getDireccion(), i.getTelefono()));
         }
 
         return suclist;

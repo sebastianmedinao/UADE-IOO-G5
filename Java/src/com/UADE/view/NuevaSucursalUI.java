@@ -1,6 +1,7 @@
 package com.UADE.view;
 
 import com.UADE.controller.SucursalController;
+import com.UADE.dto.DatosSucursalDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -27,7 +28,6 @@ public class NuevaSucursalUI {
 
         sucursalc = new SucursalController();
 
-        List<Integer> lista = sucursalc.obtenerListaSucursales();
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -1,6 +1,7 @@
 package com.UADE.view;
 
 import com.UADE.controller.SucursalController;
+import com.UADE.dto.DatosSucursalDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -30,10 +31,10 @@ public class MaestroSucursalesUI {
 
         sucursalc = new SucursalController();
 
-        List<Integer> lista = sucursalc.obtenerListaSucursales();
+        List<DatosSucursalDTO> lista = sucursalc.obtenerListaSucursales();
 
-        for (Integer i : lista)
-            listModel.addElement(i);
+        for (DatosSucursalDTO i : lista)
+            listModel.addElement(i.getCodigo() + " - " + i.getDireccion());
 
         nuevaSucursalButton.addActionListener(new ActionListener() {
             @Override
@@ -52,8 +53,11 @@ public class MaestroSucursalesUI {
         borrarSucursalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String value = (String) listSucursales.getSelectedValue();
+                Integer cod = Integer.valueOf(value.split(" ")[0]);
+
                 try {
-                    sucursalc.eliminarSucursal((Integer) listSucursales.getSelectedValue());
+                    sucursalc.eliminarSucursal(cod);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -70,8 +74,11 @@ public class MaestroSucursalesUI {
         modificarSucursalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String value = (String) listSucursales.getSelectedValue();
+                Integer cod = Integer.valueOf(value.split(" ")[0]);
+
                 try {
-                    new ModificarSucursalUI((Integer) listSucursales.getSelectedValue());
+                    new ModificarSucursalUI(cod);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
