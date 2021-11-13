@@ -1,5 +1,6 @@
 package com.UADE.controller;
 
+import com.UADE.dto.DatosSucursalDTO;
 import com.UADE.dto.UsuarioDTO;
 import com.UADE.model.Sucursal;
 import com.UADE.dao.SucursalDAO;
@@ -27,9 +28,20 @@ public class SucursalController {
         return sucursal.getCodigo();
     }
 
-    public void eliminarSucursal(Integer codigo) throws Exception {
-        System.out.println(codigo);
+    public DatosSucursalDTO obtenerDatosSucursal(Integer codigo) {
+        DatosSucursalDTO sucdto = null;
 
+        for (Sucursal i : this.sucursales) {
+            if (codigo.intValue() == i.getCodigo().intValue()) {
+                sucdto = new DatosSucursalDTO(i.getCodigo(), i.getDireccion(), i.getTelefono());
+                break;
+            }
+        }
+
+        return sucdto;
+    }
+
+    public void eliminarSucursal(Integer codigo) throws Exception {
         Sucursal sucABorrar = null;
 
         for (Sucursal i : this.sucursales) {
@@ -39,11 +51,22 @@ public class SucursalController {
             }
         }
 
-        // Faltan reglas de negocio
+        // TODO: Faltan reglas de negocio
 
         sucursales.remove(sucABorrar);
 
         DAO.saveAll(sucursales);
+    }
+
+    public void actualizarSucursal(Integer codigo, String direccion, String telefono) throws Exception {
+        for (Sucursal i : this.sucursales) {
+            if (codigo.intValue() == i.getCodigo().intValue()) {
+                i.setDireccion(direccion);
+                i.setTelefono(telefono);
+                DAO.saveAll(sucursales);
+                break;
+            }
+        }
     }
 
     public List<Integer> obtenerListaSucursales() {

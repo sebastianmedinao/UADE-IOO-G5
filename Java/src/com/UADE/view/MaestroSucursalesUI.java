@@ -38,15 +38,17 @@ public class MaestroSucursalesUI {
         nuevaSucursalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+
                 try {
                     new NuevaSucursalUI();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
 
-                frame.dispose();
             }
         });
+
         borrarSucursalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,7 +57,7 @@ public class MaestroSucursalesUI {
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
-                
+
                 frame.dispose();
 
                 try {
@@ -63,6 +65,18 @@ public class MaestroSucursalesUI {
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
+            }
+        });
+        modificarSucursalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    new ModificarSucursalUI((Integer) listSucursales.getSelectedValue());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+                frame.dispose();
             }
         });
     }
