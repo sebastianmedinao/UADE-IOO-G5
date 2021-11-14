@@ -16,7 +16,7 @@ public class UsuarioController {
     private final UsuarioDAO DAO;
 
     public UsuarioController() throws Exception {
-        DAO = new UsuarioDAO(Usuario.class, "Usuario.dao");
+        DAO = new UsuarioDAO(Usuario.class, "dao/Usuario.dao");
 
         usuarios = DAO.getAll();
 

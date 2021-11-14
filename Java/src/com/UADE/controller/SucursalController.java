@@ -14,7 +14,7 @@ public class SucursalController {
     private final SucursalDAO DAO;
 
     public SucursalController() throws Exception {
-        DAO = new SucursalDAO(Sucursal.class, "Sucursal.dao");
+        DAO = new SucursalDAO(Sucursal.class, "dao/Sucursal.dao");
 
         sucursales = DAO.getAll();
     }
