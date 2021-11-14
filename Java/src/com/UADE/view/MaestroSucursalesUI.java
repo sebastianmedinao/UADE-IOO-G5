@@ -10,8 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class MaestroSucursalesUI {
-    private DefaultListModel listModel = new DefaultListModel();
-    private JList listSucursales;
+    private JList<String> listSucursales;
     private JPanel panel1;
     private JButton nuevaSucursalButton;
     private JButton modificarSucursalButton;
@@ -27,6 +26,7 @@ public class MaestroSucursalesUI {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
+        DefaultListModel<String> listModel = new DefaultListModel<String>();
         listSucursales.setModel(listModel);
 
         sucursalc = new SucursalController();
@@ -53,7 +53,7 @@ public class MaestroSucursalesUI {
         borrarSucursalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String value = (String) listSucursales.getSelectedValue();
+                String value = listSucursales.getSelectedValue();
                 Integer cod = Integer.valueOf(value.split(" ")[0]);
 
                 try {
@@ -74,7 +74,7 @@ public class MaestroSucursalesUI {
         modificarSucursalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String value = (String) listSucursales.getSelectedValue();
+                String value = listSucursales.getSelectedValue();
                 Integer cod = Integer.valueOf(value.split(" ")[0]);
 
                 try {

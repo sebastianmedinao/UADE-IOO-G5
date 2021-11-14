@@ -48,5 +48,15 @@ public class MenuUI {
                 }
             }
         });
+        usuariosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    new MaestroUsuariosUI();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 }

@@ -1,7 +1,9 @@
 package com.UADE.controller;
 
+import com.UADE.dto.DatosSucursalDTO;
 import com.UADE.dto.UsuarioDTO;
 import com.UADE.model.RolSistema;
+import com.UADE.model.Sucursal;
 import com.UADE.model.Usuario;
 import com.UADE.dao.UsuarioDAO;
 
@@ -69,6 +71,16 @@ public class UsuarioController {
         }
 
         return udto;
+    }
+
+    public List<UsuarioDTO> obtenerListaUsuarios() {
+        List<UsuarioDTO> lista = new ArrayList<UsuarioDTO>();
+
+        for (Usuario i : usuarios) {
+            lista.add(new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema()));
+        }
+
+        return lista;
     }
 }
 
