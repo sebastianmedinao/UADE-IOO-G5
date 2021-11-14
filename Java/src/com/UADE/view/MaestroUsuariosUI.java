@@ -49,5 +49,23 @@ public class MaestroUsuariosUI {
                 }
             }
         });
+        borrarUsuarioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    usuc.borrarUsuario(listUsuarios.getSelectedValue());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+                frame.dispose();
+
+                try {
+                    new MaestroUsuariosUI();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 }
