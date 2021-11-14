@@ -6,7 +6,7 @@ import java.util.List;
 public class Paciente {
     private static int numeradorCodigoPaciente = 0;
     private Integer codigo;
-    private String dni;
+    private Integer dni;
     private String nombreCompleto;
     private String domicilio;
     private String email;
@@ -14,7 +14,7 @@ public class Paciente {
     private Integer edad;
     private List<Peticion> peticiones = new ArrayList<Peticion>();
 
-    public Paciente(Integer codigo, String dni, String nombreCompleto, String domicilio, String email, Sexo sexo, Integer edad)
+    public Paciente(Integer codigo, Integer dni, String nombreCompleto, String domicilio, String email, Sexo sexo, Integer edad)
     {
         numeradorCodigoPaciente++;
         this.codigo = Integer.valueOf(numeradorCodigoPaciente);
@@ -22,10 +22,12 @@ public class Paciente {
         this.nombreCompleto = nombreCompleto;
         this.domicilio = domicilio;
         this.email = email;
-        this.sexo = sexo;
+        setSexo(sexo);
         this.edad = edad;
     }
 
+
+    // Getters y Setters
     public Integer getCodigo() {
         return codigo;
     }
@@ -34,11 +36,11 @@ public class Paciente {
         this.codigo = codigo;
     }
 
-    public String getDni() {
+    public Integer getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(Integer dni) {
         this.dni = dni;
     }
 
@@ -70,8 +72,8 @@ public class Paciente {
         return sexo;
     }
 
-    public void setSexo(Sexo sexo) {
-        this.sexo = sexo;
+    public void setSexo(Sexo sexoB) {
+        sexo = sexoB;
     }
 
     public Integer getEdad() {

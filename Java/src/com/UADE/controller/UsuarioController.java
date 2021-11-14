@@ -1,23 +1,24 @@
 package com.UADE.controller;
 
+import com.UADE.dto.DatosSucursalDTO;
+import com.UADE.dto.UsuarioDTO;
 import com.UADE.model.RolSistema;
+import com.UADE.model.Sucursal;
 import com.UADE.model.Usuario;
-import com.UADE.util.GenericDAO;
-import com.UADE.util.UsuarioDAO;
+import com.UADE.dao.UsuarioDAO;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class UsuarioController {
     private List<Usuario> usuarios = new ArrayList<Usuario>();
-    private UsuarioDAO uDAO;
+    private final UsuarioDAO DAO;
 
     public UsuarioController() throws Exception {
-        uDAO = new UsuarioDAO(Usuario.class, "usuario.txt");
+        DAO = new UsuarioDAO(Usuario.class, "dao/Usuario.dao");
 
-        usuarios = uDAO.getAll();
+        usuarios = DAO.getAll();
 
         this.nuevoUsuario("admin", "1234", "uade@uade.edu.ar", "administrador", "lima 1", 10444322, new Date(), RolSistema.ADMINISTRADOR);
     }
@@ -26,14 +27,63 @@ public class UsuarioController {
         if (buscarUsuarioPorNombreUsuario(nombreUsuario) == null && buscarUsuarioPorDNI(dni) == null) {
             Usuario u = new Usuario(nombreUsuario, password, email, nombreCompleto, domicilio, dni, fechaDeNacimiento, rolSistema);
             this.usuarios.add(u);
-            uDAO.save(u);
+            DAO.save(u);
             return true;
         } else {
             return false;
         }
     }
 
-    public Usuario buscarUsuarioPorNombreUsuario(String nombreUsuario) {
+    public UsuarioDTO buscarUsuarioPorNombreUsuario(String nombreUsuario) {
+        UsuarioDTO udto = null;
+
+        for (Usuario i : this.usuarios) {
+            if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0) {
+                udto = new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema());
+                break;
+            }
+        }
+
+        return udto;
+    }
+
+    public UsuarioDTO buscarUsuarioPorDNI(Integer dni) {
+        UsuarioDTO udto = null;
+
+        for (Usuario i : this.usuarios) {
+            if (dni.intValue() == i.getDni().intValue()) {
+                udto = new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema());
+                break;
+            }
+        }
+
+        return udto;
+    }
+
+    public UsuarioDTO buscarUsuarioPorCredenciales(String nombreUsuario, String clave) {
+        UsuarioDTO udto = null;
+
+        for (Usuario i : this.usuarios) {
+            if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0 && clave.compareToIgnoreCase(i.getPassword()) == 0) {
+                udto = new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema());
+                break;
+            }
+        }
+
+        return udto;
+    }
+
+    public List<UsuarioDTO> obtenerListaUsuarios() {
+        List<UsuarioDTO> lista = new ArrayList<UsuarioDTO>();
+
+        for (Usuario i : usuarios) {
+            lista.add(new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema()));
+        }
+
+        return lista;
+    }
+
+    public Usuario obtenerUsuario(String nombreUsuario) {
         Usuario u = null;
 
         for (Usuario i : this.usuarios) {
@@ -46,21 +96,15 @@ public class UsuarioController {
         return u;
     }
 
-    public Usuario buscarUsuarioPorDNI(Integer dni) {
-        Usuario u = null;
-
+    public void borrarUsuario(String nombreUsuario) throws Exception {
+        System.out.println(nombreUsuario);
         for (Usuario i : this.usuarios) {
-            if (dni.intValue() == i.getDni().intValue()) {
-                u = i;
+            if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0) {
+                this.usuarios.remove(i);
+                DAO.saveAll(usuarios);
                 break;
             }
         }
-
-        return u;
-    }
-
-    private Boolean login(String usuario, String password) {
-        return false;
     }
 }
 

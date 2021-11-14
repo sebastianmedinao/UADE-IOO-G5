@@ -4,28 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sucursal {
-    private static int numeradorCodigoSucursal = 0;
-    private Integer codigo;
+    private final Integer codigo;
     private String direccion;
     private String telefono;
     private List<Usuario> usuarios = new ArrayList<Usuario>();
+    private Usuario RespTecnico = null;
 
     public Sucursal(Integer codigo, String direccion, String telefono)
     {
-        numeradorCodigoSucursal++;
-        this.codigo = Integer.valueOf(numeradorCodigoSucursal);
+        this.codigo = codigo;
         this.direccion = direccion;
         this.telefono = telefono;
     }
 
+    public void setRespTecnico(Usuario respTecnico) {
+        RespTecnico = respTecnico;
+    }
+
+    public Usuario getRespTecnico() {
+        return RespTecnico;
+    }
 
     // Getters y Setters
     public Integer getCodigo() {
         return codigo;
-    }
-
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
     }
 
     public String getDireccion() {
@@ -44,11 +46,9 @@ public class Sucursal {
         this.telefono = telefono;
     }
 
-    public List<Usuario> getUsuarios() {
-        return usuarios;
+    public void addUsuario(Usuario usuario) {
+        usuarios.add(usuario);
     }
 
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
+
 }

@@ -1,46 +1,28 @@
-package com.UADE.model;
+package com.UADE.dto;
 
-import java.util.Date;
+import com.UADE.model.RolSistema;
 
-public class Usuario {
+public class UsuarioDTO {
     private String nombreUsuario;
-    private String password;
     private String email;
     private String nombreCompleto;
-    private String domicilio;
     private Integer dni;
-    private Date fechaDeNacimiento;
     private RolSistema rolSistema;
 
-    public Usuario(String nombreUsuario, String password, String email,
-                   String nombreCompleto, String domicilio, Integer dni,
-                   Date fechaDeNacimiento, RolSistema rolSistema) {
+    public UsuarioDTO(String nombreUsuario, String email, String nombreCompleto, Integer dni, RolSistema rolSistema) {
         this.nombreUsuario = nombreUsuario;
-        this.password = password;
         this.email = email;
         this.nombreCompleto = nombreCompleto;
-        this.domicilio = domicilio;
         this.dni = dni;
-        this.fechaDeNacimiento = fechaDeNacimiento;
         this.rolSistema = rolSistema;
     }
 
-
-    // Getters y Setters
     public String getNombreUsuario() {
         return nombreUsuario;
     }
 
     public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getEmail() {
@@ -59,28 +41,12 @@ public class Usuario {
         this.nombreCompleto = nombreCompleto;
     }
 
-    public String getDomicilio() {
-        return domicilio;
-    }
-
-    public void setDomicilio(String domicilio) {
-        this.domicilio = domicilio;
-    }
-
     public Integer getDni() {
         return dni;
     }
 
     public void setDni(Integer dni) {
         this.dni = dni;
-    }
-
-    public Date getFechaDeNacimiento() {
-        return fechaDeNacimiento;
-    }
-
-    public void setFechaDeNacimiento(Date fechaDeNacimiento) {
-        this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
     public RolSistema getRolSistema() {
@@ -91,4 +57,3 @@ public class Usuario {
         this.rolSistema = rolSistema;
     }
 }
-

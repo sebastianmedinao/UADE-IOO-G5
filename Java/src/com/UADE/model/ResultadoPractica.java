@@ -14,6 +14,8 @@ public class ResultadoPractica {
         this.estado = estado;
     }
 
+
+    // Getters y Setters
     public Float getResultadoNumerico() {
         return resultadoNumerico;
     }
