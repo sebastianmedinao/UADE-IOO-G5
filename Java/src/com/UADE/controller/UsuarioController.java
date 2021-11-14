@@ -82,5 +82,18 @@ public class UsuarioController {
 
         return lista;
     }
+
+    public Usuario obtenerUsuario(String nombreUsuario) {
+        Usuario u = null;
+
+        for (Usuario i : this.usuarios) {
+            if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0) {
+                u = i;
+                break;
+            }
+        }
+
+        return u;
+    }
 }
 

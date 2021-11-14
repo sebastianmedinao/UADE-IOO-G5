@@ -8,6 +8,7 @@ public class Sucursal {
     private String direccion;
     private String telefono;
     private List<Usuario> usuarios = new ArrayList<Usuario>();
+    private Usuario RespTecnico = null;
 
     public Sucursal(Integer codigo, String direccion, String telefono)
     {
@@ -16,6 +17,13 @@ public class Sucursal {
         this.telefono = telefono;
     }
 
+    public void setRespTecnico(Usuario respTecnico) {
+        RespTecnico = respTecnico;
+    }
+
+    public Usuario getRespTecnico() {
+        return RespTecnico;
+    }
 
     // Getters y Setters
     public Integer getCodigo() {
@@ -38,11 +46,9 @@ public class Sucursal {
         this.telefono = telefono;
     }
 
-    public List<Usuario> getUsuarios() {
-        return usuarios;
+    public void addUsuario(Usuario usuario) {
+        usuarios.add(usuario);
     }
 
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
+
 }

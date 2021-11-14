@@ -15,6 +15,9 @@ public class MenuUI {
     private JButton pacientesButton;
     private JButton sucursalesButton;
     private JButton usuariosButton;
+    private JButton maestroDePacientesButton;
+    private JButton resultadosButton;
+    private JButton informesButton;
     private String usuario;
     private RolSistema rol;
 
@@ -24,7 +27,7 @@ public class MenuUI {
         JFrame frame = new JFrame("Menu principal");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
-        frame.setSize(300, 300);
+        frame.setSize(300, 400);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);

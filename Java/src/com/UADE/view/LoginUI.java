@@ -19,7 +19,7 @@ public class LoginUI {
         JFrame frame = new JFrame("Ingresar a Sistema Laboratorio");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
-        frame.setSize(300, 300);
+        frame.setSize(300, 200);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);

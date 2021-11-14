@@ -84,4 +84,23 @@ public class SucursalController {
         return suclist;
     }
 
+    public void agregarUsuarioASucursal(Integer codigo, String nombreUsuario, Boolean respTecnico) throws Exception {
+        UsuarioController usuc = new UsuarioController();
+
+        Usuario u = usuc.obtenerUsuario(nombreUsuario);
+
+        for (Sucursal i : this.sucursales) {
+            if (codigo.intValue() == i.getCodigo().intValue()) {
+
+                i.addUsuario(u);
+
+                if (respTecnico) {
+                    i.setRespTecnico(u);
+                }
+
+                break;
+            }
+        }
+
+    }
 }
