@@ -12,7 +12,6 @@ public class MenuUI {
     private JLabel lblBienvenido;
     private JButton practicasButton;
     private JButton peticionesButton;
-    private JButton pacientesButton;
     private JButton sucursalesButton;
     private JButton usuariosButton;
     private JButton maestroDePacientesButton;

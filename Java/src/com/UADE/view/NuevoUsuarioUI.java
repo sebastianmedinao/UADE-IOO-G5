@@ -74,7 +74,9 @@ public class NuevoUsuarioUI {
                     ex.printStackTrace();
                 }
 
-                if (result == null || !result) {
+                if (result == null) {
+                    JOptionPane.showMessageDialog(null,"Datos invàlidos.", "Error", JOptionPane.INFORMATION_MESSAGE);
+                } else if (!result) {
                     JOptionPane.showMessageDialog(null,"El nombre de usuario ya existe.", "Error", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(null,"Se ha creado el usuario " + txtUsuario.getText(),"Nuevo usuario creado", JOptionPane.INFORMATION_MESSAGE);
