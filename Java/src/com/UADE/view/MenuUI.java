@@ -57,5 +57,16 @@ public class MenuUI {
                 }
             }
         });
+
+        maestroDePacientesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    new MaestroPacientesUI();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 }
