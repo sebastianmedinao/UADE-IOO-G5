@@ -18,11 +18,8 @@ public class MenuUI {
     private JButton resultadosButton;
     private JButton informesButton;
     private String usuario;
-    private RolSistema rol;
 
     public MenuUI(String usuario, RolSistema rol) {
-        this.rol = rol;
-
         JFrame frame = new JFrame("Menu principal");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
