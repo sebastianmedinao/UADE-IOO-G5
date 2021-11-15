@@ -52,7 +52,7 @@ public class PacienteController {
     }
 
 
-    public List<Paciente> obtenerListaPacientes() {
+    public List<Paciente> obtenerListaPacientes() throws Exception {
         List<Paciente> lista = new ArrayList<Paciente>();
 
         for (Paciente i : pacientes) {

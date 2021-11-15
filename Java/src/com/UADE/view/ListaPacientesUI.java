@@ -1,5 +1,3 @@
-package com.UADE.view;
-
 import com.UADE.controller.PacienteController;
 import com.UADE.model.Paciente;
 
@@ -9,7 +7,6 @@ import java.awt.*;
 import java.util.List;
 
 public class ListaPacientesUI{
-    private JList list1;
     private JList panel1;
     private PacienteController pacic;
     private JList<String> listaPacientes;
@@ -25,7 +22,8 @@ public class ListaPacientesUI{
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
-
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        listaPacientes.setModel(listModel);
 
         pacic = new PacienteController();
 
@@ -54,3 +52,4 @@ public class ListaPacientesUI{
 
 
 }
+
