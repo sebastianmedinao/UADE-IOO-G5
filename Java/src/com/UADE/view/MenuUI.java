@@ -68,5 +68,17 @@ public class MenuUI {
                 }
             }
         });
+
+        practicasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    new PracticasUI();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
     }
 }
