@@ -113,7 +113,7 @@ public class ModificarUsuarioUI {
 
                     if (comboSucursal.getSelectedItem() != oldSucursal) {
                         try {
-                            succ.retirarUsuarioDeSucursal((Integer) comboSucursal.getSelectedItem(), txtUsuario.getText());
+                            succ.retirarUsuarioDeSucursal(oldSucursal, txtUsuario.getText());
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }
