@@ -52,10 +52,7 @@ public class Sucursal {
 
     public void removeUsuario(Usuario usuario) {
         for (Usuario u : this.usuarios) {
-            System.out.println(usuario.getNombreUsuario());
-            System.out.println(u.getNombreUsuario());
             if (usuario.getNombreUsuario().compareToIgnoreCase(u.getNombreUsuario()) == 0) {
-                System.out.println("USUARIO REMOVIDO X");
                 this.usuarios.remove(u);
                 break;
             }

@@ -133,8 +133,6 @@ public class SucursalController {
         for (Sucursal i : this.sucursales) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
 
-                System.out.print("REMOVE USUARIO");
-
                 i.removeUsuario(u);
 
                 if (i.getRespTecnico() == u) {
