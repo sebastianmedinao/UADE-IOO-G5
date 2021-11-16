@@ -56,7 +56,7 @@ public class UsuarioController {
             u.setFechaDeNacimiento(fechaDeNacimiento);
             u.setRolSistema(rolSistema);
 
-            DAO.save(u);
+            DAO.saveAll(usuarios);
 
             return true;
         } else {
