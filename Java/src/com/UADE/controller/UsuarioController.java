@@ -34,12 +34,42 @@ public class UsuarioController {
         }
     }
 
+    public Boolean actualizarUsuario(String nombreUsuario, String password, String email, String nombreCompleto, String domicilio, Integer dni, Date fechaDeNacimiento, RolSistema rolSistema) throws Exception {
+        Usuario u = null;
+
+        for (Usuario i : this.usuarios) {
+            if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0) {
+                u = i;
+                break;
+            }
+        }
+
+        if (u != null) {
+            if (password.length() > 0) { // Solo guardo la clave si fue escrita una nueva
+                u.setPassword(password);
+            }
+
+            u.setEmail(email);
+            u.setNombreCompleto(nombreCompleto);
+            u.setDomicilio(domicilio);
+            u.setDni(dni);
+            u.setFechaDeNacimiento(fechaDeNacimiento);
+            u.setRolSistema(rolSistema);
+
+            DAO.save(u);
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public UsuarioDTO buscarUsuarioPorNombreUsuario(String nombreUsuario) {
         UsuarioDTO udto = null;
 
         for (Usuario i : this.usuarios) {
             if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0) {
-                udto = new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema());
+                udto = new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema(), i.getDomicilio(), i.getFechaDeNacimiento());
                 break;
             }
         }
@@ -52,7 +82,7 @@ public class UsuarioController {
 
         for (Usuario i : this.usuarios) {
             if (dni.intValue() == i.getDni().intValue()) {
-                udto = new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema());
+                udto = new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema(), i.getDomicilio(), i.getFechaDeNacimiento());
                 break;
             }
         }
@@ -65,7 +95,7 @@ public class UsuarioController {
 
         for (Usuario i : this.usuarios) {
             if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0 && clave.compareToIgnoreCase(i.getPassword()) == 0) {
-                udto = new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema());
+                udto = new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema(), i.getDomicilio(), i.getFechaDeNacimiento());
                 break;
             }
         }
@@ -77,7 +107,7 @@ public class UsuarioController {
         List<UsuarioDTO> lista = new ArrayList<UsuarioDTO>();
 
         for (Usuario i : usuarios) {
-            lista.add(new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema()));
+            lista.add(new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema(), i.getDomicilio(), i.getFechaDeNacimiento()));
         }
 
         return lista;
