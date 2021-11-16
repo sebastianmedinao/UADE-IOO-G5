@@ -21,11 +21,6 @@ public class PracticaController {
         return lastpract.getCodigo() + 1;
     }
 
-    //private Integer codigo;
-    //    private String nombre;
-    //    private Integer tiempoEstimado;
-    //    private List<Criterio> criterios = new ArrayList<Criterio>();
-
     public Integer nuevaPractica(Integer codigo, String nombre, Integer tiempoEstimado, List<Criterio> criterios) throws Exception {
         Practica practica = new Practica(codigo, nombre, tiempoEstimado, criterios);
         practicas.add(practica);

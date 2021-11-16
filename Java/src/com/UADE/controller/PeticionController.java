@@ -6,6 +6,8 @@ import java.util.List;
 
 import com.UADE.dao.PeticionDAO;
 import com.UADE.dto.DatosPeticionDTO;
+import com.UADE.dto.ResultadoPracticaDTO;
+import com.UADE.dto.UsuarioDTO;
 import com.UADE.model.*;
 
 public class PeticionController {
@@ -43,6 +45,21 @@ public class PeticionController {
         }
 
         return petdto;
+    }
+
+    public List<ResultadoPracticaDTO> obtenerResultadosPeticion(Integer codigo) {
+        List<ResultadoPracticaDTO> rp = new ArrayList<>();
+
+        for (Peticion i : this.peticiones) {
+            if (codigo.intValue() == i.getCodigo().intValue())
+            {
+                for (ResultadoPractica r : i.getResultadosPracticas()) {
+                    rp.add(new ResultadoPracticaDTO(r.getResultadoNumerico(), r.getResultadoLiteral(), r.getTranscripcion(), r.getEstado()));
+                }
+            }
+        }
+
+        return rp;
     }
 
     public void eliminarPeticion(Integer codigo) throws Exception {
