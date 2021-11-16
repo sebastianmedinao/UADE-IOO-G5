@@ -50,8 +50,8 @@ public class Sucursal {
         usuarios.add(usuario);
     }
 
-    public void removeUsuario(Usuario usuario) {
-        usuarios.remove(usuario);
+    public boolean removeUsuario(Usuario usuario) {
+        return usuarios.remove(usuario);
     }
 
     public List<Usuario> getUsuarios() {

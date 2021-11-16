@@ -26,8 +26,12 @@ public class SucursalController {
     }
 
     private Integer getNuevoCodigo() {
-        Sucursal lastsuc = sucursales.get(sucursales.size() - 1);
-        return lastsuc.getCodigo() + 1;
+        if (sucursales.size() > 0) {
+            Sucursal lastsuc = sucursales.get(sucursales.size() - 1);
+            return lastsuc.getCodigo() + 1;
+        } else {
+            return 1;
+        }
     }
 
     public Integer nuevaSucursal(String direccion, String telefono) throws Exception {
@@ -116,7 +120,7 @@ public class SucursalController {
         DAO.saveAll(sucursales);
     }
 
-    public void retirarUsuarioDeSucursal(Integer codigo, String nombreUsuario) {
+    public void retirarUsuarioDeSucursal(Integer codigo, String nombreUsuario) throws Exception {
         Usuario u = null;
 
         for (Usuario i : this.usuarios) {
@@ -126,10 +130,20 @@ public class SucursalController {
             }
         }
 
+        System.out.print("USUARIO ");
+        System.out.println(u.getNombreUsuario());
+
+
         for (Sucursal i : this.sucursales) {
+            System.out.print("SUCURSAL BUSCADA ");
+            System.out.println(codigo.intValue());
+            System.out.print("SUCURSAL I ");
+            System.out.println(i.getCodigo());
             if (codigo.intValue() == i.getCodigo().intValue()) {
 
-                i.removeUsuario(u);
+                System.out.print("REMOVE USUARIO");
+
+                System.out.println(i.removeUsuario(u));
 
                 if (i.getRespTecnico() == u) {
                     i.setRespTecnico(null);
@@ -138,6 +152,8 @@ public class SucursalController {
                 break;
             }
         }
+
+        DAO.saveAll(sucursales);
     }
 
     public List<UsuarioDTO> obtenerUsuariosSucursal(Integer codigo) {

@@ -112,7 +112,11 @@ public class ModificarUsuarioUI {
                     JOptionPane.showMessageDialog(null,"Se ha actualizado el usuario " + txtUsuario.getText(),"Usuario modificado", JOptionPane.INFORMATION_MESSAGE);
 
                     if (comboSucursal.getSelectedItem() != oldSucursal) {
-                        succ.retirarUsuarioDeSucursal((Integer) comboSucursal.getSelectedItem(), txtUsuario.getText());
+                        try {
+                            succ.retirarUsuarioDeSucursal((Integer) comboSucursal.getSelectedItem(), txtUsuario.getText());
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
 
                         try {
                             succ.agregarUsuarioASucursal((Integer) comboSucursal.getSelectedItem(), txtUsuario.getText(), responsableTecnicoCheckBox.isSelected());
