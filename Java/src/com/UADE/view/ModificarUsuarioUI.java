@@ -5,6 +5,7 @@ import com.UADE.controller.UsuarioController;
 import com.UADE.dto.DatosSucursalDTO;
 import com.UADE.dto.UsuarioDTO;
 import com.UADE.model.RolSistema;
+import com.UADE.model.Usuario;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -53,10 +54,16 @@ public class ModificarUsuarioUI {
 
         List<DatosSucursalDTO> listasuc = succ.obtenerListaSucursales();
 
+
+
         for (DatosSucursalDTO suc : listasuc) {
             comboSucursal.addItem(suc.getCodigo());
 
-
+            for (UsuarioDTO user : suc.getUsuarios()) {
+                if (user.getNombreUsuario().equals(usermod.getNombreUsuario())) {
+                    comboSucursal.setSelectedItem(suc.getCodigo());
+                }
+            }
         }
 
         guardarButton.addActionListener(new ActionListener() {

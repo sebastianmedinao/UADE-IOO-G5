@@ -2,6 +2,7 @@ package com.UADE.dto;
 
 import com.UADE.model.Usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DatosSucursalDTO {
@@ -31,8 +32,14 @@ public class DatosSucursalDTO {
         return telefono;
     }
 
-    public List<Usuario> getUsuarios() {
-        return usuarios;
+    public List<UsuarioDTO> getUsuarios() {
+        List<UsuarioDTO> us = new ArrayList<>();
+
+        for (Usuario i : this.usuarios) {
+            us.add(new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema());
+        }
+
+        return us;
     }
 
     public Usuario getRespTecnico() {
