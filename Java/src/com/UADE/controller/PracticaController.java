@@ -1,6 +1,6 @@
 package com.UADE.controller;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.UADE.dao.PracticaDAO;
@@ -71,6 +71,15 @@ public class PracticaController {
                 break;
             }
         }
+    }
+
+    public List<DatosPracticaDTO> obtenerListaPracticas() {
+        List<DatosPracticaDTO> listaPracticas = new ArrayList<>();
+        for (Practica i : this.practicas) {
+            listaPracticas.add(new DatosPracticaDTO(i.getCodigo(),i.getNombre(),i.getTiempoEstimado(),i.getCriterios()));
+        }
+
+    return listaPracticas;
     }
 
 }
