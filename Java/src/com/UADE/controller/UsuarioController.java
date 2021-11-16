@@ -114,7 +114,6 @@ public class UsuarioController {
     }
 
     public void borrarUsuario(String nombreUsuario) throws Exception {
-        System.out.println(nombreUsuario);
         for (Usuario i : this.usuarios) {
             if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0) {
                 this.usuarios.remove(i);

@@ -130,15 +130,7 @@ public class SucursalController {
             }
         }
 
-        System.out.print("USUARIO ");
-        System.out.println(u.getNombreUsuario());
-
-
         for (Sucursal i : this.sucursales) {
-            System.out.print("SUCURSAL BUSCADA ");
-            System.out.println(codigo.intValue());
-            System.out.print("SUCURSAL I ");
-            System.out.println(i.getCodigo());
             if (codigo.intValue() == i.getCodigo().intValue()) {
 
                 System.out.print("REMOVE USUARIO");
