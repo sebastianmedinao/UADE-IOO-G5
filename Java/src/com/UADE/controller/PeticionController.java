@@ -37,7 +37,7 @@ public class PeticionController {
 
         for (Peticion i : this.peticiones) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
-                //petdto = new DatosPeticionDTO(i.getCodigo(), i.getObraSocial(), i.getFechaInicio(), i.getFechaEstimadaEntrega(), i.getEstadoPeticion());
+                petdto = new DatosPeticionDTO(i.getCodigo(), i.getObraSocial(), i.getFechaInicio(), i.getFechaEstimadaEntrega(), i.getEstadoPeticion(),i.getPaciente(),i.getSucursal(),i.getPracticas(), i.getResultadosPracticas());
                 break;
             }
         }
@@ -63,13 +63,17 @@ public class PeticionController {
     }
 
 
-    public void actualizarPeticion(Integer codigo, String obraSocial, Date fechaInicio, Date fechaEstimadaEntrega, EstadoPeticion estadoPeticion) throws Exception {
+    public void actualizarPeticion(Integer codigo, String obraSocial, Date fechaInicio, Date fechaEstimadaEntrega, EstadoPeticion estadoPeticion, Paciente paciente, Sucursal sucursal, List<Practica> practicas, List<ResultadoPractica> resultadosPracticas) throws Exception {
         for (Peticion i : this.peticiones) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
                 i.setObraSocial(obraSocial);
                 i.setFechaInicio(fechaInicio);
                 i.setFechaEstimadaEntrega(fechaEstimadaEntrega);
                 i.setEstadoPeticion(estadoPeticion);
+                i.setPaciente(paciente);
+                i.setSucursal(sucursal);
+                i.setPracticas(practicas);
+                i.setResultadosPracticas(resultadosPracticas);
                 DAO.saveAll(peticiones);
                 break;
             }
