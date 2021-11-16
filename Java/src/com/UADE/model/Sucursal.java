@@ -50,5 +50,11 @@ public class Sucursal {
         usuarios.add(usuario);
     }
 
+    public void removeUsuario(Usuario usuario) {
+        usuarios.remove(usuario);
+    }
 
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
 }
