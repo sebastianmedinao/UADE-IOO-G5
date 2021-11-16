@@ -2,12 +2,16 @@ package com.UADE.view;
 
 
 import com.UADE.controller.PeticionController;
-import com.UADE.controller.SucursalController;
+import com.UADE.controller.PracticaController;
+import com.UADE.dto.DatosPracticaDTO;
+import com.UADE.model.Practica;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NuevaPeticionUI {
 
@@ -20,6 +24,7 @@ public class NuevaPeticionUI {
     private JComboBox comboBoxPractica;
     private JButton agregarButton;
     private PeticionController peticionc;
+    private PracticaController practicac;
 
 
     public NuevaPeticionUI() throws Exception {
@@ -31,16 +36,24 @@ public class NuevaPeticionUI {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
+        DefaultListModel<String> listModel = new DefaultListModel<String>();
+        listPracticas.setModel(listModel);
 
         peticionc = new PeticionController();
+        practicac = new PracticaController();
+        List<DatosPracticaDTO> listadoPracticas = practicac.obtenerListaPracticas();
+
+        for (DatosPracticaDTO datprac : listadoPracticas) {
+            comboBoxPractica.addItem(datprac.getNombre());
+        }
 
         guardarButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed (ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 Integer codigoNuevaPet = null;
 
                 try {
-                    codigoNuevaPet = peticionc.nuevaPeticion(comboBoxPacientes.getSelectedItem(), txtObraSocial.getText(), );
+                    //codigoNuevaPet = peticionc.nuevaPeticion(comboBoxPacientes.getSelectedItem(), txtObraSocial.getText());
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -56,6 +69,12 @@ public class NuevaPeticionUI {
                 frame.dispose();
 
             }
-
+        });
+        agregarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listModel.addElement((String) comboBoxPractica.getSelectedItem());
+            }
+        });
     }
 }
