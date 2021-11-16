@@ -33,8 +33,9 @@ public class ModificarUsuarioUI {
     private final UsuarioController usuc;
     private final SucursalController succ;
 
+    private Integer oldSucursal = null;
+
     public ModificarUsuarioUI(String nomUsu) throws Exception {
-        Integer oldSucursal = null;
 
         JFrame frame = new JFrame("Modificar usuario");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
