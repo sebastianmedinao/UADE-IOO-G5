@@ -50,8 +50,16 @@ public class Sucursal {
         usuarios.add(usuario);
     }
 
-    public boolean removeUsuario(Usuario usuario) {
-        return usuarios.remove(usuario);
+    public void removeUsuario(Usuario usuario) {
+        for (Usuario u : this.usuarios) {
+            System.out.println(usuario.getNombreUsuario());
+            System.out.println(u.getNombreUsuario());
+            if (usuario.getNombreUsuario().compareToIgnoreCase(u.getNombreUsuario()) == 0) {
+                System.out.println("USUARIO REMOVIDO X");
+                this.usuarios.remove(u);
+                break;
+            }
+        }
     }
 
     public List<Usuario> getUsuarios() {

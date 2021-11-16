@@ -143,7 +143,7 @@ public class SucursalController {
 
                 System.out.print("REMOVE USUARIO");
 
-                System.out.println(i.removeUsuario(u));
+                i.removeUsuario(u);
 
                 if (i.getRespTecnico() == u) {
                     i.setRespTecnico(null);

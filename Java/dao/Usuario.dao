@@ -1,3 +1,3 @@
 {"nombreUsuario":"admin","password":"1234","email":"uade@uade.edu.ar","nombreCompleto":"administrador","domicilio":"lima 1","dni":10444322,"fechaDeNacimiento":"Nov 2, 2021, 6:55:17 PM","rolSistema":"ADMINISTRADOR"}
 {"nombreUsuario":"carli","password":"1234","email":"ad","nombreCompleto":"carla bm","domicilio":"asd","dni":12333444,"fechaDeNacimiento":"Jan 1, 1994, 12:00:00 AM","rolSistema":"RECEPCION"}
-{"nombreUsuario":"dios","password":"sabio","email":"asd","nombreCompleto":"asd","domicilio":"","dni":131,"fechaDeNacimiento":"Jan 1, 1990, 12:00:00 AM","rolSistema":"ADMINISTRADOR"}
+{"nombreUsuario":"dios","password":"sabio","email":"asd","nombreCompleto":"asd","domicilio":"","dni":131,"fechaDeNacimiento":"Jan 1, 1990, 12:00:00 AM","rolSistema":"RECEPCION"}
