@@ -15,12 +15,12 @@ public class PeticionController {
 
 
     private Integer getNuevoCodigo() {
-        Sucursal lastpet = peticiones.get(peticiones.size() - 1);
+        Peticion lastpet = peticiones.get(peticiones.size() - 1);
         return lastpet.getCodigo() + 1;
     }
 
-    public Integer nuevaPeticion(Integer codigo, String obraSocial, date fechaInicio, date fechaEstimadaEntrega, EstadoPeticion estadoPeticion) throws Exception {
-        Peticion peticion = new Peticion(codigo, obraSocial, fechaInicio, fechaEstimadaEntrega, estadoPeticion);
+    public Integer nuevaPeticion(String obraSocial, date fechaInicio, date fechaEstimadaEntrega, EstadoPeticion estadoPeticion) throws Exception {
+        Peticion peticion = new Peticion(this.getNuevoCodigo(), obraSocial, fechaInicio, fechaEstimadaEntrega, estadoPeticion);
         peticiones.add(peticion);
 
         DAO.saveAll(peticiones);
@@ -42,7 +42,7 @@ public class PeticionController {
     }
 
     public void eliminarPeticion(Integer codigo) throws Exception {
-        Sucursal petABorrar = null;
+        Peticion petABorrar = null;
 
         for (Peticion i : this.peticiones) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
