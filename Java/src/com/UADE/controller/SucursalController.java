@@ -116,11 +116,35 @@ public class SucursalController {
         DAO.saveAll(sucursales);
     }
 
+    public void retirarUsuarioDeSucursal(Integer codigo, String nombreUsuario) {
+        Usuario u = null;
+
+        for (Usuario i : this.usuarios) {
+            if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0) {
+                u = i;
+                break;
+            }
+        }
+
+        for (Sucursal i : this.sucursales) {
+            if (codigo.intValue() == i.getCodigo().intValue()) {
+
+                i.removeUsuario(u);
+
+                if (i.getRespTecnico() == u) {
+                    i.setRespTecnico(null);
+                }
+
+                break;
+            }
+        }
+    }
+
     public List<UsuarioDTO> obtenerUsuariosSucursal(Integer codigo) {
         List<UsuarioDTO> us = new ArrayList<>();
 
         for (Usuario i : this.usuarios) {
-            us.add(new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema());
+            us.add(new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema(), i.getDomicilio(), i.getFechaDeNacimiento()));
         }
 
         return us;

@@ -34,6 +34,8 @@ public class ModificarUsuarioUI {
     private final SucursalController succ;
 
     public ModificarUsuarioUI(String nomUsu) throws Exception {
+        Integer oldSucursal = null;
+
         JFrame frame = new JFrame("Modificar usuario");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
@@ -52,18 +54,33 @@ public class ModificarUsuarioUI {
 
         UsuarioDTO usermod = usuc.buscarUsuarioPorNombreUsuario(nomUsu);
 
+        txtUsuario.setText(usermod.getNombreUsuario());
+        txtDNI.setText(String.valueOf(usermod.getDni()));
+        txtDomicilio.setText(usermod.getDomicilio());
+        txtEmail.setText(usermod.getEmail());
+        txtNacimiento.setText(new SimpleDateFormat("dd/MM/yyyy").format(usermod.getFechaNacimiento()));
+        txtNombre.setText(usermod.getNombreCompleto());
+        txtClave.setText("");
+
         List<DatosSucursalDTO> listasuc = succ.obtenerListaSucursales();
-
-
 
         for (DatosSucursalDTO suc : listasuc) {
             comboSucursal.addItem(suc.getCodigo());
 
-            for (UsuarioDTO user : suc.getUsuarios()) {
-                if (user.getNombreUsuario().equals(usermod.getNombreUsuario())) {
-                    comboSucursal.setSelectedItem(suc.getCodigo());
+            if (oldSucursal == null) {
+                for (UsuarioDTO user : suc.getUsuarios()) {
+                    if (user.getNombreUsuario().equals(usermod.getNombreUsuario())) {
+                        oldSucursal = suc.getCodigo();
+                        break;
+                    }
                 }
             }
+        }
+
+        if (oldSucursal == null) {
+            JOptionPane.showMessageDialog(null,"Error interno - sucursal invalida", "Error", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            comboSucursal.setSelectedItem(oldSucursal);
         }
 
         guardarButton.addActionListener(new ActionListener() {
@@ -81,7 +98,7 @@ public class ModificarUsuarioUI {
 
                 Boolean result = null;
                 try {
-                    result = usuc.nuevoUsuario(txtUsuario.getText(), txtClave.getText(), txtEmail.getText(), txtNombre.getText(), txtDomicilio.getText(), Integer.valueOf(txtDNI.getText()), datenac, (RolSistema) comboRol.getSelectedItem());
+                    result = usuc.actualizarUsuario(txtUsuario.getText(), txtClave.getText(), txtEmail.getText(), txtNombre.getText(), txtDomicilio.getText(), Integer.valueOf(txtDNI.getText()), datenac, (RolSistema) comboRol.getSelectedItem());
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -89,14 +106,18 @@ public class ModificarUsuarioUI {
                 if (result == null) {
                     JOptionPane.showMessageDialog(null,"Datos invàlidos.", "Error", JOptionPane.INFORMATION_MESSAGE);
                 } else if (!result) {
-                    JOptionPane.showMessageDialog(null,"El nombre de usuario ya existe.", "Error", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Ha ocurrido un error.", "Error", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null,"Se ha creado el usuario " + txtUsuario.getText(),"Nuevo usuario creado", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Se ha actualizado el usuario " + txtUsuario.getText(),"Usuario modificado", JOptionPane.INFORMATION_MESSAGE);
 
-                    try {
-                        succ.agregarUsuarioASucursal((Integer) comboSucursal.getSelectedItem(), txtUsuario.getText(), responsableTecnicoCheckBox.isSelected());
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
+                    if (comboSucursal.getSelectedItem() != oldSucursal) {
+                        succ.retirarUsuarioDeSucursal((Integer) comboSucursal.getSelectedItem(), txtUsuario.getText());
+
+                        try {
+                            succ.agregarUsuarioASucursal((Integer) comboSucursal.getSelectedItem(), txtUsuario.getText(), responsableTecnicoCheckBox.isSelected());
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
                     }
 
                     frame.dispose();

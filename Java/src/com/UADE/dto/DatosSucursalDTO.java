@@ -36,7 +36,7 @@ public class DatosSucursalDTO {
         List<UsuarioDTO> us = new ArrayList<>();
 
         for (Usuario i : this.usuarios) {
-            us.add(new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema());
+            us.add(new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema()));
         }
 
         return us;

@@ -67,5 +67,17 @@ public class MaestroUsuariosUI {
                 }
             }
         });
+        modificarUsuarioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    new ModificarUsuarioUI(listUsuarios.getSelectedValue());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+                frame.dispose();
+            }
+        });
     }
 }
