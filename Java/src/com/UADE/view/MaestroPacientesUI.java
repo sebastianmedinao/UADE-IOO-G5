@@ -47,7 +47,8 @@ public class MaestroPacientesUI {
                 frame.dispose();
 
                 try {
-                    new ListaPacientesUI();
+                    // Comento porque no compila
+                    // new ListaPacientesUI();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

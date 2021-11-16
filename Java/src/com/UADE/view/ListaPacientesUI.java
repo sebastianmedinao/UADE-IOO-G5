@@ -1,3 +1,5 @@
+package com.UADE.view;
+
 import com.UADE.controller.PacienteController;
 import com.UADE.model.Paciente;
 
@@ -7,7 +9,7 @@ import java.awt.*;
 import java.util.List;
 
 public class ListaPacientesUI{
-    private JList panel1;
+    private JPanel panel1;
     private PacienteController pacic;
     private JList<String> listaPacientes;
     private JPanel laminaDeLista, laminaDeTexto;

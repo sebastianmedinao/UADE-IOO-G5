@@ -23,9 +23,7 @@ public class NuevoPacienteUI {
     private JRadioButton masculinoRadioButton;
     private PacienteController pacientec;
 
-
-
-    private void NuevoPacienteUI() throws Exception{
+    public NuevoPacienteUI() throws Exception{
         JFrame frame = new JFrame("Nuevo Paciente");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
