@@ -4,6 +4,8 @@
     <list default="true" id="3a56f90a-2628-428d-ae5f-f890fc51c81e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/UADE/controller/PeticionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/UADE/controller/PeticionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/UADE/dto/DatosPeticionDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/UADE/dto/DatosPeticionDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/UADE/model/Peticion.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/UADE/model/Peticion.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -5,25 +5,27 @@ import java.util.Date;
 import java.util.List;
 
 public class Peticion {
-    private static int numeradorCodigoPeticion = 0;
-    private Integer codigo;
+    private final Integer codigo;
     private String obraSocial;
     private Date fechaInicio;
     private Date fechaEstimadaEntrega;
     private EstadoPeticion estadoPeticion;
     private Paciente paciente;
     private Sucursal sucursal;
-    private List<Practica> practicas = new ArrayList<Practica>();
-    private List<ResultadoPractica> resultadosPracticas = new ArrayList<ResultadoPractica>();
+    private List<Practica> practicas;
+    private List<ResultadoPractica> resultadosPracticas;
 
-    public Peticion(Integer codigo, String obraSocial, Date fechaInicio, List practicas, Date fechaEstimadaEntrega, EstadoPeticion estadoPeticion)
+    public Peticion(Integer codigo, String obraSocial, Date fechaInicio, List<Practica> practicas, Date fechaEstimadaEntrega, EstadoPeticion estadoPeticion, Paciente paciente, Sucursal sucursal, List<ResultadoPractica> resultadosPracticas)
     {
-        numeradorCodigoPeticion++;
-        this.codigo = Integer.valueOf(numeradorCodigoPeticion);
+        this.codigo = codigo;
         this.obraSocial = obraSocial;
         this.fechaInicio = fechaInicio;
         this.fechaEstimadaEntrega = fechaEstimadaEntrega;
         this.estadoPeticion = estadoPeticion;
+        this.paciente = paciente;
+        this.sucursal = sucursal;
+        this.practicas = practicas;
+        this.resultadosPracticas = resultadosPracticas;
     }
 
     public Integer getCodigo() {
@@ -74,6 +76,14 @@ public class Peticion {
 
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
+    }
+
+    public Paciente getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
     }
 
     public List<Practica> getPracticas() {

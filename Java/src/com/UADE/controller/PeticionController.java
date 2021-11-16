@@ -1,6 +1,11 @@
 package com.UADE.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import com.UADE.dao.PeticionDAO;
+import com.UADE.dto.DatosPeticionDTO;
 import com.UADE.model.EstadoPeticion;
 import com.UADE.model.Peticion;
 
@@ -19,7 +24,7 @@ public class PeticionController {
         return lastpet.getCodigo() + 1;
     }
 
-    public Integer nuevaPeticion(String obraSocial, date fechaInicio, date fechaEstimadaEntrega, EstadoPeticion estadoPeticion) throws Exception {
+    public Integer nuevaPeticion(String obraSocial, Date fechaInicio, Date fechaEstimadaEntrega, EstadoPeticion estadoPeticion) throws Exception {
         Peticion peticion = new Peticion(this.getNuevoCodigo(), obraSocial, fechaInicio, fechaEstimadaEntrega, estadoPeticion);
         peticiones.add(peticion);
 
@@ -33,7 +38,7 @@ public class PeticionController {
 
         for (Peticion i : this.peticiones) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
-                sucdto = new DatosSucursalDTO(i.getCodigo(), i.getObraSocial(), i.getFechaInicio(), i.getFechaEstimadaEntrega(), i.getEstadoPeticion());
+                petdto = new DatosPeticionDTO(i.getCodigo(), i.getObraSocial(), i.getFechaInicio(), i.getFechaEstimadaEntrega(), i.getEstadoPeticion());
                 break;
             }
         }
@@ -59,7 +64,7 @@ public class PeticionController {
     }
 
 
-    public void actualizarPeticion(Integer codigo, String obraSocial, date fechaInicio, date fechaEstimadaEntrega, EstadoPeticion estadoPeticion) throws Exception {
+    public void actualizarPeticion(Integer codigo, String obraSocial, Date fechaInicio, Date fechaEstimadaEntrega, EstadoPeticion estadoPeticion) throws Exception {
         for (Peticion i : this.peticiones) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
                 i.setObraSocial(obraSocial);
@@ -71,3 +76,4 @@ public class PeticionController {
             }
         }
     }
+}
