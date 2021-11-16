@@ -46,10 +46,6 @@ public class ModificarUsuarioUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
-        for (RolSistema rol : RolSistema.values()) {
-            comboRol.addItem(rol);
-        }
-
         usuc = new UsuarioController();
         succ = new SucursalController();
 
@@ -62,6 +58,12 @@ public class ModificarUsuarioUI {
         txtNacimiento.setText(new SimpleDateFormat("dd/MM/yyyy").format(usermod.getFechaNacimiento()));
         txtNombre.setText(usermod.getNombreCompleto());
         txtClave.setText("");
+
+        for (RolSistema rol : RolSistema.values()) {
+            comboRol.addItem(rol);
+        }
+
+        comboRol.setSelectedItem(usermod.getRolSistema());
 
         List<DatosSucursalDTO> listasuc = succ.obtenerListaSucursales();
 
@@ -112,10 +114,12 @@ public class ModificarUsuarioUI {
                     JOptionPane.showMessageDialog(null,"Se ha actualizado el usuario " + txtUsuario.getText(),"Usuario modificado", JOptionPane.INFORMATION_MESSAGE);
 
                     if (comboSucursal.getSelectedItem() != oldSucursal) {
-                        try {
-                            succ.retirarUsuarioDeSucursal(oldSucursal, txtUsuario.getText());
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
+                        if (oldSucursal != null) {
+                            try {
+                                succ.retirarUsuarioDeSucursal(oldSucursal, txtUsuario.getText());
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                            }
                         }
 
                         try {
