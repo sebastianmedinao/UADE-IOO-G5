@@ -11,11 +11,10 @@ public class ResultadoPracticaController {
     private List<ResultadoPractica> resultadoPracticas;
     private final ResultadoPracticaDAO DAO;
 
-    public PracticaController() throws Exception {
-        DAO = new ResultadoPracticaDAO()DAO(ResultadoPractica.class, "dao/ResultadoPractica.dao");
+    public ResultadoPracticaController() throws Exception {
+        DAO = new ResultadoPracticaDAO(ResultadoPractica.class, "dao/ResultadoPractica.dao");
         resultadoPracticas = DAO.getAll();
-}
-    private Integer getNuevoCodigo() {
-        ResultadoPractica lastpract = practicas.get(practicas.size() - 1);
-        return lastpract.getCodigo() + 1;
     }
+
+
+}

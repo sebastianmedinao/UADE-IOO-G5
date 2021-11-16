@@ -10,13 +10,12 @@ public class DatosPracticaDTO {
     private final Integer tiempoEstimado;
     private final List<Criterio> criterios;
 
-    public DatosPeticionDTO(Integer codigo, String nombre, Integer tiempoEstimado, List<Criterio> criterios) {
+    public DatosPracticaDTO(Integer codigo, String nombre, Integer tiempoEstimado, List<Criterio> criterios) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.tiempoEstimado = tiempoEstimado;
         this.criterios = criterios;
     }
-
 
     public Integer getCodigo() {
         return codigo;

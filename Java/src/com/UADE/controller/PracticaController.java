@@ -41,7 +41,7 @@ public class PracticaController {
 
         for (Practica i : this.practicas) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
-                practdto = new DatosPracticaDTO()(i.getCodigo(), i.getNombre(), i.getTiempoEstimado(), i.getCriterios());
+                practdto = new DatosPracticaDTO(i.getCodigo(), i.getNombre(), i.getTiempoEstimado(), i.getCriterios());
                 break;
             }
         }
