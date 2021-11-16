@@ -32,12 +32,6 @@ public class Peticion {
         return codigo;
     }
 
-
-    // Getters y Setters
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
-    }
-
     public String getObraSocial() {
         return obraSocial;
     }
@@ -78,7 +72,7 @@ public class Peticion {
         this.paciente = paciente;
     }
 
-    public Paciente getSucursal() {
+    public Sucursal getSucursal() {
         return sucursal;
     }
 

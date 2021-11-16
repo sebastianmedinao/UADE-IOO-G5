@@ -6,8 +6,7 @@ import java.util.List;
 
 import com.UADE.dao.PeticionDAO;
 import com.UADE.dto.DatosPeticionDTO;
-import com.UADE.model.EstadoPeticion;
-import com.UADE.model.Peticion;
+import com.UADE.model.*;
 
 public class PeticionController {
     private List<Peticion> peticiones = new ArrayList<Peticion>();
@@ -24,8 +23,8 @@ public class PeticionController {
         return lastpet.getCodigo() + 1;
     }
 
-    public Integer nuevaPeticion(String obraSocial, Date fechaInicio, Date fechaEstimadaEntrega, EstadoPeticion estadoPeticion) throws Exception {
-        Peticion peticion = new Peticion(this.getNuevoCodigo(), obraSocial, fechaInicio, fechaEstimadaEntrega, estadoPeticion);
+    public Integer nuevaPeticion(String obraSocial, Date fechaInicio, Date fechaEstimadaEntrega, List<Practica> practicas, EstadoPeticion estadoPeticion, Paciente paciente, Sucursal sucursal, List<ResultadoPractica> resultadoPractica) throws Exception {
+        Peticion peticion = new Peticion(this.getNuevoCodigo(), obraSocial, fechaInicio, practicas, fechaEstimadaEntrega, estadoPeticion, paciente, sucursal, resultadoPractica);
         peticiones.add(peticion);
 
         DAO.saveAll(peticiones);
@@ -38,7 +37,7 @@ public class PeticionController {
 
         for (Peticion i : this.peticiones) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
-                petdto = new DatosPeticionDTO(i.getCodigo(), i.getObraSocial(), i.getFechaInicio(), i.getFechaEstimadaEntrega(), i.getEstadoPeticion());
+                //petdto = new DatosPeticionDTO(i.getCodigo(), i.getObraSocial(), i.getFechaInicio(), i.getFechaEstimadaEntrega(), i.getEstadoPeticion());
                 break;
             }
         }
