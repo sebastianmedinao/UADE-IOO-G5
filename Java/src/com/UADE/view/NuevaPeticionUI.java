@@ -47,7 +47,7 @@ public class NuevaPeticionUI {
             comboBoxPractica.addItem(datprac.getNombre());
         }
 
-        guardarButton.addActionListener(new ActionListener() {
+        /*guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Integer codigoNuevaPet = null;
@@ -68,7 +68,7 @@ public class NuevaPeticionUI {
 
                 frame.dispose();
 
-            }
+            }*/
         });
         agregarButton.addActionListener(new ActionListener() {
             @Override

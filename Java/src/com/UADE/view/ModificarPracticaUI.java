@@ -5,6 +5,9 @@ import com.UADE.dto.DatosPracticaDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
 public class ModificarPracticaUI {
     private JPanel panel1;
@@ -16,7 +19,7 @@ public class ModificarPracticaUI {
     private PracticaController practicaC;
     private JList<String> listaPracticas;
 
-    public ModificarPracticaUI() throws Exception{
+    public ModificarPracticaUI(Integer cod) throws Exception{
         JFrame frame = new JFrame("Modificar prácticas");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
@@ -25,26 +28,33 @@ public class ModificarPracticaUI {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
-        DefaultListModel<String> listModel = new DefaultListModel<String>();
-        listaPracticas.setModel(listModel);
 
 
-        practicaC = new PracticaController();
-        //List<DatosPracticaDTO> lista = practicaC.obtenerListaPracticas();
 
-        //for (DatosPracticaDTO i : lista)
-          //  listModel.addElement(i.getCodigo() + " - " + i.getNombre());
-
-        String value = listaPracticas.getSelectedValue();
-        Integer cod = Integer.valueOf(value.split(" ")[0]);
 
         DatosPracticaDTO practicaDTO = practicaC.obtenerDatosPractica(cod);
 
         txtNombre.setText(practicaDTO.getNombre());
-
-
         txtDemora.setText(practicaDTO.getTiempoEstimado().toString());
+        //Ver lo de criterios, como modificarlos etc
+        guardarModificaciónButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    //practicaC.actualizarPractica(cod, txtNombre.getText(), txtDemora.getText(), listaCriterios);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
 
+                frame.dispose();
+
+                try {
+                    new MaestroSucursalesUI();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
 
 

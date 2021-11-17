@@ -1,12 +1,14 @@
 package com.UADE.view;
 
 import com.UADE.controller.PracticaController;
+import com.UADE.dto.DatosPracticaDTO;
 import com.UADE.model.RolSistema;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class PracticasUI {
     private JList<String> listaPracticas;
@@ -27,11 +29,18 @@ public class PracticasUI {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
-        //DefaultListModel<String> listModel = new DefaultListModel<>();
-        //listaPracticas.setModel(listModel);
+        DefaultListModel<String> listModel = new DefaultListModel<String>();
+        listaPracticas.setModel(listModel);
+
 
         practicasC = new PracticaController();
-        //List<Practica> lista = practicasC.obtenerListaPracticas();
+        List<DatosPracticaDTO> lista = practicasC.obtenerListaPracticas();
+
+        String value = listaPracticas.getSelectedValue();
+        Integer cod = Integer.valueOf(value.split(" ")[0]);
+
+        for (DatosPracticaDTO i : lista)
+            listModel.addElement(i.getCodigo() + " - " + i.getNombre());
 
         crearNuevaPrácticaButton.addActionListener(new ActionListener() {
             @Override
@@ -48,7 +57,7 @@ public class PracticasUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new ModificarPracticaUI();
+                    new ModificarPracticaUI(Integer.parseInt(listaPracticas.getSelectedValue()));
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
