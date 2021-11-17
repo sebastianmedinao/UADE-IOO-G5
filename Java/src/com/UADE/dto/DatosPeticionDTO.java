@@ -2,7 +2,6 @@ package com.UADE.dto;
 
 import com.UADE.model.*;
 
-import javax.xml.transform.Result;
 import java.util.Date;
 import java.util.List;
 
@@ -31,9 +30,7 @@ public class DatosPeticionDTO {
     }
 
 
-    public Integer getCodigo() {
-        return codigo;
-    }
+    //public String getCodigo() {return codigo;}
 
     public String getObraSocial() {
         return obraSocial;

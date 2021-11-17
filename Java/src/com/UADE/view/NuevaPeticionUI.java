@@ -47,6 +47,7 @@ public class NuevaPeticionUI {
             comboBoxPractica.addItem(datprac.getNombre());
         }
 
+        //ver cómo cargar las prácticas del combobox
         /*guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -68,8 +69,8 @@ public class NuevaPeticionUI {
 
                 frame.dispose();
 
-            }*/
-        });
+            }
+        });*/
         agregarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
