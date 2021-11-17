@@ -18,8 +18,8 @@ public class ModificarPeticionUI {
     private PeticionController peticionc;
 
 
-    public ModificarPeticionUI(Integer cod) throws Exception {
-        JFrame frame = new JFrame("Modificar petición");
+    public ModificarPeticionUI(Integer codigo) throws Exception {
+        JFrame frame = new JFrame("Modificar petición" + codigo);
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
         frame.setSize(300, 300);

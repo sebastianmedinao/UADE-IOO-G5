@@ -19,8 +19,8 @@ public class ModificarPracticaUI {
     private PracticaController practicaC;
     private JList<String> listaPracticas;
 
-    public ModificarPracticaUI(Integer cod) throws Exception{
-        JFrame frame = new JFrame("Modificar práctica");
+    public ModificarPracticaUI(Integer codigo) throws Exception{
+        JFrame frame = new JFrame("Modificar práctica" + codigo);
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
         frame.setSize(300, 300);
@@ -30,7 +30,7 @@ public class ModificarPracticaUI {
         frame.setVisible(true);
 
 
-        DatosPracticaDTO practicaDTO = practicaC.obtenerDatosPractica(cod);
+        DatosPracticaDTO practicaDTO = practicaC.obtenerDatosPractica(codigo);
 
         txtNombre.setText(practicaDTO.getNombre());
         txtDemora.setText(practicaDTO.getTiempoEstimado().toString());
@@ -39,7 +39,7 @@ public class ModificarPracticaUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    //practicaC.actualizarPractica(cod, txtNombre.getText(), txtDemora.getText(), listaCriterios);
+                    //practicaC.actualizarPractica(codigo, txtNombre.getText(), txtDemora.getText(), listaCriterios);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
