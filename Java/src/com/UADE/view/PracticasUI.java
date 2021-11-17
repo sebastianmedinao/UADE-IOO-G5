@@ -29,7 +29,7 @@ public class PracticasUI {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
-        DefaultListModel<String> listModel = new DefaultListModel<String>();
+        /*DefaultListModel<String> listModel = new DefaultListModel<String>();
         listaPracticas.setModel(listModel);
 
 
@@ -41,6 +41,9 @@ public class PracticasUI {
 
         for (DatosPracticaDTO i : lista)
             listModel.addElement(i.getCodigo() + " - " + i.getNombre());
+*/
+        // TODO: Ver tema listado de prácticas
+
 
         crearNuevaPrácticaButton.addActionListener(new ActionListener() {
             @Override

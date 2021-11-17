@@ -80,5 +80,16 @@ public class MenuUI {
             }
         });
 
+        informesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    new InformesUI();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
     }
 }
