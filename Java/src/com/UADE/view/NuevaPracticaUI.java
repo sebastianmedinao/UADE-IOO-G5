@@ -26,6 +26,8 @@ public class NuevaPracticaUI {
 
         practicasC = new PracticaController();
 
+        // TODO: Ver como guardar la practica sin que el listado de criterios rompa todo
+
         /*guardarPrácticaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
