@@ -30,15 +30,11 @@ public class DatosPeticionDTO {
     }
 
 
-    //public String getCodigo() {return codigo;}
+    public Integer getCodigo() {return codigo;}
 
-    public String getObraSocial() {
-        return obraSocial;
-    }
+    public String getObraSocial() { return obraSocial; }
 
-    public Date getFechaInicio() {
-        return fechaInicio;
-    }
+    public Date getFechaInicio() { return fechaInicio; }
 
     public Date getFechaEstimadaEntrega() {
         return fechaEstimadaEntrega;

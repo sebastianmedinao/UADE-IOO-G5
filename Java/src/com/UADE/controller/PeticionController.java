@@ -5,9 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.UADE.dao.PeticionDAO;
-import com.UADE.dto.DatosPeticionDTO;
-import com.UADE.dto.ResultadoPracticaDTO;
-import com.UADE.dto.UsuarioDTO;
+import com.UADE.dto.*;
 import com.UADE.model.*;
 
 public class PeticionController {
@@ -96,4 +94,15 @@ public class PeticionController {
             }
         }
     }
+
+    public List<ListaPeticionesDTO> obtenerListaPeticiones() {
+        List<ListaPeticionesDTO> petlist = new ArrayList<>();
+
+        for (Peticion i : peticiones) {
+            petlist.add(new ListaPeticionesDTO(i.getCodigo(), i.getFechaInicio(), i.getPaciente()));
+        }
+
+        return petlist;
+    }
+
 }

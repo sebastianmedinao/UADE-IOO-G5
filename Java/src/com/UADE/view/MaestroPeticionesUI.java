@@ -2,6 +2,7 @@ package com.UADE.view;
 
 import com.UADE.controller.PeticionController;
 import com.UADE.dto.DatosPeticionDTO;
+import com.UADE.dto.ListaPeticionesDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -12,6 +13,7 @@ public class MaestroPeticionesUI {
     private JPanel panel1;
     private JButton modificarPeticiónButton;
     private JButton borrarPeticiónButton;
+    private JList listPeticiones;
     private PeticionController peticionc;
 
     public MaestroPeticionesUI() throws Exception {
@@ -23,16 +25,17 @@ public class MaestroPeticionesUI {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
-        //listPeticiones.setModel(listModel);
-
         DefaultListModel<String> listModel = new DefaultListModel<String>();
+        listPeticiones.setModel(listModel);
+
+        //DefaultListModel<String> listModel = new DefaultListModel<String>();
 
         peticionc = new PeticionController();
 
-       //List<DatosPeticionDTO> lista = peticionc.obtenerDatosPeticion();
+       List<ListaPeticionesDTO> lista = peticionc.obtenerListaPeticiones();
 
-        /*for (DatosPeticionDTO i : lista)
-            listModel.addElement(i.getCodigo());*/
+        //for (ListaPeticionesDTO i : lista)
+            //listModel.addElement(i.getCodigo(), i.getFechaInicio(), i.getPaciente());
 
     }
 }
