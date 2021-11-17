@@ -22,8 +22,9 @@ public class PacienteController {
     }
 
     private Integer getNuevoCodigo() {
-        Paciente lastpa = pacientes.get(pacientes.size() - 1);
-        return lastpa.getCodigo() + 1;
+        /*Paciente lastpa = pacientes.get(pacientes.size() - 1);
+        return lastpa.getCodigo() + 1;*/
+        return 0;
     }
 
     public Boolean nuevoPaciente(Integer codigo, Integer dni, String nombreCompleto, String domicilio, String email, Sexo sexo, Integer edad) throws Exception {

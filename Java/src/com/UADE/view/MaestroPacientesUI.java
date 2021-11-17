@@ -23,7 +23,7 @@ public class MaestroPacientesUI {
     private PacienteController pacic;
 
     public MaestroPacientesUI() throws Exception {
-        JFrame frame = new JFrame("Maestro de Usuarios");
+        JFrame frame = new JFrame("Maestro de Pacientes");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
         frame.setSize(300, 300);
@@ -31,7 +31,8 @@ public class MaestroPacientesUI {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
-        DefaultListModel<String> listModel = new DefaultListModel<>();
+
+        /*DefaultListModel<String> listModel = new DefaultListModel<>();
         listPacientes.setModel(listModel);
 
         pacic = new PacienteController();
@@ -39,23 +40,22 @@ public class MaestroPacientesUI {
         List<Paciente> lista = pacic.obtenerListaPacientes();
 
         for (Paciente i : lista)
-            listModel.addElement("a");
-
+            lista.add(new Paciente(i.getCodigo(), i.getDni(), i.getEmail(), i.getDomicilio(), i.getEmail(), i.getSexo(), i.getEdad()));
+*/
         listaPacientesButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
 
                 try {
-                    // Comento porque no compila
-                    // new ListaPacientesUI();
+                    new ListaPacientesUI();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
             }
         });
 
-        /*nuevoPacienteButton.addActionListener(new ActionListener() {
+        nuevoPacienteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
@@ -66,7 +66,22 @@ public class MaestroPacientesUI {
                     ex.printStackTrace();
                 }
             }
-        });*/
+        });
+
+        modificarPacienteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+
+                try {
+                    new ModificarPacienteUI();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+
         /*borrarPacienteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

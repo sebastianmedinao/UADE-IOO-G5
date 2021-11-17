@@ -1,30 +1,28 @@
 package com.UADE.view;
 
 import com.UADE.controller.PacienteController;
-import com.UADE.model.Paciente;
 import com.UADE.model.Sexo;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
-public class NuevoPacienteUI {
+public class ModificarPacienteUI {
+
     private JPanel panel1;
     private JTextField nroDni;
     private JTextField txtNombre;
     private JTextField txtDomicilio;
     private JTextField txtMail;
-    private JTextField txtSexo;
     private JTextField txtEdad;
-    private JButton guardarButton;
     private JRadioButton femeninoRadioButton;
     private JRadioButton masculinoRadioButton;
+    private JButton actualizarButton;
     private PacienteController pacientec;
 
-    public NuevoPacienteUI() throws Exception{
-        JFrame frame = new JFrame("Nuevo Paciente");
+    public ModificarPacienteUI() throws Exception{
+        JFrame frame = new JFrame("Modificar paciente");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
         frame.setSize(600, 300);
@@ -33,14 +31,12 @@ public class NuevoPacienteUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
-
         pacientec = new PacienteController();
-        List<Paciente> lista = pacientec.obtenerListaPacientes();
-        
-        guardarButton.addActionListener(new ActionListener() {
+
+        actualizarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Boolean codigoNuevoP = null;
+                Boolean codigoPaciente = null;
                 Integer dni = null;
                 Integer edad;
                 Sexo sexo = null;
@@ -54,23 +50,33 @@ public class NuevoPacienteUI {
                     } else{ //Chequear
                         JOptionPane.showMessageDialog(null,"Seleccione el sexo", "Error", JOptionPane.INFORMATION_MESSAGE);
                     }
-                    edad = Integer.valueOf(txtEdad.getText());
+                    // TODO: Hacer que efectivamente actalice el paciente
 
-                    Integer codigo = pacientec.obtenerListaPacientes().size();
+                    if(pacientec.buscarPacientePorDNI(Integer.valueOf(nroDni.getText()))){
 
-                    codigoNuevoP = pacientec.nuevoPaciente(codigo+1, dni , txtNombre.getText(), txtDomicilio.getText(), txtMail.getText(), sexo, edad);
+                        edad = Integer.valueOf(txtEdad.getText());
+
+                        Integer codigo = pacientec.obtenerListaPacientes().size();
+
+                        codigoPaciente = pacientec.nuevoPaciente(codigo+1, dni , txtNombre.getText(), txtDomicilio.getText(), txtMail.getText(), sexo, edad);
+
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"No existe un paciente con DNI numero " + nroDni.getText(),"Error", JOptionPane.INFORMATION_MESSAGE);
+                    }
+
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
 
-               if (codigoNuevoP == null) {
+                if (codigoPaciente == null) {
                     JOptionPane.showMessageDialog(null,"Datos invàlidos.", "Error", JOptionPane.INFORMATION_MESSAGE);
-                } else if (codigoNuevoP == false) {
+                } else if (codigoPaciente == false) {
                     JOptionPane.showMessageDialog(null,"El paciente ya esta registrado", "Error", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null,"Se ha registrado el paciente " + txtNombre.getText(),"Nuevo usuario creado", JOptionPane.INFORMATION_MESSAGE);
-                    
+                    JOptionPane.showMessageDialog(null,"Se ha actualizado el paciente " + txtNombre.getText(),"Usuario actualizado", JOptionPane.INFORMATION_MESSAGE);
+
                     frame.dispose();
 
                     try {
@@ -85,6 +91,8 @@ public class NuevoPacienteUI {
                 frame.dispose();
             }
         });
+
+
 
 
 
