@@ -18,7 +18,7 @@ public class ListaPeticionesDTO {
     }
 
 
-    public Integer getCodigo() {return codigo;}
+    public Integer getCodigo() { return codigo; }
     public Date getFechaInicio() { return fechaInicio; }
     public Paciente getPaciente() { return paciente;}
 }

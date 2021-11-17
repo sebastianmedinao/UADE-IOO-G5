@@ -1,11 +1,12 @@
 package com.UADE.view;
 
 import com.UADE.controller.PeticionController;
-import com.UADE.dto.DatosPeticionDTO;
 import com.UADE.dto.ListaPeticionesDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class MaestroPeticionesUI {
@@ -13,7 +14,7 @@ public class MaestroPeticionesUI {
     private JPanel panel1;
     private JButton modificarPeticiónButton;
     private JButton borrarPeticiónButton;
-    private JList listPeticiones;
+    private JList<String> listPeticiones;
     private PeticionController peticionc;
 
     public MaestroPeticionesUI() throws Exception {
@@ -32,10 +33,36 @@ public class MaestroPeticionesUI {
 
         peticionc = new PeticionController();
 
-       List<ListaPeticionesDTO> lista = peticionc.obtenerListaPeticiones();
+        List<ListaPeticionesDTO> lista = peticionc.obtenerListaPeticiones();
 
-        //for (ListaPeticionesDTO i : lista)
+        for (ListaPeticionesDTO i : lista)
             //listModel.addElement(i.getCodigo(), i.getFechaInicio(), i.getPaciente());
 
+
+
+        nuevaPeticiónButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                try {
+                    new NuevaPeticionUI();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        modificarPeticiónButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //MODIFICAR PETICIOn
+            }
+        });
+        borrarPeticiónButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //BORRAR PETICIÓN
+
+            }
+        });
     }
 }

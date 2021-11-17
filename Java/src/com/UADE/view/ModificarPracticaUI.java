@@ -30,8 +30,6 @@ public class ModificarPracticaUI {
         frame.setVisible(true);
 
 
-
-
         DatosPracticaDTO practicaDTO = practicaC.obtenerDatosPractica(cod);
 
         txtNombre.setText(practicaDTO.getNombre());
