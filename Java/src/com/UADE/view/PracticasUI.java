@@ -15,8 +15,9 @@ public class PracticasUI {
     private JPanel panel1;
     private JButton crearNuevaPrácticaButton;
     private JButton modificarPrácticaExistenteButton;
-    private JButton eliminarPrácticaExistenteButton;
+    private JButton eliminarPracticaExistenteButton;
     private JButton volverAlMenúPrincipalButton;
+    private JList list1;
     private PracticaController practicasC;
 
 

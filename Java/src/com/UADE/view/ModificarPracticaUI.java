@@ -20,7 +20,7 @@ public class ModificarPracticaUI {
     private JList<String> listaPracticas;
 
     public ModificarPracticaUI(Integer cod) throws Exception{
-        JFrame frame = new JFrame("Modificar prácticas");
+        JFrame frame = new JFrame("Modificar práctica");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
         frame.setSize(300, 300);

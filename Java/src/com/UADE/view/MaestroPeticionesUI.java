@@ -15,6 +15,7 @@ public class MaestroPeticionesUI {
     private JButton modificarPeticiónButton;
     private JButton borrarPeticiónButton;
     private JList<String> listPeticiones;
+    private JButton verPeticionButton;
     private PeticionController peticionc;
 
     public MaestroPeticionesUI() throws Exception {
@@ -62,6 +63,12 @@ public class MaestroPeticionesUI {
             public void actionPerformed(ActionEvent e) {
                 //BORRAR PETICIÓN
 
+            }
+        });
+        verPeticionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // ver petición
             }
         });
     }
