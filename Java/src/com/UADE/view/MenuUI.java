@@ -62,7 +62,7 @@ public class MenuUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new MaestroPacientesUI(); //Que lleve a Nuevo paciente para ver si funciona
+                    new MaestroPacientesUI();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
