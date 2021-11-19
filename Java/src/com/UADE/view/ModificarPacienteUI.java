@@ -2,7 +2,6 @@ package com.UADE.view;
 
 import com.UADE.controller.PacienteController;
 import com.UADE.dto.PacienteDTO;
-import com.UADE.dto.SucursalDTO;
 import com.UADE.enums.Sexo;
 
 import javax.swing.*;
@@ -37,6 +36,7 @@ public class ModificarPacienteUI {
 
         PacienteDTO pacdto = pacientec.obtenerPaciente(codigo);
 
+        nroDni.setText(String.valueOf(pacdto.getDni()));
         txtNombre.setText(pacdto.getNombreCompleto());
         txtDomicilio.setText(pacdto.getDomicilio());
         txtMail.setText(pacdto.getEmail());
@@ -45,7 +45,7 @@ public class ModificarPacienteUI {
             femeninoRadioButton.setSelected(true);
         } else if (pacdto.getSexo() == Sexo.MASCULINO) {
             masculinoRadioButton.setSelected(true);
-        } else { //Chequear
+        } else {
             JOptionPane.showMessageDialog(null, "Seleccione el sexo", "Error", JOptionPane.INFORMATION_MESSAGE);
         }
 
@@ -53,10 +53,20 @@ public class ModificarPacienteUI {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                pacdto.setDni(Integer.valueOf(nroDni.getText()));
+                pacdto.setNombreCompleto(txtNombre.getText());
+                pacdto.setEmail(txtMail.getText());
+                pacdto.setEdad(Integer.valueOf(txtEdad.getText()));
+                if (femeninoRadioButton.isSelected()){
+                    pacdto.setSexo(Sexo.FEMENINO);
+                }else if(masculinoRadioButton.isSelected()){
+                    pacdto.setSexo(Sexo.MASCULINO);
+                } else{
+                    JOptionPane.showMessageDialog(null,"Seleccione el sexo", "Error", JOptionPane.INFORMATION_MESSAGE);
+                }
 
-                //FALTA ACTUALIZAR PACIENTE CONTROLLER
-                /*try {
-                    pacientec.;
+                try {
+                    pacientec.actualizarPaciente(pacdto);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -64,63 +74,10 @@ public class ModificarPacienteUI {
                 frame.dispose();
 
                 try {
-                    new MaestroSucursalesUI();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }*/
-
-
-                /*Integer codigoPaciente = null;
-                Integer dni = null;
-                Integer edad;
-                Sexo sexo = null;
-                try {
-                    dni = Integer.valueOf(nroDni.getText());
-                    //Sexo sexo = Sexo.valueOf(txtSexo.getText());
-                    if (femeninoRadioButton.isSelected()) {
-                        sexo = Sexo.FEMENINO;
-                    } else if (masculinoRadioButton.isSelected()) {
-                        sexo = Sexo.MASCULINO;
-                    } else { //Chequear
-                        JOptionPane.showMessageDialog(null, "Seleccione el sexo", "Error", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                    // TODO: Hacer que efectivamente actualice el paciente
-
-
-                    edad = Integer.valueOf(txtEdad.getText());
-
-                    if (pacientec.buscarPacientePorDNI(Integer.valueOf(nroDni.getText())) != null) {
-
-                        PacienteDTO paciente = new PacienteDTO(null, null, null, null, null, null, null);
-
-                        codigoPaciente = pacientec.nuevoPaciente(paciente);
-
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No existe un paciente con DNI numero " + nroDni.getText(), "Error", JOptionPane.INFORMATION_MESSAGE);
-                    }
-
-
+                    new MaestroPacientesUI();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
-
-                /*if (codigoPaciente == null) {
-                    JOptionPane.showMessageDialog(null, "Datos invàlidos.", "Error", JOptionPane.INFORMATION_MESSAGE);
-                } else if (codigoPaciente == false) {
-                    JOptionPane.showMessageDialog(null, "El paciente ya esta registrado", "Error", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Se ha actualizado el paciente " + txtNombre.getText(), "Usuario actualizado", JOptionPane.INFORMATION_MESSAGE);
-
-                    frame.dispose();
-
-                    try {
-                        new MaestroPacientesUI();
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                }
-*/
 
                 frame.dispose();
             }
