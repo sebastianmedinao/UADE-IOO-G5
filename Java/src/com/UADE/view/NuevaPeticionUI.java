@@ -3,14 +3,12 @@ package com.UADE.view;
 
 import com.UADE.controller.PeticionController;
 import com.UADE.controller.PracticaController;
-import com.UADE.dto.DatosPracticaDTO;
-import com.UADE.model.Practica;
+import com.UADE.dto.PracticaDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
 public class NuevaPeticionUI {
@@ -42,9 +40,9 @@ public class NuevaPeticionUI {
 
         peticionc = new PeticionController();
         practicac = new PracticaController();
-        List<DatosPracticaDTO> listadoPracticas = practicac.obtenerListaPracticas();
+        List<PracticaDTO> listadoPracticas = practicac.obtenerListaPracticas();
 
-        for (DatosPracticaDTO datprac : listadoPracticas) {
+        for (PracticaDTO datprac : listadoPracticas) {
             comboBoxPractica.addItem(datprac.getNombre());
         }
 

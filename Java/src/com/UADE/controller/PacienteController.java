@@ -1,63 +1,69 @@
 package com.UADE.controller;
 
 import com.UADE.dao.PacienteDAO;
-import com.UADE.dao.UsuarioDAO;
-import com.UADE.dto.UsuarioDTO;
+import com.UADE.dto.PacienteDTO;
+import com.UADE.enums.Sexo;
 import com.UADE.model.*;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class PacienteController {
     private List<Paciente> pacientes = new ArrayList<Paciente>();
-    private final PacienteDAO DAO;
+    private final PacienteDAO DAO_Paciente;
 
     public PacienteController() throws Exception {
-        DAO = new PacienteDAO(Paciente.class, "dao/Paciente.dao");
-
-        pacientes = DAO.getAll();
-
-        this.nuevoPaciente(1,43571048, "Paciente Prueba", "Independencia 123", "uade@uade.edu.ar", Sexo.FEMENINO, 20);
+        DAO_Paciente = new PacienteDAO(Paciente.class, "dao/Paciente.dao");
+        pacientes = DAO_Paciente.getAll();
     }
 
-    private Integer getNuevoCodigo() {
-        /*Paciente lastpa = pacientes.get(pacientes.size() - 1);
-        return lastpa.getCodigo() + 1;*/
-        return 0;
-    }
-
-    public Boolean nuevoPaciente(Integer codigo, Integer dni, String nombreCompleto, String domicilio, String email, Sexo sexo, Integer edad) throws Exception {
-        if (buscarPacientePorDNI(dni) == true) {
-            Paciente p = new Paciente(this.getNuevoCodigo(), dni, nombreCompleto, domicilio, email, sexo, edad);
-            this.pacientes.add(p);
-            DAO.save(p);
-            return true;
+    private Integer getNuevoCodigoPaciente() {
+        if (pacientes.size() > 0) {
+            return pacientes.get(pacientes.size() - 1).getCodigo() + 1;
         } else {
-            return false;
+            return 1;
         }
     }
 
+    public Integer nuevoPaciente(PacienteDTO pac) throws Exception {
+        if (buscarPacientePorDNI(pac.getDni()) == null) {
+            Paciente p = new Paciente(this.getNuevoCodigoPaciente(), pac.getDni(), pac.getNombreCompleto(), pac.getDomicilio(), pac.getEmail(), pac.getSexo(), pac.getEdad());
+            this.pacientes.add(p);
+            DAO_Paciente.saveAll(pacientes);
+            return p.getCodigo();
+        } else {
+            return null;
+        }
+    }
 
-    public boolean buscarPacientePorDNI(Integer dni) {
-        PacienteDAO pdao = null;
-
+    public Integer buscarPacientePorDNI(Integer dni) {
         for (Paciente i : this.pacientes) {
             if (dni.intValue() == i.getDni().intValue()) {
-                //pdao = new PacienteDAO(i.getCodigo(), i.getDni(), i.getEmail(), i.getDomicilio(), i.getEmail(), i.getSexo(), i.getEdad());
-                return false;
+                return i.getCodigo();
             }
         }
 
-        return true;
+        return null;
     }
 
+    public PacienteDTO obtenerPaciente(Integer codigo) {
+        PacienteDTO pac = null;
 
-    public List<Paciente> obtenerListaPacientes() throws Exception {
-        List<Paciente> lista = new ArrayList<Paciente>();
+        for (Paciente i : this.pacientes) {
+            if (codigo.intValue() == i.getCodigo().intValue()) {
+                pac = new PacienteDTO(i.getCodigo(), i.getDni(), i.getEmail(), i.getDomicilio(), i.getEmail(), i.getSexo(), i.getEdad());
+                break;
+            }
+        }
+
+        return pac;
+    }
+
+    public List<PacienteDTO> obtenerListaPacientes() throws Exception {
+        List<PacienteDTO> lista = new ArrayList<PacienteDTO>();
 
         for (Paciente i : pacientes) {
-            lista.add(new Paciente(i.getCodigo(), i.getDni(), i.getEmail(), i.getDomicilio(), i.getEmail(), i.getSexo(), i.getEdad()));
+            lista.add(new PacienteDTO(i.getCodigo(), i.getDni(), i.getEmail(), i.getDomicilio(), i.getEmail(), i.getSexo(), i.getEdad()));
         }
 
         return lista;

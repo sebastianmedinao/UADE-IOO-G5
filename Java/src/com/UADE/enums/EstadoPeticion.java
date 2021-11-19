@@ -1,5 +1,5 @@
-package com.UADE.model;
+package com.UADE.enums;
 
-public enum EstadoResultado {
+public enum EstadoPeticion {
     INICIO, ENPROCESO, FINALIZADO, ERRORENANALISIS;
 }

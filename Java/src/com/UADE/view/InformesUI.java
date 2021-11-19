@@ -1,15 +1,9 @@
 package com.UADE.view;
 
 import com.UADE.controller.PeticionController;
-import com.UADE.controller.SucursalController;
-import com.UADE.dao.PeticionDAO;
-import com.UADE.dto.DatosPeticionDTO;
-import com.UADE.dto.DatosSucursalDTO;
-import com.UADE.model.Peticion;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.util.List;
 
 public class InformesUI {
     private JPanel panel1;

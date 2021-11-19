@@ -1,16 +1,16 @@
-package com.UADE.model;
+package com.UADE.dto;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sucursal {
+public class SucursalDTO {
     private final Integer codigo;
     private String direccion;
     private String telefono;
     private List<Integer> codUsuarios = new ArrayList<Integer>();
     private Integer codUsuarioRespTecnico = null;
 
-    public Sucursal(Integer codigo, String direccion, String telefono, List<Integer> codUsuarios, Integer codUsuarioRespTecnico) {
+    public SucursalDTO(Integer codigo, String direccion, String telefono, List<Integer> codUsuarios, Integer codUsuarioRespTecnico) {
         this.codigo = codigo;
         this.direccion = direccion;
         this.telefono = telefono;

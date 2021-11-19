@@ -1,11 +1,13 @@
-package com.UADE.model;
+package com.UADE.dto;
 
 import com.UADE.enums.EstadoPeticion;
+import com.UADE.model.*;
 
 import java.util.Date;
 import java.util.List;
 
-public class Peticion {
+
+public class PeticionDTO {
     private final Integer codigo;
     private String obraSocial;
     private Date fechaInicio;
@@ -16,7 +18,7 @@ public class Peticion {
     private List<Integer> codPracticas;
     private List<Integer> codResultadosPracticas;
 
-    public Peticion(Integer codigo, String obraSocial, Date fechaInicio, Date fechaEstimadaEntrega, EstadoPeticion estadoPeticion, Integer codPaciente, Integer codSucursal, List<Integer> codPracticas, List<Integer> codResultadosPracticas) {
+    public PeticionDTO(Integer codigo, String obraSocial, Date fechaInicio, Date fechaEstimadaEntrega, EstadoPeticion estadoPeticion, Integer codPaciente, Integer codSucursal, List<Integer> codPracticas, List<Integer> codResultadosPracticas) {
         this.codigo = codigo;
         this.obraSocial = obraSocial;
         this.fechaInicio = fechaInicio;
@@ -96,3 +98,6 @@ public class Peticion {
         this.codResultadosPracticas = codResultadosPracticas;
     }
 }
+
+
+

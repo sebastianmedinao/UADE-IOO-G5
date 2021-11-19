@@ -3,40 +3,49 @@ package com.UADE.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.UADE.dao.CriterioDAO;
 import com.UADE.dao.PracticaDAO;
-import com.UADE.dto.DatosPracticaDTO;
+import com.UADE.dto.PracticaDTO;
 import com.UADE.model.*;
 
 public class PracticaController {
     private List<Practica> practicas;
-    private final PracticaDAO DAO;
+    private final PracticaDAO DAO_Practica;
+
+    private List<Criterio> criterios;
+    private final CriterioDAO DAO_Criterio;
 
     public PracticaController() throws Exception {
-        DAO = new PracticaDAO(Practica.class, "dao/Practica.dao");
-        practicas = DAO.getAll();
+        DAO_Practica = new PracticaDAO(Practica.class, "dao/Practica.dao");
+        practicas = DAO_Practica.getAll();
+
+        DAO_Criterio = new CriterioDAO(Criterio.class, "dao/Criterio.dao");
+        criterios = DAO_Criterio.getAll();
     }
 
-    private Integer getNuevoCodigo() {
-        Practica lastpract = practicas.get(practicas.size() - 1);
-        return lastpract.getCodigo() + 1;
+    private Integer getNuevoCodigoPractica() {
+        if (practicas.size() > 0) {
+            return practicas.get(practicas.size() - 1).getCodigo() + 1;
+        } else {
+            return 1;
+        }
     }
 
-    public Integer nuevaPractica(Integer codigo, String nombre, Integer tiempoEstimado, List<Criterio> criterios) throws Exception {
-        Practica practica = new Practica(codigo, nombre, tiempoEstimado, criterios);
+    public Integer nuevaPractica(PracticaDTO pracdto) throws Exception {
+        Practica practica = new Practica(this.getNuevoCodigoPractica(), pracdto.getNombre(), pracdto.getTiempoEstimado(), pracdto.getCodCriterios(), pracdto.getCodSubPracticas());
         practicas.add(practica);
 
-        DAO.saveAll(practicas);
+        DAO_Practica.saveAll(practicas);
 
         return practica.getCodigo();
     }
 
-
-    public DatosPracticaDTO obtenerDatosPractica(Integer codigo) {
-        DatosPracticaDTO practdto = null;
+    public PracticaDTO obtenerDatosPractica(Integer codigo) {
+        PracticaDTO practdto = null;
 
         for (Practica i : this.practicas) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
-                practdto = new DatosPracticaDTO(i.getCodigo(), i.getNombre(), i.getTiempoEstimado(), i.getCriterios());
+                practdto = new PracticaDTO(i.getCodigo(), i.getNombre(), i.getTiempoEstimado(), i.getCodCriterios(), i.getCodSubPracticas());
                 break;
             }
         }
@@ -58,28 +67,30 @@ public class PracticaController {
 
         practicas.remove(practABorrar);
 
-        DAO.saveAll(practicas);
+        DAO_Practica.saveAll(practicas);
     }
 
-    public void actualizarPractica(Integer codigo, String nombre, Integer tiempoEstimado, List<Criterio> criterios) throws Exception {
+    public void actualizarPractica(PracticaDTO pracdto) throws Exception {
         for (Practica i : this.practicas) {
-            if (codigo.intValue() == i.getCodigo().intValue()) {
-                i.setNombre(nombre);
-                i.setTiempoEstimado(tiempoEstimado);
-                i.setCriterios(criterios);
-                DAO.saveAll(practicas);
+            if (pracdto.getCodigo().intValue() == i.getCodigo().intValue()) {
+                i.setNombre(pracdto.getNombre());
+                i.setTiempoEstimado(pracdto.getTiempoEstimado());
+                i.setCodCriterios(pracdto.getCodCriterios());
+                i.setCodSubPracticas(pracdto.getCodSubPracticas());
+                DAO_Practica.saveAll(practicas);
                 break;
             }
         }
     }
 
-    public List<DatosPracticaDTO> obtenerListaPracticas() {
-        List<DatosPracticaDTO> listaPracticas = new ArrayList<>();
+    public List<PracticaDTO> obtenerListaPracticas() {
+        List<PracticaDTO> listaPracticas = new ArrayList<>();
+
         for (Practica i : this.practicas) {
-            listaPracticas.add(new DatosPracticaDTO(i.getCodigo(),i.getNombre(),i.getTiempoEstimado(),i.getCriterios()));
+            listaPracticas.add(new PracticaDTO(i.getCodigo(),i.getNombre(),i.getTiempoEstimado(), i.getCodCriterios(), i.getCodSubPracticas()));
         }
 
-    return listaPracticas;
+        return listaPracticas;
     }
 
 }

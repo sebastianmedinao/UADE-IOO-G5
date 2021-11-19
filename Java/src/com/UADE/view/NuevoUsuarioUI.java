@@ -2,8 +2,9 @@ package com.UADE.view;
 
 import com.UADE.controller.SucursalController;
 import com.UADE.controller.UsuarioController;
-import com.UADE.dto.DatosSucursalDTO;
-import com.UADE.model.RolSistema;
+import com.UADE.dto.SucursalDTO;
+import com.UADE.dto.UsuarioDTO;
+import com.UADE.enums.RolSistema;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -48,9 +49,9 @@ public class NuevoUsuarioUI {
         usuc = new UsuarioController();
         succ = new SucursalController();
 
-        List<DatosSucursalDTO> listasuc = succ.obtenerListaSucursales();
+        List<SucursalDTO> listasuc = succ.obtenerListaSucursales();
 
-        for (DatosSucursalDTO suc : listasuc) {
+        for (SucursalDTO suc : listasuc) {
             comboSucursal.addItem(suc.getCodigo());
         }
 
@@ -67,22 +68,22 @@ public class NuevoUsuarioUI {
                     return;
                 }
 
-                Boolean result = null;
+                Integer result = null;
+                UsuarioDTO newuser = new UsuarioDTO(null, txtUsuario.getText(), txtClave.getText(), txtEmail.getText(), txtNombre.getText(), txtDomicilio.getText(), Integer.valueOf(txtDNI.getText()), datenac, (RolSistema) comboRol.getSelectedItem() );
+
                 try {
-                    result = usuc.nuevoUsuario(txtUsuario.getText(), txtClave.getText(), txtEmail.getText(), txtNombre.getText(), txtDomicilio.getText(), Integer.valueOf(txtDNI.getText()), datenac, (RolSistema) comboRol.getSelectedItem());
+                    result = usuc.nuevoUsuario(newuser);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
 
                 if (result == null) {
-                    JOptionPane.showMessageDialog(null,"Datos invàlidos.", "Error", JOptionPane.INFORMATION_MESSAGE);
-                } else if (!result) {
                     JOptionPane.showMessageDialog(null,"El nombre de usuario ya existe.", "Error", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(null,"Se ha creado el usuario " + txtUsuario.getText(),"Nuevo usuario creado", JOptionPane.INFORMATION_MESSAGE);
 
                     try {
-                        succ.agregarUsuarioASucursal((Integer) comboSucursal.getSelectedItem(), txtUsuario.getText(), responsableTecnicoCheckBox.isSelected());
+                        succ.agregarUsuarioASucursal((Integer) comboSucursal.getSelectedItem(), result, responsableTecnicoCheckBox.isSelected());
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }

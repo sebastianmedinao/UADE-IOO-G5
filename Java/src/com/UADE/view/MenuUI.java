@@ -1,6 +1,6 @@
 package com.UADE.view;
 
-import com.UADE.model.RolSistema;
+import com.UADE.enums.RolSistema;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

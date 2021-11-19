@@ -2,7 +2,7 @@ package com.UADE.view;
 
 import com.UADE.controller.PacienteController;
 import com.UADE.model.Paciente;
-import com.UADE.model.Sexo;
+import com.UADE.enums.Sexo;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -33,9 +33,7 @@ public class NuevoPacienteUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
-
         pacientec = new PacienteController();
-        List<Paciente> lista = pacientec.obtenerListaPacientes();
         
         guardarButton.addActionListener(new ActionListener() {
             @Override
@@ -56,15 +54,11 @@ public class NuevoPacienteUI {
                     }
                     edad = Integer.valueOf(txtEdad.getText());
 
-                    Integer codigo = pacientec.obtenerListaPacientes().size();
-
-                    codigoNuevoP = pacientec.nuevoPaciente(codigo+1, dni , txtNombre.getText(), txtDomicilio.getText(), txtMail.getText(), sexo, edad);
-
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
 
-               if (codigoNuevoP == null) {
+               /*if (codigoNuevoP == null) {
                     JOptionPane.showMessageDialog(null,"Datos invàlidos.", "Error", JOptionPane.INFORMATION_MESSAGE);
                 } else if (codigoNuevoP == false) {
                     JOptionPane.showMessageDialog(null,"El paciente ya esta registrado", "Error", JOptionPane.INFORMATION_MESSAGE);
@@ -78,7 +72,7 @@ public class NuevoPacienteUI {
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
-                }
+                }*/
 
 
 

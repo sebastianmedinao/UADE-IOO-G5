@@ -8,17 +8,32 @@ import java.util.List;
 
 public class ListaPeticionesDTO {
     private final Integer codigo;
-    private final Date fechaInicio;
-    private final Paciente paciente;
+    private Date fechaInicio;
+    private Integer codPaciente;
 
-    public ListaPeticionesDTO(Integer codigo, Date fechaInicio, Paciente paciente) {
+    public ListaPeticionesDTO(Integer codigo, Date fechaInicio, Integer codPaciente) {
         this.codigo = codigo;
         this.fechaInicio = fechaInicio;
-        this.paciente = paciente;
+        this.codPaciente = codPaciente;
     }
 
+    public Integer getCodigo() {
+        return codigo;
+    }
 
-    public Integer getCodigo() { return codigo; }
-    public Date getFechaInicio() { return fechaInicio; }
-    public Paciente getPaciente() { return paciente;}
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Integer getCodPaciente() {
+        return codPaciente;
+    }
+
+    public void setCodPaciente(Integer codPaciente) {
+        this.codPaciente = codPaciente;
+    }
 }

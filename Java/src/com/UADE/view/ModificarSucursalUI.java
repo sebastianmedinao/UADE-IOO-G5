@@ -1,7 +1,7 @@
 package com.UADE.view;
 
 import com.UADE.controller.SucursalController;
-import com.UADE.dto.DatosSucursalDTO;
+import com.UADE.dto.SucursalDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -27,7 +27,7 @@ public class ModificarSucursalUI {
 
         sucursalc = new SucursalController();
 
-        DatosSucursalDTO sucdto = sucursalc.obtenerDatosSucursal(codigo);
+        SucursalDTO sucdto = sucursalc.obtenerDatosSucursal(codigo);
 
         txtDirecion.setText(sucdto.getDireccion());
         txtTelefono.setText(sucdto.getTelefono());

@@ -1,7 +1,7 @@
 package com.UADE.view;
 
 import com.UADE.controller.SucursalController;
-import com.UADE.dto.DatosSucursalDTO;
+import com.UADE.dto.SucursalDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -31,9 +31,9 @@ public class MaestroSucursalesUI {
 
         sucursalc = new SucursalController();
 
-        List<DatosSucursalDTO> lista = sucursalc.obtenerListaSucursales();
+        List<SucursalDTO> lista = sucursalc.obtenerListaSucursales();
 
-        for (DatosSucursalDTO i : lista)
+        for (SucursalDTO i : lista)
             listModel.addElement(i.getCodigo() + " - " + i.getDireccion());
 
         nuevaSucursalButton.addActionListener(new ActionListener() {

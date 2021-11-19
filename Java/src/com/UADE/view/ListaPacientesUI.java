@@ -1,6 +1,7 @@
 package com.UADE.view;
 
 import com.UADE.controller.PacienteController;
+import com.UADE.dto.PacienteDTO;
 import com.UADE.model.Paciente;
 
 import javax.swing.*;
@@ -29,9 +30,9 @@ public class ListaPacientesUI{
 
         pacic = new PacienteController();
 
-        List<Paciente> lista = pacic.obtenerListaPacientes();
+        List<PacienteDTO> lista = pacic.obtenerListaPacientes();
 
-        listaPacientes = new JList<String>((ListModel<String>) lista);
+        /*listaPacientes = new JList<String>((ListModel<String>) lista);
 
         listaPacientes.setVisibleRowCount(8);
         JScrollPane laminaDespazamiento = new JScrollPane(listaPacientes);
@@ -47,7 +48,7 @@ public class ListaPacientesUI{
 
         frame.add(laminaDeTexto, BorderLayout.SOUTH);
 
-
+        */
 
 
     }
