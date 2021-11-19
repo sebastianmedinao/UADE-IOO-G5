@@ -21,18 +21,5 @@ public class InformesUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
-        DefaultListModel<String> listModel = new DefaultListModel<String>();
-        listaPeticiones.setModel(listModel);
-
-
-        //peticionController = new PeticionController();
-
-        //List<DatosPeticionDTO> lista = peticionController.obtenerDatosPeticion(1);
-
-
-        /*for (DatosPeticionDTO i : lista)
-            listModel.addElement();*/
-
-
     }
 }
