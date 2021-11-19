@@ -2,19 +2,16 @@ package com.UADE.view;
 
 import com.UADE.controller.PacienteController;
 import com.UADE.dto.PacienteDTO;
-import com.UADE.dto.SucursalDTO;
-import com.UADE.model.Paciente;
 import com.UADE.enums.Sexo;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 public class NuevoPacienteUI {
     private JPanel panel1;
-    private JTextField txtNombre;
+    private JTextField txtNombreCompleto;
     private JTextField txtDomicilio;
     private JTextField txtMail;
     private JTextField txtSexo;
@@ -55,15 +52,17 @@ public class NuevoPacienteUI {
                 }
 
                 Integer codigoNuevoPac = null;
+                String nombrePac = null;
 
                 try {
-                    PacienteDTO pacdto = new PacienteDTO(null, Integer.valueOf(nroDni.getText()), txtNombre.getText(), txtDomicilio.getText(), txtMail.getText(), sexo, Integer.valueOf(txtEdad.getText()));
+                    PacienteDTO pacdto = new PacienteDTO(null, Integer.valueOf(nroDni.getText()), txtNombreCompleto.getText(), txtDomicilio.getText(), txtMail.getText(), sexo, Integer.valueOf(txtEdad.getText()));
                     codigoNuevoPac = pacientec.nuevoPaciente(pacdto);
+                    nombrePac = txtNombreCompleto.getText();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
 
-                JOptionPane.showMessageDialog(null,"Se ha creado el paciente" + codigoNuevoPac,"Nuevo paciente creado", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Se ha creado el paciente " + nombrePac,"Nuevo paciente creado", JOptionPane.INFORMATION_MESSAGE);
 
                 try {
                     new MaestroPacientesUI();

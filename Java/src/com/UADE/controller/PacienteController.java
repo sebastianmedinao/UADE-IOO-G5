@@ -89,7 +89,7 @@ public class PacienteController {
 
         for (Paciente i : this.pacientes) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
-                pac = new PacienteDTO(i.getCodigo(), i.getDni(), i.getEmail(), i.getDomicilio(), i.getEmail(), i.getSexo(), i.getEdad());
+                pac = new PacienteDTO(i.getCodigo(), i.getDni(), i.getNombreCompleto(), i.getDomicilio(), i.getEmail(), i.getSexo(), i.getEdad());
                 break;
             }
         }
@@ -101,7 +101,7 @@ public class PacienteController {
         List<PacienteDTO> lista = new ArrayList<PacienteDTO>();
 
         for (Paciente i : pacientes) {
-            lista.add(new PacienteDTO(i.getCodigo(), i.getDni(), i.getEmail(), i.getDomicilio(), i.getEmail(), i.getSexo(), i.getEdad()));
+            lista.add(new PacienteDTO(i.getCodigo(), i.getDni(), i.getNombreCompleto(), i.getDomicilio(), i.getEmail(), i.getSexo(), i.getEdad()));
         }
 
         return lista;

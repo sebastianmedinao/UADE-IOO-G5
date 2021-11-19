@@ -7,6 +7,7 @@ import com.UADE.dto.SucursalDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.xml.transform.Result;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -30,8 +31,15 @@ public class PeticionesUI {
         cargarResultadosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//cargar resultaods
+                String value = String.valueOf(listPeticiones.getSelectedValue());
+                Integer cod = Integer.valueOf(value.split(" ")[0]);
+                try {
+                    new ResultadoUI(cod);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
+
         });
 
 

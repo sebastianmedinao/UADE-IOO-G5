@@ -43,7 +43,7 @@ public class MaestroPacientesUI {
         List<PacienteDTO> lista = pacic.obtenerListaPacientes();
 
         for (PacienteDTO i : lista)
-            listModel.addElement(i.getCodigo() + " " + i.getDni() + "_" + i.getNombreCompleto());
+            listModel.addElement(i.getCodigo() + " " + i.getDni() + "-" + i.getNombreCompleto());
 
         nuevoPacienteButton.addActionListener(new ActionListener() {
             @Override
