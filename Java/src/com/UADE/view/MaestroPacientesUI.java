@@ -63,8 +63,11 @@ public class MaestroPacientesUI {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
 
+                String value = listPacientes.getSelectedValue();
+                Integer cod = Integer.valueOf(value.split(" ")[0]);
+
                 try {
-                    new ModificarPacienteUI();
+                    new ModificarPacienteUI(cod);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

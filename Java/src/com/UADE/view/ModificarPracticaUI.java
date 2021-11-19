@@ -28,7 +28,6 @@ public class ModificarPracticaUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
-
         PracticaDTO practicaDTO = practicaC.obtenerDatosPractica(codigo);
 
         txtNombre.setText(practicaDTO.getNombre());
