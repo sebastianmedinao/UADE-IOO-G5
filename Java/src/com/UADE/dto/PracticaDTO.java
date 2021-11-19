@@ -1,7 +1,5 @@
 package com.UADE.dto;
 
-import com.UADE.model.*;
-
 import java.util.ArrayList;
 import java.util.List;
 

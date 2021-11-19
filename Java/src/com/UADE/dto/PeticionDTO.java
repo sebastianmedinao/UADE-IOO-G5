@@ -1,11 +1,9 @@
 package com.UADE.dto;
 
 import com.UADE.enums.EstadoPeticion;
-import com.UADE.model.*;
 
 import java.util.Date;
 import java.util.List;
-
 
 public class PeticionDTO {
     private final Integer codigo;

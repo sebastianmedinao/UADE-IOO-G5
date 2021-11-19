@@ -1,10 +1,6 @@
 package com.UADE.dto;
 
-import com.UADE.model.*;
-
 import java.util.Date;
-import java.util.List;
-
 
 public class ListaPeticionesDTO {
     private final Integer codigo;

@@ -2,12 +2,6 @@ package com.UADE.dto;
 
 import com.UADE.enums.EstadoResultado;
 
-
-//private Float resultadoNumerico;
-//    private String resultadoLiteral;
-//    private String transcripcion;
-//    private EstadoResultado estado;
-
 public class ResultadoPracticaDTO {
     private final Integer codigo;
     private Float resultadoNumerico;
