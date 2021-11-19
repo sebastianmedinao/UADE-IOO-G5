@@ -23,7 +23,7 @@ public class PracticasUI {
         JFrame frame = new JFrame("Prácticas");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
-        frame.setSize(300, 300);
+        frame.setSize(500, 500);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
@@ -60,17 +60,6 @@ public class PracticasUI {
             public void actionPerformed(ActionEvent e) {
                 try {
                     new ModificarPracticaUI(Integer.parseInt(listaPracticas.getSelectedValue()));
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
-
-        volverAlMenúPrincipalButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    new MenuUI("admin", RolSistema.ADMINISTRADOR);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

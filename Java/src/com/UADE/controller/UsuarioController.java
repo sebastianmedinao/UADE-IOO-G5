@@ -2,7 +2,6 @@ package com.UADE.controller;
 
 import com.UADE.dto.UsuarioDTO;
 import com.UADE.enums.RolSistema;
-import com.UADE.model.Sucursal;
 import com.UADE.model.Usuario;
 import com.UADE.dao.UsuarioDAO;
 

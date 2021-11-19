@@ -15,24 +15,11 @@ public class InformesUI {
         JFrame frame = new JFrame("Informes");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
-        frame.setSize(300, 400);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setSize(500, 500);
+        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
-
-        DefaultListModel<String> listModel = new DefaultListModel<String>();
-        listaPeticiones.setModel(listModel);
-
-
-        //peticionController = new PeticionController();
-
-        //List<DatosPeticionDTO> lista = peticionController.obtenerDatosPeticion(1);
-
-
-        /*for (DatosPeticionDTO i : lista)
-            listModel.addElement();*/
-
 
     }
 }
