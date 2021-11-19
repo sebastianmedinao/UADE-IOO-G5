@@ -34,8 +34,8 @@ public class MaestroPeticionesUI {
 
         List<ListaPeticionesDTO> lista = peticionc.obtenerListaPeticiones();
 
-        for (ListaPeticionesDTO i : lista)
-            listModel.addElement(i.getCodigo() + " " + i.getFechaInicio() + " " + i.getPaciente());
+       /* for (ListaPeticionesDTO i : lista)
+            listModel.addElement(i.getCodigo() + " " + i.getFechaInicio() + " " + i.getPaciente());*/
 
 
 

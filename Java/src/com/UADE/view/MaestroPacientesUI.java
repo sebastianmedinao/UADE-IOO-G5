@@ -39,7 +39,7 @@ public class MaestroPacientesUI {
 
         pacic = new PacienteController();
 
-        List<Paciente> lista = pacic.obtenerListaPacientes();
+       /* List<Paciente> lista = pacic.obtenerListaPacientes();
 
         for (Paciente i : lista)
             lista.add(new Paciente(i.getCodigo(), i.getDni(), i.getEmail(), i.getDomicilio(), i.getEmail(), i.getSexo(), i.getEdad()));
@@ -54,7 +54,7 @@ public class MaestroPacientesUI {
                     ex.printStackTrace();
                 }
             }
-        });
+        });*/
 
         nuevoPacienteButton.addActionListener(new ActionListener() {
             @Override
