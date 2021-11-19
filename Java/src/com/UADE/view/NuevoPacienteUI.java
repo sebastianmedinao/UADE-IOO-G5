@@ -1,6 +1,8 @@
 package com.UADE.view;
 
 import com.UADE.controller.PacienteController;
+import com.UADE.dto.PacienteDTO;
+import com.UADE.dto.SucursalDTO;
 import com.UADE.model.Paciente;
 import com.UADE.enums.Sexo;
 
@@ -12,13 +14,13 @@ import java.util.List;
 
 public class NuevoPacienteUI {
     private JPanel panel1;
-    private JTextField nroDni;
     private JTextField txtNombre;
     private JTextField txtDomicilio;
     private JTextField txtMail;
     private JTextField txtSexo;
     private JTextField txtEdad;
     private JButton guardarButton;
+    private JTextField nroDni;
     private JRadioButton femeninoRadioButton;
     private JRadioButton masculinoRadioButton;
     private PacienteController pacientec;
@@ -34,48 +36,40 @@ public class NuevoPacienteUI {
         frame.setVisible(true);
 
         pacientec = new PacienteController();
-        
+
+
+
         guardarButton.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                Boolean codigoNuevoP = null;
-                Integer dni = null;
-                Integer edad;
-                Sexo sexo = null;
-                try {
-                    dni = Integer.valueOf(nroDni.getText());
-                    //Sexo sexo = Sexo.valueOf(txtSexo.getText());
-                    if (femeninoRadioButton.isSelected()){
-                        sexo = Sexo.FEMENINO;
-                    }else if(masculinoRadioButton.isSelected()){
-                        sexo = Sexo.MASCULINO;
-                    } else{ //Chequear
-                        JOptionPane.showMessageDialog(null,"Seleccione el sexo", "Error", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                    edad = Integer.valueOf(txtEdad.getText());
 
+                Sexo sexo = null;
+
+                if (femeninoRadioButton.isSelected()){
+                    sexo = (Sexo.FEMENINO);
+                }else if(masculinoRadioButton.isSelected()){
+                    sexo = (Sexo.MASCULINO);
+                } else{
+                    JOptionPane.showMessageDialog(null,"Seleccione el sexo", "Error", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+                Integer codigoNuevoPac = null;
+
+                try {
+                    PacienteDTO pacdto = new PacienteDTO(null, Integer.valueOf(nroDni.getText()), txtNombre.getText(), txtDomicilio.getText(), txtMail.getText(), sexo, Integer.valueOf(txtEdad.getText()));
+                    codigoNuevoPac = pacientec.nuevoPaciente(pacdto);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
 
-               /*if (codigoNuevoP == null) {
-                    JOptionPane.showMessageDialog(null,"Datos invàlidos.", "Error", JOptionPane.INFORMATION_MESSAGE);
-                } else if (codigoNuevoP == false) {
-                    JOptionPane.showMessageDialog(null,"El paciente ya esta registrado", "Error", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(null,"Se ha registrado el paciente " + txtNombre.getText(),"Nuevo usuario creado", JOptionPane.INFORMATION_MESSAGE);
-                    
-                    frame.dispose();
+                JOptionPane.showMessageDialog(null,"Se ha creado el paciente" + codigoNuevoPac,"Nuevo paciente creado", JOptionPane.INFORMATION_MESSAGE);
 
-                    try {
-                        new MaestroPacientesUI();
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                }*/
-
-
-
+                try {
+                    new MaestroPacientesUI();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
                 frame.dispose();
             }
         });
