@@ -91,5 +91,16 @@ public class MenuUI {
             }
         });
 
+        peticionesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    new MaestroPeticionesUI();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
     }
 }

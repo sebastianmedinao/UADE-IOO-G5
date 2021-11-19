@@ -18,7 +18,7 @@ public class MaestroPeticionesUI {
     private JButton verPeticionButton;
     private PeticionController peticionc;
 
-    public MaestroPeticionesUI(Integer codigo) throws Exception {
+    public MaestroPeticionesUI() throws Exception {
         JFrame frame = new JFrame("Maestro de Peticiones");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
@@ -80,7 +80,7 @@ public class MaestroPeticionesUI {
                 frame.dispose();
 
                 try {
-                    new MaestroPeticionesUI(cod);
+                    new MaestroPeticionesUI();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

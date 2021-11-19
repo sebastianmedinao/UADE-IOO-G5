@@ -30,7 +30,7 @@ public class NuevaPeticionUI {
         JFrame frame = new JFrame("Nueva petición");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
-        frame.setSize(300, 300);
+        frame.setSize(400, 300);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);

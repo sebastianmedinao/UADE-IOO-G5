@@ -39,7 +39,7 @@ public class PeticionesUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new MaestroPeticionesUI(null);
+                    new MaestroPeticionesUI();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
