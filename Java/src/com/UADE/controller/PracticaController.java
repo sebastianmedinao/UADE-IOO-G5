@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.UADE.dao.CriterioDAO;
 import com.UADE.dao.PracticaDAO;
+import com.UADE.dto.CriterioDTO;
 import com.UADE.dto.ListaPracticasDTO;
 import com.UADE.dto.PracticaDTO;
 import com.UADE.model.*;
@@ -102,6 +103,33 @@ public class PracticaController {
         }
 
         return listaPracticas;
+    }
+
+    public CriterioDTO obtenerCriterio(Integer codCriterio) {
+        CriterioDTO cdto = null;
+
+        for (Criterio i : this.criterios) {
+            if (i.getCodigo().intValue() == codCriterio.intValue()) {
+                cdto = new CriterioDTO(i.getCodigo(), i.getSexo(), i.getCondicionesPreexistentes(), i.getEdadDesde(), i.getEdadHasta(), i.getInterpretacion(), i.getReferenciaInferior(), i.getReferenciaSuperior(), i.getUnidadMedida(), i.getReservado());
+                break;
+            }
+        }
+
+        return cdto;
+    }
+
+    public List<CriterioDTO> obtenerCriteriosPractica(Integer codPractica) {
+        List<CriterioDTO> listdto = new ArrayList<>();
+
+        for (Practica i : this.practicas) {
+            if (codPractica.intValue() == i.getCodigo().intValue()) {
+                for (Integer j : i.getCodCriterios()) {
+                    listdto.add(this.obtenerCriterio(j));
+                }
+            }
+        }
+
+        return listdto;
     }
 
 }
