@@ -1,12 +1,17 @@
 package com.UADE.view;
 
+import com.UADE.controller.PeticionController;
 import com.UADE.controller.PracticaController;
+import com.UADE.dto.ListaPeticionesDTO;
+import com.UADE.dto.ListaPracticasDTO;
+import com.UADE.dto.PracticaDTO;
 import com.UADE.enums.RolSistema;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class PracticasUI {
     private JList<String> listaPracticas;
@@ -28,21 +33,17 @@ public class PracticasUI {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
-        /*DefaultListModel<String> listModel = new DefaultListModel<String>();
-        listaPracticas.setModel(listModel);
+        DefaultListModel<String> listModel = new DefaultListModel<>();
 
+
+        listPracticas.setModel(listModel);
 
         practicasC = new PracticaController();
-        List<DatosPracticaDTO> lista = practicasC.obtenerListaPracticas();
 
-        String value = listaPracticas.getSelectedValue();
-        Integer cod = Integer.valueOf(value.split(" ")[0]);
+        List<ListaPracticasDTO> lista = practicasC.obtenerListaPracticasSimplificada();
 
-        for (DatosPracticaDTO i : lista)
-            listModel.addElement(i.getCodigo() + " - " + i.getNombre());
-*/
-        // TODO: Ver tema listado de prácticas
-
+        for (ListaPracticasDTO i : lista)
+            listModel.addElement(i.getCodigo() + " " + i.getNombre());
 
         crearNuevaPrácticaButton.addActionListener(new ActionListener() {
             @Override
@@ -58,8 +59,10 @@ public class PracticasUI {
         modificarPrácticaExistenteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String value = String.valueOf(listPracticas.getSelectedValue());
+                Integer cod = Integer.valueOf(value.split(" ")[0]);
                 try {
-                    new ModificarPracticaUI(Integer.parseInt(listaPracticas.getSelectedValue()));
+                    new ModificarPracticaUI(cod);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

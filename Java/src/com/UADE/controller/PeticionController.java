@@ -82,22 +82,24 @@ public class PeticionController {
         return res;
     }
 
-    public void eliminarPeticion(Integer codigo) throws Exception {
+    public boolean eliminarPeticion(Integer codigo) throws Exception {
         Peticion petABorrar = null;
 
         for (Peticion i : this.peticiones) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
-                if (i.getEstadoPeticion() != EstadoPeticion.INICIO) {
+                if (i.getEstadoPeticion() == EstadoPeticion.INICIO) {
                 petABorrar = i; }
                 break;
             }
         }
 
         // TODO: Faltan reglas de negocio
-
-        peticiones.remove(petABorrar);
-
-        DAO_Peticion.saveAll(peticiones);
+        if (petABorrar == null){return false;}
+        else {
+            peticiones.remove(petABorrar);
+            DAO_Peticion.saveAll(peticiones);
+            return true;
+        }
     }
 
 
