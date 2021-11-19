@@ -2,10 +2,9 @@ package com.UADE.view;
 
 import com.UADE.controller.SucursalController;
 import com.UADE.controller.UsuarioController;
-import com.UADE.dto.DatosSucursalDTO;
+import com.UADE.dto.SucursalDTO;
 import com.UADE.dto.UsuarioDTO;
-import com.UADE.model.RolSistema;
-import com.UADE.model.Usuario;
+import com.UADE.enums.RolSistema;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -55,7 +54,7 @@ public class ModificarUsuarioUI {
         txtDNI.setText(String.valueOf(usermod.getDni()));
         txtDomicilio.setText(usermod.getDomicilio());
         txtEmail.setText(usermod.getEmail());
-        txtNacimiento.setText(new SimpleDateFormat("dd/MM/yyyy").format(usermod.getFechaNacimiento()));
+        txtNacimiento.setText(new SimpleDateFormat("dd/MM/yyyy").format(usermod.getFechaDeNacimiento()));
         txtNombre.setText(usermod.getNombreCompleto());
         txtClave.setText("");
 
@@ -65,14 +64,14 @@ public class ModificarUsuarioUI {
 
         comboRol.setSelectedItem(usermod.getRolSistema());
 
-        List<DatosSucursalDTO> listasuc = succ.obtenerListaSucursales();
+        List<SucursalDTO> listasuc = succ.obtenerListaSucursales();
 
-        for (DatosSucursalDTO suc : listasuc) {
+        for (SucursalDTO suc : listasuc) {
             comboSucursal.addItem(suc.getCodigo());
 
             if (oldSucursal == null) {
-                for (UsuarioDTO user : suc.getUsuarios()) {
-                    if (user.getNombreUsuario().equals(usermod.getNombreUsuario())) {
+                for (Integer codigo : suc.getCodUsuarios()) {
+                    if (usermod.getCodigo().intValue() == codigo.intValue()) {
                         oldSucursal = suc.getCodigo();
                         break;
                     }
@@ -80,9 +79,7 @@ public class ModificarUsuarioUI {
             }
         }
 
-        if (oldSucursal == null) {
-            JOptionPane.showMessageDialog(null,"Error interno - sucursal invalida", "Error", JOptionPane.INFORMATION_MESSAGE);
-        } else {
+        if (oldSucursal != null) {
             comboSucursal.setSelectedItem(oldSucursal);
         }
 
@@ -116,14 +113,14 @@ public class ModificarUsuarioUI {
                     if (comboSucursal.getSelectedItem() != oldSucursal) {
                         if (oldSucursal != null) {
                             try {
-                                succ.retirarUsuarioDeSucursal(oldSucursal, txtUsuario.getText());
+                                succ.retirarUsuarioDeSucursal(oldSucursal, usermod.getCodigo());
                             } catch (Exception ex) {
                                 ex.printStackTrace();
                             }
                         }
 
                         try {
-                            succ.agregarUsuarioASucursal((Integer) comboSucursal.getSelectedItem(), txtUsuario.getText(), responsableTecnicoCheckBox.isSelected());
+                            succ.agregarUsuarioASucursal((Integer) comboSucursal.getSelectedItem(), usermod.getCodigo(), responsableTecnicoCheckBox.isSelected());
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }

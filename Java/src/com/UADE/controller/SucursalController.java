@@ -1,7 +1,7 @@
 package com.UADE.controller;
 
 import com.UADE.dao.UsuarioDAO;
-import com.UADE.dto.DatosSucursalDTO;
+import com.UADE.dto.SucursalDTO;
 import com.UADE.dto.UsuarioDTO;
 import com.UADE.model.Sucursal;
 import com.UADE.dao.SucursalDAO;
@@ -12,43 +12,42 @@ import java.util.List;
 
 public class SucursalController {
     private List<Sucursal> sucursales = new ArrayList<Sucursal>();
-    private final SucursalDAO DAO;
+    private final SucursalDAO DAO_Sucursal;
 
     private List<Usuario> usuarios = new ArrayList<Usuario>();
-    private final UsuarioDAO DAO_Usuarios;
+    private final UsuarioDAO DAO_Usuario;
 
     public SucursalController() throws Exception {
-        DAO = new SucursalDAO(Sucursal.class, "dao/Sucursal.dao");
-        sucursales = DAO.getAll();
+        DAO_Sucursal = new SucursalDAO(Sucursal.class, "dao/Sucursal.dao");
+        sucursales = DAO_Sucursal.getAll();
 
-        DAO_Usuarios = new UsuarioDAO(Usuario.class, "dao/Usuario.dao");
-        usuarios = DAO_Usuarios.getAll();
+        DAO_Usuario = new UsuarioDAO(Usuario.class, "dao/Usuario.dao");
+        usuarios = DAO_Usuario.getAll();
     }
 
-    private Integer getNuevoCodigo() {
+    private Integer getNuevoCodigoSucursal() {
         if (sucursales.size() > 0) {
-            Sucursal lastsuc = sucursales.get(sucursales.size() - 1);
-            return lastsuc.getCodigo() + 1;
+            return sucursales.get(sucursales.size() - 1).getCodigo() + 1;
         } else {
             return 1;
         }
     }
 
-    public Integer nuevaSucursal(String direccion, String telefono) throws Exception {
-        Sucursal sucursal = new Sucursal(this.getNuevoCodigo(), direccion, telefono);
+    public Integer nuevaSucursal(SucursalDTO sucdto) throws Exception {
+        Sucursal sucursal = new Sucursal(this.getNuevoCodigoSucursal(), sucdto.getDireccion(), sucdto.getTelefono(), sucdto.getCodUsuarios(), sucdto.getCodUsuarioRespTecnico());
         sucursales.add(sucursal);
 
-        DAO.saveAll(sucursales);
+        DAO_Sucursal.saveAll(sucursales);
 
         return sucursal.getCodigo();
     }
 
-    public DatosSucursalDTO obtenerDatosSucursal(Integer codigo) {
-        DatosSucursalDTO sucdto = null;
+    public SucursalDTO obtenerDatosSucursal(Integer codigo) {
+        SucursalDTO sucdto = null;
 
         for (Sucursal i : this.sucursales) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
-                sucdto = new DatosSucursalDTO(i.getCodigo(), i.getDireccion(), i.getTelefono(), i.getUsuarios(), i.getRespTecnico());
+                sucdto = new SucursalDTO(i.getCodigo(), i.getDireccion(), i.getTelefono(), i.getCodUsuarios(), i.getCodUsuarioRespTecnico());
                 break;
             }
         }
@@ -70,7 +69,7 @@ public class SucursalController {
 
         sucursales.remove(sucABorrar);
 
-        DAO.saveAll(sucursales);
+        DAO_Sucursal.saveAll(sucursales);
     }
 
     public void actualizarSucursal(Integer codigo, String direccion, String telefono) throws Exception {
@@ -78,79 +77,80 @@ public class SucursalController {
             if (codigo.intValue() == i.getCodigo().intValue()) {
                 i.setDireccion(direccion);
                 i.setTelefono(telefono);
-                DAO.saveAll(sucursales);
+                DAO_Sucursal.saveAll(sucursales);
                 break;
             }
         }
     }
 
-    public List<DatosSucursalDTO> obtenerListaSucursales() {
-        List<DatosSucursalDTO> suclist = new ArrayList<DatosSucursalDTO>();
+    public List<SucursalDTO> obtenerListaSucursales() {
+        List<SucursalDTO> suclist = new ArrayList<SucursalDTO>();
 
         for (Sucursal i : sucursales) {
-            suclist.add(new DatosSucursalDTO(i.getCodigo(), i.getDireccion(), i.getTelefono(), i.getUsuarios(), i.getRespTecnico()));
+            suclist.add(new SucursalDTO(i.getCodigo(), i.getDireccion(), i.getTelefono(), i.getCodUsuarios(), i.getCodUsuarioRespTecnico()));
         }
 
         return suclist;
     }
 
-    public void agregarUsuarioASucursal(Integer codigo, String nombreUsuario, Boolean respTecnico) throws Exception {
-        Usuario u = null;
-
-        for (Usuario i : this.usuarios) {
-            if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0) {
-                u = i;
-                break;
-            }
-        }
-
+    public void agregarUsuarioASucursal(Integer codigoSucursal, Integer codigoUsuario, Boolean respTecnico) throws Exception {
         for (Sucursal i : this.sucursales) {
-            if (codigo.intValue() == i.getCodigo().intValue()) {
+            if (codigoSucursal.intValue() == i.getCodigo().intValue()) {
 
-                i.addUsuario(u);
+                List<Integer> usuarios = i.getCodUsuarios();
+
+                if (!usuarios.contains(codigoUsuario)) {
+                    usuarios.add(codigoUsuario);
+                }
+
+                i.setCodUsuarios(usuarios);
 
                 if (respTecnico) {
-                    i.setRespTecnico(u);
+                    i.setCodUsuarioRespTecnico(codigoUsuario);
                 }
 
                 break;
             }
         }
 
-        DAO.saveAll(sucursales);
+        DAO_Sucursal.saveAll(sucursales);
     }
 
-    public void retirarUsuarioDeSucursal(Integer codigo, String nombreUsuario) throws Exception {
-        Usuario u = null;
-
-        for (Usuario i : this.usuarios) {
-            if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0) {
-                u = i;
-                break;
-            }
-        }
-
+    public void retirarUsuarioDeSucursal(Integer codigoSucursal, Integer codigoUsuario) throws Exception {
         for (Sucursal i : this.sucursales) {
-            if (codigo.intValue() == i.getCodigo().intValue()) {
+            if (codigoSucursal.intValue() == i.getCodigo().intValue()) {
 
-                i.removeUsuario(u);
+                List<Integer> usuarios = i.getCodUsuarios();
 
-                if (i.getRespTecnico() == u) {
-                    i.setRespTecnico(null);
+                usuarios.remove(codigoUsuario);
+
+                i.setCodUsuarios(usuarios);
+
+                if (i.getCodUsuarioRespTecnico().intValue() == codigoUsuario.intValue()) {
+                    i.setCodUsuarioRespTecnico(null);
                 }
 
                 break;
             }
         }
 
-        DAO.saveAll(sucursales);
+        DAO_Sucursal.saveAll(sucursales);
     }
 
     public List<UsuarioDTO> obtenerUsuariosSucursal(Integer codigo) {
         List<UsuarioDTO> us = new ArrayList<>();
 
-        for (Usuario i : this.usuarios) {
-            us.add(new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema(), i.getDomicilio(), i.getFechaDeNacimiento()));
+        for (Sucursal i : this.sucursales) {
+            if (codigo.intValue() == i.getCodigo().intValue()) {
+                for (Integer j : i.getCodUsuarios()) {
+                    for (Usuario k : this.usuarios) {
+                        if (j.intValue() == k.getCodigo().intValue()) {
+                            us.add(new UsuarioDTO(k.getCodigo(), k.getNombreUsuario(), k.getPassword(), k.getEmail(), k.getNombreCompleto(), k.getDomicilio(), k.getDni(), k.getFechaDeNacimiento(), k.getRolSistema()));
+                        }
+                    }
+                }
+                break;
+            }
         }
 
         return us;

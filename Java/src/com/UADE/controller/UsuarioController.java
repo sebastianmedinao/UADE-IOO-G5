@@ -1,8 +1,7 @@
 package com.UADE.controller;
 
-import com.UADE.dto.DatosSucursalDTO;
 import com.UADE.dto.UsuarioDTO;
-import com.UADE.model.RolSistema;
+import com.UADE.enums.RolSistema;
 import com.UADE.model.Sucursal;
 import com.UADE.model.Usuario;
 import com.UADE.dao.UsuarioDAO;
@@ -13,24 +12,31 @@ import java.util.List;
 
 public class UsuarioController {
     private List<Usuario> usuarios = new ArrayList<Usuario>();
-    private final UsuarioDAO DAO;
+    private final UsuarioDAO DAO_Usuario;
 
     public UsuarioController() throws Exception {
-        DAO = new UsuarioDAO(Usuario.class, "dao/Usuario.dao");
+        DAO_Usuario = new UsuarioDAO(Usuario.class, "dao/Usuario.dao");
+        usuarios = DAO_Usuario.getAll();
 
-        usuarios = DAO.getAll();
-
-        this.nuevoUsuario("admin", "1234", "uade@uade.edu.ar", "administrador", "lima 1", 10444322, new Date(), RolSistema.ADMINISTRADOR);
+        this.nuevoUsuario(new UsuarioDTO(null, "admin", "1234", "uade@uade.edu.ar", "administrador", "lima 1", 10444322, new Date(), RolSistema.ADMINISTRADOR));
     }
 
-    public Boolean nuevoUsuario(String nombreUsuario, String password, String email, String nombreCompleto, String domicilio, Integer dni, Date fechaDeNacimiento, RolSistema rolSistema) throws Exception {
-        if (buscarUsuarioPorNombreUsuario(nombreUsuario) == null && buscarUsuarioPorDNI(dni) == null) {
-            Usuario u = new Usuario(nombreUsuario, password, email, nombreCompleto, domicilio, dni, fechaDeNacimiento, rolSistema);
-            this.usuarios.add(u);
-            DAO.save(u);
-            return true;
+    private Integer getNuevoCodigo() {
+        if (usuarios.size() > 0) {
+            return usuarios.get(usuarios.size() - 1).getCodigo() + 1;
         } else {
-            return false;
+            return 1;
+        }
+    }
+
+    public Integer nuevoUsuario(UsuarioDTO nuevo) throws Exception {
+        if (buscarUsuarioPorNombreUsuario(nuevo.getNombreUsuario()) == null && buscarUsuarioPorDNI(nuevo.getDni()) == null) {
+            Usuario u = new Usuario(this.getNuevoCodigo(), nuevo.getNombreUsuario(), nuevo.getPassword(), nuevo.getEmail(), nuevo.getNombreCompleto(), nuevo.getDomicilio(), nuevo.getDni(), nuevo.getFechaDeNacimiento(), nuevo.getRolSistema());
+            this.usuarios.add(u);
+            DAO_Usuario.saveAll(usuarios);
+            return u.getCodigo();
+        } else {
+            return null;
         }
     }
 
@@ -56,7 +62,7 @@ public class UsuarioController {
             u.setFechaDeNacimiento(fechaDeNacimiento);
             u.setRolSistema(rolSistema);
 
-            DAO.saveAll(usuarios);
+            DAO_Usuario.saveAll(usuarios);
 
             return true;
         } else {
@@ -69,7 +75,7 @@ public class UsuarioController {
 
         for (Usuario i : this.usuarios) {
             if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0) {
-                udto = new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema(), i.getDomicilio(), i.getFechaDeNacimiento());
+                udto = new UsuarioDTO(i.getCodigo(), i.getNombreUsuario(), i.getPassword(), i.getEmail(), i.getNombreCompleto(), i.getDomicilio(), i.getDni(), i.getFechaDeNacimiento(), i.getRolSistema());
                 break;
             }
         }
@@ -82,7 +88,7 @@ public class UsuarioController {
 
         for (Usuario i : this.usuarios) {
             if (dni.intValue() == i.getDni().intValue()) {
-                udto = new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema(), i.getDomicilio(), i.getFechaDeNacimiento());
+                udto = new UsuarioDTO(i.getCodigo(), i.getNombreUsuario(), i.getPassword(), i.getEmail(), i.getNombreCompleto(), i.getDomicilio(), i.getDni(), i.getFechaDeNacimiento(), i.getRolSistema());
                 break;
             }
         }
@@ -95,7 +101,7 @@ public class UsuarioController {
 
         for (Usuario i : this.usuarios) {
             if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0 && clave.compareToIgnoreCase(i.getPassword()) == 0) {
-                udto = new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema(), i.getDomicilio(), i.getFechaDeNacimiento());
+                udto = new UsuarioDTO(i.getCodigo(), i.getNombreUsuario(), i.getPassword(), i.getEmail(), i.getNombreCompleto(), i.getDomicilio(), i.getDni(), i.getFechaDeNacimiento(), i.getRolSistema());
                 break;
             }
         }
@@ -107,7 +113,7 @@ public class UsuarioController {
         List<UsuarioDTO> lista = new ArrayList<UsuarioDTO>();
 
         for (Usuario i : usuarios) {
-            lista.add(new UsuarioDTO(i.getNombreUsuario(), i.getEmail(), i.getNombreCompleto(), i.getDni(), i.getRolSistema(), i.getDomicilio(), i.getFechaDeNacimiento()));
+            lista.add(new UsuarioDTO(i.getCodigo(), i.getNombreUsuario(), i.getPassword(), i.getEmail(), i.getNombreCompleto(), i.getDomicilio(), i.getDni(), i.getFechaDeNacimiento(), i.getRolSistema()));
         }
 
         return lista;
@@ -117,7 +123,7 @@ public class UsuarioController {
         for (Usuario i : this.usuarios) {
             if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0) {
                 this.usuarios.remove(i);
-                DAO.saveAll(usuarios);
+                DAO_Usuario.saveAll(usuarios);
                 break;
             }
         }

@@ -1,8 +1,8 @@
-package com.UADE.model;
+package com.UADE.dto;
 
 import com.UADE.enums.Sexo;
 
-public class Paciente {
+public class PacienteDTO {
     private final Integer codigo;
     private Integer dni;
     private String nombreCompleto;
@@ -11,14 +11,13 @@ public class Paciente {
     private Sexo sexo;
     private Integer edad;
 
-    public Paciente(Integer codigo, Integer dni, String nombreCompleto, String domicilio, String email, Sexo sexo, Integer edad)
-    {
+    public PacienteDTO(Integer codigo, Integer dni, String nombreCompleto, String domicilio, String email, Sexo sexo, Integer edad) {
         this.codigo = codigo;
         this.dni = dni;
         this.nombreCompleto = nombreCompleto;
         this.domicilio = domicilio;
         this.email = email;
-        setSexo(sexo);
+        this.sexo = sexo;
         this.edad = edad;
     }
 
@@ -62,8 +61,8 @@ public class Paciente {
         return sexo;
     }
 
-    public void setSexo(Sexo sexoB) {
-        sexo = sexoB;
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
     }
 
     public Integer getEdad() {

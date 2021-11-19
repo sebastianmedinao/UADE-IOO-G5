@@ -1,13 +1,13 @@
 package com.UADE.view;
 
 import com.UADE.controller.SucursalController;
-import com.UADE.dto.DatosSucursalDTO;
+import com.UADE.dto.SucursalDTO;
+import com.UADE.model.Sucursal;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 public class NuevaSucursalUI {
     private JPanel panel1;
@@ -34,12 +34,12 @@ public class NuevaSucursalUI {
                 Integer codigoNuevaSuc = null;
 
                 try {
-                    codigoNuevaSuc = sucursalc.nuevaSucursal(txtDireccion.getText(), txtTelefono.getText());
+                    codigoNuevaSuc = sucursalc.nuevaSucursal(new SucursalDTO(null, txtDireccion.getText(), txtTelefono.getText(), null, null));
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
 
-                JOptionPane.showMessageDialog(null,"Se ha creado la sucursal " + codigoNuevaSuc,"Nueva sucursal creada",1);
+                JOptionPane.showMessageDialog(null,"Se ha creado la sucursal " + codigoNuevaSuc,"Nueva sucursal creada", JOptionPane.INFORMATION_MESSAGE);
 
                 try {
                     new MaestroSucursalesUI();

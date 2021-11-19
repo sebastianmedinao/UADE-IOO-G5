@@ -1,13 +1,12 @@
 package com.UADE.view;
 
 import com.UADE.controller.PracticaController;
-import com.UADE.dto.DatosPracticaDTO;
+import com.UADE.dto.PracticaDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 public class ModificarPracticaUI {
     private JPanel panel1;
@@ -30,7 +29,7 @@ public class ModificarPracticaUI {
         frame.setVisible(true);
 
 
-        DatosPracticaDTO practicaDTO = practicaC.obtenerDatosPractica(codigo);
+        PracticaDTO practicaDTO = practicaC.obtenerDatosPractica(codigo);
 
         txtNombre.setText(practicaDTO.getNombre());
         txtDemora.setText(practicaDTO.getTiempoEstimado().toString());

@@ -1,8 +1,11 @@
 package com.UADE.model;
 
+import com.UADE.enums.RolSistema;
+
 import java.util.Date;
 
 public class Usuario {
+    private final Integer codigo;
     private String nombreUsuario;
     private String password;
     private String email;
@@ -12,9 +15,8 @@ public class Usuario {
     private Date fechaDeNacimiento;
     private RolSistema rolSistema;
 
-    public Usuario(String nombreUsuario, String password, String email,
-                   String nombreCompleto, String domicilio, Integer dni,
-                   Date fechaDeNacimiento, RolSistema rolSistema) {
+    public Usuario(Integer codigo, String nombreUsuario, String password, String email, String nombreCompleto, String domicilio, Integer dni, Date fechaDeNacimiento, RolSistema rolSistema) {
+        this.codigo = codigo;
         this.nombreUsuario = nombreUsuario;
         this.password = password;
         this.email = email;
@@ -25,8 +27,10 @@ public class Usuario {
         this.rolSistema = rolSistema;
     }
 
+    public Integer getCodigo() {
+        return codigo;
+    }
 
-    // Getters y Setters
     public String getNombreUsuario() {
         return nombreUsuario;
     }

@@ -1,7 +1,6 @@
 package com.UADE.view;
 
 import com.UADE.controller.UsuarioController;
-import com.UADE.dto.DatosSucursalDTO;
 import com.UADE.dto.UsuarioDTO;
 
 import javax.swing.*;

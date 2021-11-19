@@ -1,14 +1,12 @@
 package com.UADE.view;
 
 import com.UADE.controller.PracticaController;
-import com.UADE.dto.DatosPracticaDTO;
-import com.UADE.model.RolSistema;
+import com.UADE.enums.RolSistema;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 public class PracticasUI {
     private JList<String> listaPracticas;
