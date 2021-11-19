@@ -15,7 +15,7 @@ public class InformesUI {
         JFrame frame = new JFrame("Informes");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
-        frame.setSize(300, 400);
+        frame.setSize(500, 500);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
