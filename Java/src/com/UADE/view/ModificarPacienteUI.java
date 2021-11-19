@@ -40,7 +40,6 @@ public class ModificarPacienteUI {
         txtNombre.setText(pacdto.getNombreCompleto());
         txtDomicilio.setText(pacdto.getDomicilio());
         txtMail.setText(pacdto.getEmail());
-        txtEdad.setText(String.valueOf(pacdto.getEdad()));
         if (pacdto.getSexo() == Sexo.FEMENINO) {
             femeninoRadioButton.setSelected(true);
         } else if (pacdto.getSexo() == Sexo.MASCULINO) {
@@ -48,6 +47,7 @@ public class ModificarPacienteUI {
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione el sexo", "Error", JOptionPane.INFORMATION_MESSAGE);
         }
+        txtEdad.setText(String.valueOf(pacdto.getEdad()));
 
 
         guardarButton.addActionListener(new ActionListener() {
@@ -55,8 +55,8 @@ public class ModificarPacienteUI {
             public void actionPerformed(ActionEvent e) {
                 pacdto.setDni(Integer.valueOf(nroDni.getText()));
                 pacdto.setNombreCompleto(txtNombre.getText());
+                pacdto.setDomicilio(txtDomicilio.getText());
                 pacdto.setEmail(txtMail.getText());
-                pacdto.setEdad(Integer.valueOf(txtEdad.getText()));
                 if (femeninoRadioButton.isSelected()){
                     pacdto.setSexo(Sexo.FEMENINO);
                 }else if(masculinoRadioButton.isSelected()){
@@ -64,6 +64,7 @@ public class ModificarPacienteUI {
                 } else{
                     JOptionPane.showMessageDialog(null,"Seleccione el sexo", "Error", JOptionPane.INFORMATION_MESSAGE);
                 }
+                pacdto.setEdad(Integer.valueOf(txtEdad.getText()));
 
                 try {
                     pacientec.actualizarPaciente(pacdto);

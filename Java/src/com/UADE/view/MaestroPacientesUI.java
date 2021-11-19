@@ -84,8 +84,7 @@ public class MaestroPacientesUI {
 
 
                 try {
-                    //falta controller borrar paciente
-                    //pacic.pac(cod);
+                    pacic.borrarPaciente(cod);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
