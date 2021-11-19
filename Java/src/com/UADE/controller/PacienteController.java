@@ -70,7 +70,7 @@ public class PacienteController {
                 break;
             }
         }
-        
+
         DAO_Paciente.saveAll(pacientes);
     }
 
