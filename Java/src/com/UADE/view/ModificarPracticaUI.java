@@ -1,22 +1,29 @@
 package com.UADE.view;
 
 import com.UADE.controller.PracticaController;
+import com.UADE.dto.ListaPracticasDTO;
 import com.UADE.dto.PracticaDTO;
+import com.UADE.dto.SucursalDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class ModificarPracticaUI {
+    private final PracticaController practicasC;
     private JPanel panel1;
     private JTextField txtNombre;
     private JTextField txtDemora;
     private JButton guardarModificaciónButton;
-    private PracticaController practicaC;
+    private JComboBox<String> comboGrupo;
+    private JButton modificarButton;
     private JList<String> listaPracticas;
+    private Integer oldGrupo = null;
+    private Integer oldGrupoIndex = null;
 
-    public ModificarPracticaUI(Integer codigo) throws Exception{
+    public ModificarPracticaUI(Integer codigo) throws Exception {
         JFrame frame = new JFrame("Modificar práctica" + codigo);
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
@@ -26,16 +33,61 @@ public class ModificarPracticaUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
-        PracticaDTO practicaDTO = practicaC.obtenerDatosPractica(codigo);
+        practicasC = new PracticaController();
+
+        PracticaDTO practicaDTO = practicasC.obtenerDatosPractica(codigo);
 
         txtNombre.setText(practicaDTO.getNombre());
         txtDemora.setText(practicaDTO.getTiempoEstimado().toString());
-        //Ver lo de criterios, como modificarlos etc
+
+        List<PracticaDTO> lista = practicasC.obtenerListaPracticas();
+
+        for (PracticaDTO i : lista) {
+            comboGrupo.addItem(i.getCodigo() + " " + i.getNombre());
+
+            if (oldGrupo == null) {
+                for (Integer codpr : i.getCodSubPracticas()) { // Para cada subpractica de todas las practicas
+                    if (practicaDTO.getCodigo().intValue() == codpr.intValue()) { // Si esta practica esta como subpractica de otra
+                        oldGrupo = i.getCodigo(); // Guardo la practica que contiene a esta como subpractica
+                        oldGrupoIndex = comboGrupo.getItemCount() - 1; // Resto 1 dado que inicia en 0
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (oldGrupo != null) {
+            comboGrupo.setSelectedIndex(oldGrupoIndex); // Selecciono
+        }
+
         guardarModificaciónButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                practicaDTO.setNombre(txtNombre.getText());
+                practicaDTO.setTiempoEstimado(Integer.valueOf(txtDemora.getText()));
+
+                if (comboGrupo.getSelectedIndex() != oldGrupoIndex) {
+                    if (oldGrupo != null) {
+                        try {
+                            practicasC.retirarPracticaDeSubPractica(practicaDTO.getCodigo(), oldGrupo);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+
+                    String value = String.valueOf(comboGrupo.getSelectedItem());
+                    Integer cod = Integer.valueOf(value.split(" ")[0]);
+
+                    try {
+                        practicasC.agregarPracticaASubPractica(practicaDTO.getCodigo(), cod);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
                 try {
-                    //practicaC.actualizarPractica(codigo, txtNombre.getText(), txtDemora.getText(), listaCriterios);
+                    practicasC.actualizarPractica(practicaDTO);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -51,6 +103,15 @@ public class ModificarPracticaUI {
         });
 
 
-
+        modificarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    new CriteriosUI(codigo);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 }

@@ -1,6 +1,7 @@
 package com.UADE.view;
 
 import com.UADE.controller.PracticaController;
+import com.UADE.dto.ListaPracticasDTO;
 import com.UADE.dto.PracticaDTO;
 
 import javax.swing.*;
@@ -8,12 +9,14 @@ import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 public class NuevaPracticaUI {
     private JPanel panel1;
     private JTextField txtNombre;
     private JTextField txtDemora;
     private JButton guardarPrácticaButton;
+    private JComboBox<String> comboGrupo;
     private PracticaController practicasC;
 
     NuevaPracticaUI() throws Exception{
@@ -28,18 +31,39 @@ public class NuevaPracticaUI {
 
         practicasC = new PracticaController();
 
+        List<ListaPracticasDTO> lista = practicasC.obtenerListaPracticasSimplificada();
+
+        comboGrupo.addItem("Sin grupo");
+
+        for (ListaPracticasDTO i : lista) {
+            comboGrupo.addItem(i.getCodigo() + " " + i.getNombre());
+        }
+
         guardarPrácticaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                Integer codPr = null;
+
                 try {
-                    practicasC.nuevaPractica(new PracticaDTO(null, txtNombre.getText(), Integer.valueOf(txtDemora.getText()), new ArrayList<>()));
+                    codPr = practicasC.nuevaPractica(new PracticaDTO(null, txtNombre.getText(), Integer.valueOf(txtDemora.getText()), new ArrayList<>()));
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
 
+                if (comboGrupo.getSelectedIndex() > 0) {
+                    String value = String.valueOf(comboGrupo.getSelectedItem());
+                    Integer cod = Integer.valueOf(value.split(" ")[0]);
+
+                    try {
+                        practicasC.agregarPracticaASubPractica(codPr, cod);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
                 try {
-                    new PracticasUI();
+                    new CriteriosUI(codPr);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

@@ -50,6 +50,24 @@ public class CriteriosUI {
                 frame.dispose();
             }
         });
+        borrarCriterioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    practicac.eliminarCriterio((Integer) tablaCriterios.getValueAt(tablaCriterios.getSelectedRow(), 0));
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+                frame.dispose();
+
+                try {
+                    new CriteriosUI(codPractica);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 }
 

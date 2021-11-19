@@ -151,4 +151,40 @@ public class PracticaController {
             }
         }
     }
+
+    public void agregarPracticaASubPractica(Integer codSubpractica, Integer codPractica) throws Exception {
+        for (Practica i : this.practicas) {
+            if (codPractica.intValue() == i.getCodigo().intValue()) {
+
+                List<Integer> subpracticas = i.getCodSubPracticas();
+
+                if (!subpracticas.contains(codSubpractica)) {
+                    subpracticas.add(codSubpractica);
+                }
+
+                i.setCodSubPracticas(subpracticas);
+
+                break;
+            }
+        }
+
+        DAO_Practica.saveAll(practicas);
+    }
+
+    public void retirarPracticaDeSubPractica(Integer codSubpractica, Integer codPractica) throws Exception {
+        for (Practica i : this.practicas) {
+            if (codPractica.intValue() == i.getCodigo().intValue()) {
+
+                List<Integer> subpracticas = i.getCodSubPracticas();
+
+                subpracticas.remove(codSubpractica);
+
+                i.setCodSubPracticas(subpracticas);
+
+                break;
+            }
+        }
+
+        DAO_Practica.saveAll(practicas);
+    }
 }
