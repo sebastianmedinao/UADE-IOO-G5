@@ -87,7 +87,8 @@ public class PeticionController {
 
         for (Peticion i : this.peticiones) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
-                petABorrar = i;
+                if (i.getEstadoPeticion() != EstadoPeticion.INICIO) {
+                petABorrar = i; }
                 break;
             }
         }

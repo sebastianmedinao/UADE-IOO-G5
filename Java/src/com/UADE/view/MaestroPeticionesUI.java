@@ -28,14 +28,18 @@ public class MaestroPeticionesUI {
         frame.setResizable(false);
         frame.setVisible(true);
         DefaultListModel<String> listModel = new DefaultListModel<>();
+
+
         listPeticiones.setModel(listModel);
 
         peticionc = new PeticionController();
 
         List<ListaPeticionesDTO> lista = peticionc.obtenerListaPeticiones();
 
-       /* for (ListaPeticionesDTO i : lista)
-            listModel.addElement(i.getCodigo() + " " + i.getFechaInicio() + " " + i.getPaciente());*/
+        for (ListaPeticionesDTO i : lista)
+            listModel.addElement(i.getCodigo() + " " + i.getFechaInicio() + " " + i.getCodPaciente());
+
+
 
 
 
@@ -53,15 +57,20 @@ public class MaestroPeticionesUI {
         modificarPeticiónButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //MODIFICAR PETICIOn
+
+                String value = listPeticiones.getSelectedValue();
+                Integer cod = Integer.valueOf(value.split(" ")[0]);
+
+                try {
+                    new ModificarPeticionUI(cod);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
         });
         borrarPeticiónButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
-                //TO-DO: CHECK PETICIONES YA INICIALIZADAS!!
                 String value = listPeticiones.getSelectedValue();
                 Integer cod = Integer.valueOf(value.split(" ")[0]);
 
