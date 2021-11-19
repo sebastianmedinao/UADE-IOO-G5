@@ -53,7 +53,7 @@ public class ModificarPeticionUI {
                     frame.dispose();
 
                     try {
-                        new MaestroPeticionesUI();
+                        new MaestroPeticionesUI(null);
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
@@ -64,7 +64,7 @@ public class ModificarPeticionUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new ResultadosUI();
+                    //new ResultadosUI();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

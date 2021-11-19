@@ -18,7 +18,7 @@ public class MaestroPeticionesUI {
     private JButton verPeticionButton;
     private PeticionController peticionc;
 
-    public MaestroPeticionesUI() throws Exception {
+    public MaestroPeticionesUI(Integer codigo) throws Exception {
         JFrame frame = new JFrame("Maestro de Peticiones");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
@@ -38,9 +38,6 @@ public class MaestroPeticionesUI {
 
         for (ListaPeticionesDTO i : lista)
             listModel.addElement(i.getCodigo() + " " + i.getFechaInicio() + " " + i.getCodPaciente());
-
-
-
 
 
         nuevaPeticiónButton.addActionListener(new ActionListener() {
@@ -83,7 +80,7 @@ public class MaestroPeticionesUI {
                 frame.dispose();
 
                 try {
-                    new MaestroPeticionesUI();
+                    new MaestroPeticionesUI(cod);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -94,7 +91,14 @@ public class MaestroPeticionesUI {
         verPeticionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // ver petición
+                String value = listPeticiones.getSelectedValue();
+                Integer cod = Integer.valueOf(value.split(" ")[0]);
+
+                try {
+                    new PeticionesUI(cod);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
         });
     }
