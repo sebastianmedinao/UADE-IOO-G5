@@ -1,6 +1,8 @@
 package com.UADE.view;
 
 import com.UADE.controller.PracticaController;
+import com.UADE.dto.CriterioDTO;
+import com.UADE.enums.Sexo;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,14 +13,14 @@ public class NuevoCriterioUI {
     private final PracticaController practicac;
     private JList<String> listCriterios;
     private JPanel panel1;
-    private JComboBox comboBox1;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField5;
-    private JTextField textField6;
-    private JTextField textField7;
+    private JComboBox<Sexo> comboSexo;
+    private JTextField txtCondiciones;
+    private JTextField txtEdadDesde;
+    private JTextField txtEdadHasta;
+    private JTextField txtReferenciaInferior;
+    private JTextField txtReferenciaSuperior;
+    private JTextField txtInterpretacion;
+    private JTextField txtUnidad;
     private JCheckBox valorEsReservadosCheckBox;
     private JButton guardarButton;
 
@@ -34,10 +36,19 @@ public class NuevoCriterioUI {
 
         practicac = new PracticaController();
 
+        for (Sexo i : Sexo.values()) {
+            comboSexo.addItem(i);
+        }
+
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                try {
+                    practicac.nuevoCriterio(new CriterioDTO(null, codPractica, (Sexo) comboSexo.getSelectedItem(), txtCondiciones.getText(), Integer.valueOf(txtEdadDesde.getText()), Integer.valueOf(txtEdadHasta.getText()), txtInterpretacion.getText(), Float.valueOf(txtReferenciaInferior.getText()), Float.valueOf(txtReferenciaSuperior.getText()), txtUnidad.getText(), valorEsReservadosCheckBox.isSelected()));
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
 
                 try {
                     new CriteriosUI(codPractica);

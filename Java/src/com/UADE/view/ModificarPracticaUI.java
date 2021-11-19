@@ -11,9 +11,7 @@ import java.awt.event.ActionListener;
 public class ModificarPracticaUI {
     private JPanel panel1;
     private JTextField txtNombre;
-    private JTextField listaCriterios;
     private JTextField txtDemora;
-    private JButton agregarCriterioButton;
     private JButton guardarModificaciónButton;
     private PracticaController practicaC;
     private JList<String> listaPracticas;
@@ -45,7 +43,7 @@ public class ModificarPracticaUI {
                 frame.dispose();
 
                 try {
-                    new MaestroSucursalesUI();
+                    new PracticasUI();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

@@ -16,7 +16,7 @@
           <text value="Sexo"/>
         </properties>
       </component>
-      <component id="e46c4" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+      <component id="e46c4" class="javax.swing.JComboBox" binding="comboSexo">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -30,7 +30,7 @@
           <text value="Condiciones preexistentes"/>
         </properties>
       </component>
-      <component id="2e92d" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="2e92d" class="javax.swing.JTextField" binding="txtCondiciones">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -46,7 +46,7 @@
           <text value="Rango de edad"/>
         </properties>
       </component>
-      <component id="b2565" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+      <component id="b2565" class="javax.swing.JTextField" binding="txtEdadDesde">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -54,7 +54,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="ef2f1" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+      <component id="ef2f1" class="javax.swing.JTextField" binding="txtEdadHasta">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -78,7 +78,7 @@
           <text value="Rango de referencia"/>
         </properties>
       </component>
-      <component id="8deab" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+      <component id="8deab" class="javax.swing.JTextField" binding="txtReferenciaInferior">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -86,7 +86,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="c93fb" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+      <component id="c93fb" class="javax.swing.JTextField" binding="txtReferenciaSuperior">
         <constraints>
           <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -94,7 +94,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="e86a1" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+      <component id="e86a1" class="javax.swing.JTextField" binding="txtInterpretacion">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -110,7 +110,7 @@
           <text value="Unidad de medida"/>
         </properties>
       </component>
-      <component id="100d7" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+      <component id="100d7" class="javax.swing.JTextField" binding="txtUnidad">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>

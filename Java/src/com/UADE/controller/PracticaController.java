@@ -33,6 +33,14 @@ public class PracticaController {
         }
     }
 
+    private Integer getNuevoCodigoCriterio() {
+        if (criterios.size() > 0) {
+            return criterios.get(criterios.size() - 1).getCodigo() + 1;
+        } else {
+            return 1;
+        }
+    }
+
     public Integer nuevaPractica(PracticaDTO pracdto) throws Exception {
         Practica practica = new Practica(this.getNuevoCodigoPractica(), pracdto.getNombre(), pracdto.getTiempoEstimado(), pracdto.getCodSubPracticas());
         practicas.add(practica);
@@ -130,7 +138,7 @@ public class PracticaController {
     }
 
     public void nuevoCriterio(CriterioDTO cdto) throws Exception {
-        criterios.add(new Criterio(cdto.getCodigo(), cdto.getCodPractica(), cdto.getSexo(), cdto.getCondicionesPreexistentes(), cdto.getEdadDesde(), cdto.getEdadHasta(), cdto.getInterpretacion(), cdto.getReferenciaInferior(), cdto.getReferenciaSuperior(), cdto.getUnidadMedida(), cdto.getReservado()));
+        criterios.add(new Criterio(this.getNuevoCodigoCriterio(), cdto.getCodPractica(), cdto.getSexo(), cdto.getCondicionesPreexistentes(), cdto.getEdadDesde(), cdto.getEdadHasta(), cdto.getInterpretacion(), cdto.getReferenciaInferior(), cdto.getReferenciaSuperior(), cdto.getUnidadMedida(), cdto.getReservado()));
         DAO_Criterio.saveAll(criterios);
     }
 

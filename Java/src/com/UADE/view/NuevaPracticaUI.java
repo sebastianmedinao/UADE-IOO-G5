@@ -1,17 +1,19 @@
 package com.UADE.view;
 
 import com.UADE.controller.PracticaController;
+import com.UADE.dto.PracticaDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class NuevaPracticaUI {
     private JPanel panel1;
     private JTextField txtNombre;
-    private JTextField listaCriterios;
     private JTextField txtDemora;
     private JButton guardarPrácticaButton;
-    private JButton agregarCriterioButton;
     private PracticaController practicasC;
 
     NuevaPracticaUI() throws Exception{
@@ -26,58 +28,18 @@ public class NuevaPracticaUI {
 
         practicasC = new PracticaController();
 
-        // TODO: Ver como guardar la practica sin que el listado de criterios rompa todo
-
-        /*guardarPrácticaButton.addActionListener(new ActionListener() {
+        guardarPrácticaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Integer cont = 0;
-                Integer demora;
-                JList criterios;
-                Boolean codigoNuevaPractica = null;
-                demora = Integer.valueOf(txtDemora.getText());
-                criterios = list.valueOf(listaCriterios);
 
-                for(Practica i : PracticaDAO){
-                    cont++;
-                }
-                cont = PracticaDAO.size();
                 try {
-
-
-                    codigoNuevaPractica = practicasC.nuevaPractica(cont, txtNombre.getText(), demora, criterios );
-                    //codigoNuevaSuc = practicasC.nuevaPractica();
+                    practicasC.nuevaPractica(new PracticaDTO(null, txtNombre.getText(), Integer.valueOf(txtDemora.getText()), new ArrayList<>()));
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
 
-                JOptionPane.showMessageDialog(null, "Se ha creado la sucursal " + codigoNuevaSuc, "Nueva sucursal creada", 1);
-
-                if(codigoNuevaPractica == null){
-                    JOptionPane.showMessageDialog(null,"Datos invàlidos.", "Error", JOptionPane.INFORMATION_MESSAGE);
-                }else if (!codigoNuevaPractica) {
-                    JOptionPane.showMessageDialog(null, "La practica ya existe.", "Error", JOptionPane.INFORMATION_MESSAGE);
-                }else{
-                    JOptionPane.showMessageDialog(null,"Se ha creado la práctica " + txtNombre.getText(),"Nuevo práctica creada", JOptionPane.INFORMATION_MESSAGE);
-
-                    try {
-                        practicasC.nuevaPractica(cont, txtNombre.getText(), demora, criterios);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-
-                    frame.dispose();
-
-                    try {
-                        new PracticasUI();
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                }
-
-
                 try {
-                    new MaestroSucursalesUI();
+                    new PracticasUI();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -85,8 +47,6 @@ public class NuevaPracticaUI {
                 frame.dispose();
 
             }
-        }
-        );*/
-
+        });
     }
 }

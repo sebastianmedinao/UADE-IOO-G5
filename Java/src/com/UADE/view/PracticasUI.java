@@ -50,6 +50,8 @@ public class PracticasUI {
             public void actionPerformed(ActionEvent e) {
                 try {
                     new NuevaPracticaUI();
+
+                    frame.dispose();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -61,11 +63,14 @@ public class PracticasUI {
             public void actionPerformed(ActionEvent e) {
                 String value = String.valueOf(listPracticas.getSelectedValue());
                 Integer cod = Integer.valueOf(value.split(" ")[0]);
+
                 try {
                     new ModificarPracticaUI(cod);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
+
+                frame.dispose();
             }
         });
 
