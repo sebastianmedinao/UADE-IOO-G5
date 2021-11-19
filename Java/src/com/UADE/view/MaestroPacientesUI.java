@@ -20,6 +20,8 @@ public class MaestroPacientesUI {
     private JButton nuevoPacienteButton;
     private JButton modificarPacienteButton;
     private JButton borrarPacienteButton;
+    private JList list1;
+    private JButton consultarPeticionesDelPacienteButton;
     private PacienteController pacic;
 
     public MaestroPacientesUI() throws Exception {
