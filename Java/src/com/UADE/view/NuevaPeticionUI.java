@@ -23,6 +23,7 @@ public class NuevaPeticionUI {
     private JLabel JLabelObraSocial;
     private JComboBox comboBoxPractica;
     private JButton agregarButton;
+    private JComboBox comboBox1;
     private PeticionController peticionc;
     private PracticaController practicac;
 

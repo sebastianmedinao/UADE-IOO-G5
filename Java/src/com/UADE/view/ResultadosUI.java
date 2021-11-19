@@ -22,6 +22,9 @@ public class ResultadosUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
+
+
+
         cargarNuevoResultadoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

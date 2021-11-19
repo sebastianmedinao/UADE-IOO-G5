@@ -15,6 +15,7 @@ public class ModificarPeticionUI {
     private JList listPracticas;
     private JButton agregarPracticaButton;
     private JButton eliminarPracticaButton;
+    private JButton resultadosButton;
     private PeticionController peticionc;
 
 
@@ -58,5 +59,18 @@ public class ModificarPeticionUI {
                     }
             }
         });
+
+        resultadosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    new ResultadosUI();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+
     }
 }
