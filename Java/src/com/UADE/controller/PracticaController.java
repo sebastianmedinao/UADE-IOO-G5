@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.UADE.dao.CriterioDAO;
 import com.UADE.dao.PracticaDAO;
+import com.UADE.dto.ListaPracticasDTO;
 import com.UADE.dto.PracticaDTO;
 import com.UADE.model.*;
 
@@ -88,6 +89,16 @@ public class PracticaController {
 
         for (Practica i : this.practicas) {
             listaPracticas.add(new PracticaDTO(i.getCodigo(),i.getNombre(),i.getTiempoEstimado(), i.getCodCriterios(), i.getCodSubPracticas()));
+        }
+
+        return listaPracticas;
+    }
+
+    public List<ListaPracticasDTO> obtenerListaPracticasSimplificada() {
+        List<ListaPracticasDTO> listaPracticas = new ArrayList<>();
+
+        for (Practica i : this.practicas) {
+            listaPracticas.add(new ListaPracticasDTO(i.getCodigo(),i.getNombre()));
         }
 
         return listaPracticas;

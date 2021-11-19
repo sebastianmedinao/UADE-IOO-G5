@@ -95,7 +95,7 @@ public class MenuUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new MaestroPeticionesUI();
+                    new MaestroPeticionesUI(null);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

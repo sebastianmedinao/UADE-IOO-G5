@@ -107,7 +107,7 @@ public class MaestroPacientesUI {
                 Integer cod = Integer.valueOf(value.split(" ")[0]);
 
                 try {
-                    new MaestroPeticionesUI();
+                    new MaestroPeticionesUI(cod);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
