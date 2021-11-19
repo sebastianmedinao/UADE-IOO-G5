@@ -1,6 +1,5 @@
 package com.UADE.view;
 
-
 import com.UADE.controller.PeticionController;
 import com.UADE.controller.PracticaController;
 import com.UADE.dto.PracticaDTO;
@@ -9,22 +8,22 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import java.util.List;
 
 public class NuevaPeticionUI {
-
     private JButton guardarButton;
     private JPanel panel1;
     private JComboBox comboBoxPacientes;
     private JTextField txtObraSocial;
-    private JList listPracticas;
+    private JList<String> listPracticas;
     private JLabel JLabelObraSocial;
-    private JComboBox comboBoxPractica;
+    private JComboBox<String> comboBoxPractica;
     private JButton agregarButton;
     private JComboBox comboBox1;
+
     private PeticionController peticionc;
     private PracticaController practicac;
-
 
     public NuevaPeticionUI() throws Exception {
         JFrame frame = new JFrame("Nueva petición");
@@ -43,37 +42,21 @@ public class NuevaPeticionUI {
         List<PracticaDTO> listadoPracticas = practicac.obtenerListaPracticas();
 
         for (PracticaDTO datprac : listadoPracticas) {
-            comboBoxPractica.addItem(datprac.getNombre());
+            comboBoxPractica.addItem(datprac.getCodigo() + " " + datprac.getNombre());
         }
 
-        //ver cómo cargar las prácticas del combobox
-        /*guardarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Integer codigoNuevaPet = null;
-
-                try {
-                    //codigoNuevaPet = peticionc.nuevaPeticion(comboBoxPacientes.getSelectedItem(), txtObraSocial.getText());
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-
-                JOptionPane.showMessageDialog(null, "Se ha creado la petición " + codigoNuevaPet, "Nueva petición creada", 1);
-
-                try {
-                    new MaestroSucursalesUI();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-
-                frame.dispose();
-
-            }
-        });*/
         agregarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                listModel.addElement((String) comboBoxPractica.getSelectedItem());
+                for (Iterator<String> it = listModel.elements().asIterator(); it.hasNext(); ) {
+                    String i = it.next();
+
+                    if (i.equals(comboBoxPractica.getSelectedItem().toString())) {
+                        return;
+                    }
+                }
+
+                listModel.addElement(comboBoxPractica.getSelectedItem().toString());
             }
         });
     }
