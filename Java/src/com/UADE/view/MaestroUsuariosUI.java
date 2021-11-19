@@ -34,7 +34,7 @@ public class MaestroUsuariosUI {
         List<UsuarioDTO> lista = usuc.obtenerListaUsuarios();
 
         for (UsuarioDTO i : lista)
-            listModel.addElement(i.getNombreUsuario());
+            listModel.addElement(i.getCodigo() + " " + i.getNombreUsuario());
 
         nuevoUsuarioButton.addActionListener(new ActionListener() {
             @Override
@@ -52,7 +52,10 @@ public class MaestroUsuariosUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    usuc.borrarUsuario(listUsuarios.getSelectedValue());
+                    String value = listUsuarios.getSelectedValue();
+                    Integer cod = Integer.valueOf(value.split(" ")[0]);
+
+                    usuc.borrarUsuario(cod);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -70,7 +73,10 @@ public class MaestroUsuariosUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new ModificarUsuarioUI(listUsuarios.getSelectedValue());
+                    String value = listUsuarios.getSelectedValue();
+                    Integer cod = Integer.valueOf(value.split(" ")[0]);
+
+                    new ModificarUsuarioUI(cod);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

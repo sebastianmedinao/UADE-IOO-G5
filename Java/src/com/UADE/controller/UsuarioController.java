@@ -18,7 +18,7 @@ public class UsuarioController {
         DAO_Usuario = new UsuarioDAO(Usuario.class, "dao/Usuario.dao");
         usuarios = DAO_Usuario.getAll();
 
-        this.nuevoUsuario(new UsuarioDTO(null, "admin", "1234", "uade@uade.edu.ar", "administrador", "lima 1", 10444322, new Date(), RolSistema.ADMINISTRADOR));
+        this.nuevoUsuario(new UsuarioDTO(1, "admin", "1234", "uade@uade.edu.ar", "administrador", "lima 1", 10444322, new Date(), RolSistema.ADMINISTRADOR));
     }
 
     private Integer getNuevoCodigo() {
@@ -96,6 +96,19 @@ public class UsuarioController {
         return udto;
     }
 
+    public UsuarioDTO buscarUsuarioPorCodigo(Integer codigo) {
+        UsuarioDTO udto = null;
+
+        for (Usuario i : this.usuarios) {
+            if (codigo.intValue() == i.getCodigo().intValue()) {
+                udto = new UsuarioDTO(i.getCodigo(), i.getNombreUsuario(), i.getPassword(), i.getEmail(), i.getNombreCompleto(), i.getDomicilio(), i.getDni(), i.getFechaDeNacimiento(), i.getRolSistema());
+                break;
+            }
+        }
+
+        return udto;
+    }
+
     public UsuarioDTO buscarUsuarioPorCredenciales(String nombreUsuario, String clave) {
         UsuarioDTO udto = null;
 
@@ -119,9 +132,9 @@ public class UsuarioController {
         return lista;
     }
 
-    public void borrarUsuario(String nombreUsuario) throws Exception {
+    public void borrarUsuario(Integer codigo) throws Exception {
         for (Usuario i : this.usuarios) {
-            if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0) {
+            if (codigo.intValue() == i.getCodigo().intValue()) {
                 this.usuarios.remove(i);
                 DAO_Usuario.saveAll(usuarios);
                 break;

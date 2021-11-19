@@ -72,11 +72,11 @@ public class SucursalController {
         DAO_Sucursal.saveAll(sucursales);
     }
 
-    public void actualizarSucursal(Integer codigo, String direccion, String telefono) throws Exception {
+    public void actualizarSucursal(SucursalDTO sucdto) throws Exception {
         for (Sucursal i : this.sucursales) {
-            if (codigo.intValue() == i.getCodigo().intValue()) {
-                i.setDireccion(direccion);
-                i.setTelefono(telefono);
+            if (sucdto.getCodigo().intValue() == i.getCodigo().intValue()) {
+                i.setDireccion(sucdto.getDireccion());
+                i.setTelefono(sucdto.getTelefono());
                 DAO_Sucursal.saveAll(sucursales);
                 break;
             }

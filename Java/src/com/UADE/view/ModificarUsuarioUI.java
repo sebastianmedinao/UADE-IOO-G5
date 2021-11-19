@@ -34,7 +34,7 @@ public class ModificarUsuarioUI {
 
     private Integer oldSucursal = null;
 
-    public ModificarUsuarioUI(String nomUsu) throws Exception {
+    public ModificarUsuarioUI(Integer code) throws Exception {
 
         JFrame frame = new JFrame("Modificar usuario");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
@@ -48,7 +48,7 @@ public class ModificarUsuarioUI {
         usuc = new UsuarioController();
         succ = new SucursalController();
 
-        UsuarioDTO usermod = usuc.buscarUsuarioPorNombreUsuario(nomUsu);
+        UsuarioDTO usermod = usuc.buscarUsuarioPorCodigo(code);
 
         txtUsuario.setText(usermod.getNombreUsuario());
         txtDNI.setText(String.valueOf(usermod.getDni()));

@@ -31,11 +31,15 @@ public class ModificarSucursalUI {
 
         txtDirecion.setText(sucdto.getDireccion());
         txtTelefono.setText(sucdto.getTelefono());
+
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    sucursalc.actualizarSucursal(codigo, txtDirecion.getText(), txtTelefono.getText());
+                    sucdto.setDireccion(txtDirecion.getText());
+                    sucdto.setTelefono(txtTelefono.getText());
+
+                    sucursalc.actualizarSucursal(sucdto);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

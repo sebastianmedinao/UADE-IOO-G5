@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class NuevaSucursalUI {
     private JPanel panel1;
@@ -34,7 +35,7 @@ public class NuevaSucursalUI {
                 Integer codigoNuevaSuc = null;
 
                 try {
-                    codigoNuevaSuc = sucursalc.nuevaSucursal(new SucursalDTO(null, txtDireccion.getText(), txtTelefono.getText(), null, null));
+                    codigoNuevaSuc = sucursalc.nuevaSucursal(new SucursalDTO(null, txtDireccion.getText(), txtTelefono.getText(), new ArrayList<>(), null));
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
