@@ -13,7 +13,7 @@ public class ModificarPacienteUI {
 
     private JPanel panel1;
     private JTextField nroDni;
-    private JTextField txtNombre;
+    private JTextField txtNombreCompleto;
     private JTextField txtDomicilio;
     private JTextField txtMail;
     private JTextField txtEdad;
@@ -23,7 +23,13 @@ public class ModificarPacienteUI {
     private PacienteController pacientec;
 
     public ModificarPacienteUI(Integer codigo) throws Exception {
-        JFrame frame = new JFrame("Modificar paciente" + codigo);
+        pacientec = new PacienteController();
+
+        PacienteDTO pacdto = pacientec.obtenerPaciente(codigo);
+        txtNombreCompleto.setText(pacdto.getNombreCompleto());
+
+        //Puse antes lo otro para poder poner el nombre de titulo
+        JFrame frame = new JFrame("Modificar paciente " + txtNombreCompleto.getText());
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
         frame.setSize(600, 300);
@@ -32,12 +38,10 @@ public class ModificarPacienteUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
-        pacientec = new PacienteController();
 
-        PacienteDTO pacdto = pacientec.obtenerPaciente(codigo);
 
         nroDni.setText(String.valueOf(pacdto.getDni()));
-        txtNombre.setText(pacdto.getNombreCompleto());
+
         txtDomicilio.setText(pacdto.getDomicilio());
         txtMail.setText(pacdto.getEmail());
         if (pacdto.getSexo() == Sexo.FEMENINO) {
@@ -54,7 +58,7 @@ public class ModificarPacienteUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pacdto.setDni(Integer.valueOf(nroDni.getText()));
-                pacdto.setNombreCompleto(txtNombre.getText());
+                pacdto.setNombreCompleto(txtNombreCompleto.getText());
                 pacdto.setDomicilio(txtDomicilio.getText());
                 pacdto.setEmail(txtMail.getText());
                 if (femeninoRadioButton.isSelected()){
@@ -71,6 +75,8 @@ public class ModificarPacienteUI {
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
+
+                JOptionPane.showMessageDialog(null,"Se ha modificado el paciente " + txtNombreCompleto.getText(),"Nuevo paciente creado", JOptionPane.INFORMATION_MESSAGE);
 
                 frame.dispose();
 
