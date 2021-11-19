@@ -1,8 +1,11 @@
 package com.UADE.view;
 
 import com.UADE.controller.PacienteController;
+import com.UADE.controller.SucursalController;
 import com.UADE.controller.UsuarioController;
 import com.UADE.dao.PacienteDAO;
+import com.UADE.dto.PacienteDTO;
+import com.UADE.dto.SucursalDTO;
 import com.UADE.dto.UsuarioDTO;
 import com.UADE.model.Paciente;
 
@@ -20,7 +23,6 @@ public class MaestroPacientesUI {
     private JButton nuevoPacienteButton;
     private JButton modificarPacienteButton;
     private JButton borrarPacienteButton;
-    private JList list1;
     private JButton consultarPeticionesDelPacienteButton;
     private PacienteController pacic;
 
@@ -36,25 +38,12 @@ public class MaestroPacientesUI {
 
         DefaultListModel<String> listModel = new DefaultListModel<>();
         listPacientes.setModel(listModel);
-
         pacic = new PacienteController();
 
-       /* List<Paciente> lista = pacic.obtenerListaPacientes();
+        List<PacienteDTO> lista = pacic.obtenerListaPacientes();
 
-        for (Paciente i : lista)
-            lista.add(new Paciente(i.getCodigo(), i.getDni(), i.getEmail(), i.getDomicilio(), i.getEmail(), i.getSexo(), i.getEdad()));
-        listaPacientesButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-
-                try {
-                    new ListaPacientesUI();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });*/
+        for (PacienteDTO i : lista)
+            listModel.addElement(i.getCodigo() + " " + i.getDni() + "_" + i.getNombreCompleto());
 
         nuevoPacienteButton.addActionListener(new ActionListener() {
             @Override
@@ -102,6 +91,21 @@ public class MaestroPacientesUI {
 
                 try {
                     new MaestroPacientesUI();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+
+        consultarPeticionesDelPacienteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String value = listPacientes.getSelectedValue();
+                Integer cod = Integer.valueOf(value.split(" ")[0]);
+
+                try {
+                    new MaestroPeticionesUI(cod);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
