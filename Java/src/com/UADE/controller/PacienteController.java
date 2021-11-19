@@ -36,6 +36,44 @@ public class PacienteController {
         }
     }
 
+    public Boolean actualizarPaciente(PacienteDTO pac) throws Exception {
+        Paciente p = null;
+
+        for (Paciente i : this.pacientes) {
+            if (i.getCodigo().intValue() == pac.getCodigo().intValue()) {
+                p = i;
+                break;
+            }
+        }
+
+        if (p != null) {
+            p.setNombreCompleto(pac.getNombreCompleto());
+            p.setDomicilio(pac.getDomicilio());
+            p.setEmail(pac.getEmail());
+            p.setSexo(pac.getSexo());
+            p.setEdad(pac.getEdad());
+        } else {
+            return false;
+        }
+
+        DAO_Paciente.saveAll(pacientes);
+
+        return true;
+    }
+
+    public void borrarPaciente(Integer codigo) throws Exception {
+        Paciente p = null;
+
+        for (Paciente i : this.pacientes) {
+            if (i.getCodigo().intValue() == codigo.intValue()) {
+                pacientes.remove(i);
+                break;
+            }
+        }
+        
+        DAO_Paciente.saveAll(pacientes);
+    }
+
     public Integer buscarPacientePorDNI(Integer dni) {
         for (Paciente i : this.pacientes) {
             if (dni.intValue() == i.getDni().intValue()) {

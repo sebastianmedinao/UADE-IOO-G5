@@ -98,7 +98,7 @@ public class ModificarUsuarioUI {
 
                 Boolean result = null;
                 try {
-                    result = usuc.actualizarUsuario(txtUsuario.getText(), txtClave.getText(), txtEmail.getText(), txtNombre.getText(), txtDomicilio.getText(), Integer.valueOf(txtDNI.getText()), datenac, (RolSistema) comboRol.getSelectedItem());
+                    result = usuc.actualizarUsuario(usermod);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
