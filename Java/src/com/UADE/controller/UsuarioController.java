@@ -40,27 +40,27 @@ public class UsuarioController {
         }
     }
 
-    public Boolean actualizarUsuario(String nombreUsuario, String password, String email, String nombreCompleto, String domicilio, Integer dni, Date fechaDeNacimiento, RolSistema rolSistema) throws Exception {
+    public Boolean actualizarUsuario(UsuarioDTO usu) throws Exception {
         Usuario u = null;
 
         for (Usuario i : this.usuarios) {
-            if (nombreUsuario.compareToIgnoreCase(i.getNombreUsuario()) == 0) {
+            if (usu.getCodigo().intValue() == i.getCodigo().intValue()) {
                 u = i;
                 break;
             }
         }
 
         if (u != null) {
-            if (password.length() > 0) { // Solo guardo la clave si fue escrita una nueva
-                u.setPassword(password);
+            if (usu.getPassword().length() > 0) { // Solo guardo la clave si fue escrita una nueva
+                u.setPassword(usu.getPassword());
             }
 
-            u.setEmail(email);
-            u.setNombreCompleto(nombreCompleto);
-            u.setDomicilio(domicilio);
-            u.setDni(dni);
-            u.setFechaDeNacimiento(fechaDeNacimiento);
-            u.setRolSistema(rolSistema);
+            u.setEmail(usu.getEmail());
+            u.setNombreCompleto(usu.getNombreCompleto());
+            u.setDomicilio(usu.getDomicilio());
+            u.setDni(usu.getDni());
+            u.setFechaDeNacimiento(usu.getFechaDeNacimiento());
+            u.setRolSistema(usu.getRolSistema());
 
             DAO_Usuario.saveAll(usuarios);
 

@@ -1,2 +1,1 @@
-{"codigo":1,"direccion":"Lima","telefono":"123","usuarios":[{"nombreUsuario":"carli","password":"1234","email":"ad","nombreCompleto":"carla bm","domicilio":"asd","dni":12333444,"fechaDeNacimiento":"Jan 1, 1994, 12:00:00 AM","rolSistema":"LABORATORISTA"}]}
-{"codigo":2,"direccion":"Alem","telefono":"123","usuarios":[]}
+{"codigo":1,"direccion":"Alem","telefono":"123"}
