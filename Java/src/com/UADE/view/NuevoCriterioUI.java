@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class NuevoCriterioUI {
+    private final PracticaController practicac;
     private JList<String> listCriterios;
     private JPanel panel1;
     private JComboBox comboBox1;
@@ -20,8 +21,6 @@ public class NuevoCriterioUI {
     private JTextField textField7;
     private JCheckBox valorEsReservadosCheckBox;
     private JButton guardarButton;
-
-    private PracticaController practicac;
 
     public NuevoCriterioUI(Integer codPractica) throws Exception {
         JFrame frame = new JFrame("Maestro de Sucursales");
@@ -39,6 +38,14 @@ public class NuevoCriterioUI {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+
+                try {
+                    new CriteriosUI(codPractica);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+                frame.dispose();
             }
         });
     }

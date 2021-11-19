@@ -7,15 +7,13 @@ public class Practica {
     private final Integer codigo;
     private String nombre;
     private Integer tiempoEstimado;
-    private List<Integer> codCriterios = new ArrayList<Integer>();
     private List<Integer> codSubPracticas = new ArrayList<Integer>();
 
-    public Practica(Integer codigo, String nombre, Integer tiempoEstimado, List<Integer> criterios, List<Integer> codSubPracticas)
+    public Practica(Integer codigo, String nombre, Integer tiempoEstimado, List<Integer> codSubPracticas)
     {
         this.codigo = codigo;
         this.nombre = nombre;
         this.tiempoEstimado = tiempoEstimado;
-        this.codCriterios = criterios;
         this.codSubPracticas = codSubPracticas;
     }
 
@@ -45,13 +43,5 @@ public class Practica {
 
     public void setTiempoEstimado(Integer tiempoEstimado) {
         this.tiempoEstimado = tiempoEstimado;
-    }
-
-    public List<Integer> getCodCriterios() {
-        return codCriterios;
-    }
-
-    public void setCodCriterios(List<Integer> codCriterios) {
-        this.codCriterios = codCriterios;
     }
 }

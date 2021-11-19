@@ -4,6 +4,7 @@ import com.UADE.enums.Sexo;
 
 public class Criterio {
     private final Integer codigo;
+    private final Integer codPractica;
     private Sexo sexo;
     private String condicionesPreexistentes;
     private Integer edadDesde;
@@ -14,8 +15,9 @@ public class Criterio {
     private String unidadMedida;
     private Boolean reservado;
 
-    public Criterio(Integer codigo, Sexo sexo, String condicionesPreexistentes, Integer edadDesde, Integer edadHasta, String interpretacion, Float referenciaInferior, Float referenciaSuperior, String unidadMedida, Boolean reservado) {
+    public Criterio(Integer codigo, Integer codPractica, Sexo sexo, String condicionesPreexistentes, Integer edadDesde, Integer edadHasta, String interpretacion, Float referenciaInferior, Float referenciaSuperior, String unidadMedida, Boolean reservado) {
         this.codigo = codigo;
+        this.codPractica = codPractica;
         this.sexo = sexo;
         this.condicionesPreexistentes = condicionesPreexistentes;
         this.edadDesde = edadDesde;
@@ -29,6 +31,10 @@ public class Criterio {
 
     public Integer getCodigo() {
         return codigo;
+    }
+
+    public Integer getCodPractica() {
+        return codPractica;
     }
 
     public Sexo getSexo() {

@@ -34,7 +34,7 @@ public class PracticaController {
     }
 
     public Integer nuevaPractica(PracticaDTO pracdto) throws Exception {
-        Practica practica = new Practica(this.getNuevoCodigoPractica(), pracdto.getNombre(), pracdto.getTiempoEstimado(), pracdto.getCodCriterios(), pracdto.getCodSubPracticas());
+        Practica practica = new Practica(this.getNuevoCodigoPractica(), pracdto.getNombre(), pracdto.getTiempoEstimado(), pracdto.getCodSubPracticas());
         practicas.add(practica);
 
         DAO_Practica.saveAll(practicas);
@@ -47,7 +47,7 @@ public class PracticaController {
 
         for (Practica i : this.practicas) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
-                practdto = new PracticaDTO(i.getCodigo(), i.getNombre(), i.getTiempoEstimado(), i.getCodCriterios(), i.getCodSubPracticas());
+                practdto = new PracticaDTO(i.getCodigo(), i.getNombre(), i.getTiempoEstimado(), i.getCodSubPracticas());
                 break;
             }
         }
@@ -77,7 +77,6 @@ public class PracticaController {
             if (pracdto.getCodigo().intValue() == i.getCodigo().intValue()) {
                 i.setNombre(pracdto.getNombre());
                 i.setTiempoEstimado(pracdto.getTiempoEstimado());
-                i.setCodCriterios(pracdto.getCodCriterios());
                 i.setCodSubPracticas(pracdto.getCodSubPracticas());
                 DAO_Practica.saveAll(practicas);
                 break;
@@ -89,7 +88,7 @@ public class PracticaController {
         List<PracticaDTO> listaPracticas = new ArrayList<>();
 
         for (Practica i : this.practicas) {
-            listaPracticas.add(new PracticaDTO(i.getCodigo(),i.getNombre(),i.getTiempoEstimado(), i.getCodCriterios(), i.getCodSubPracticas()));
+            listaPracticas.add(new PracticaDTO(i.getCodigo(),i.getNombre(),i.getTiempoEstimado(), i.getCodSubPracticas()));
         }
 
         return listaPracticas;
@@ -110,7 +109,7 @@ public class PracticaController {
 
         for (Criterio i : this.criterios) {
             if (i.getCodigo().intValue() == codCriterio.intValue()) {
-                cdto = new CriterioDTO(i.getCodigo(), i.getSexo(), i.getCondicionesPreexistentes(), i.getEdadDesde(), i.getEdadHasta(), i.getInterpretacion(), i.getReferenciaInferior(), i.getReferenciaSuperior(), i.getUnidadMedida(), i.getReservado());
+                cdto = new CriterioDTO(i.getCodigo(), i.getCodPractica(), i.getSexo(), i.getCondicionesPreexistentes(), i.getEdadDesde(), i.getEdadHasta(), i.getInterpretacion(), i.getReferenciaInferior(), i.getReferenciaSuperior(), i.getUnidadMedida(), i.getReservado());
                 break;
             }
         }
@@ -121,15 +120,27 @@ public class PracticaController {
     public List<CriterioDTO> obtenerCriteriosPractica(Integer codPractica) {
         List<CriterioDTO> listdto = new ArrayList<>();
 
-        for (Practica i : this.practicas) {
+        for (Criterio i : this.criterios) {
             if (codPractica.intValue() == i.getCodigo().intValue()) {
-                for (Integer j : i.getCodCriterios()) {
-                    listdto.add(this.obtenerCriterio(j));
-                }
+                listdto.add(new CriterioDTO(i.getCodigo(), i.getCodPractica(), i.getSexo(), i.getCondicionesPreexistentes(), i.getEdadDesde(), i.getEdadHasta(), i.getInterpretacion(), i.getReferenciaInferior(), i.getReferenciaSuperior(), i.getUnidadMedida(), i.getReservado()));
             }
         }
 
         return listdto;
     }
 
+    public void nuevoCriterio(CriterioDTO cdto) throws Exception {
+        criterios.add(new Criterio(cdto.getCodigo(), cdto.getCodPractica(), cdto.getSexo(), cdto.getCondicionesPreexistentes(), cdto.getEdadDesde(), cdto.getEdadHasta(), cdto.getInterpretacion(), cdto.getReferenciaInferior(), cdto.getReferenciaSuperior(), cdto.getUnidadMedida(), cdto.getReservado()));
+        DAO_Criterio.saveAll(criterios);
+    }
+
+    public void eliminarCriterio(Integer codCriterio) throws Exception {
+        for (Criterio i : this.criterios) {
+            if (i.getCodigo().intValue() == codCriterio.intValue()) {
+                criterios.remove(i);
+                DAO_Criterio.saveAll(criterios);
+                break;
+            }
+        }
+    }
 }
