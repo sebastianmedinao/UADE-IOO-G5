@@ -34,7 +34,7 @@ public class MaestroPacientesUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
-        /*DefaultListModel<String> listModel = new DefaultListModel<>();
+        DefaultListModel<String> listModel = new DefaultListModel<>();
         listPacientes.setModel(listModel);
 
         pacic = new PacienteController();
@@ -43,7 +43,6 @@ public class MaestroPacientesUI {
 
         for (Paciente i : lista)
             lista.add(new Paciente(i.getCodigo(), i.getDni(), i.getEmail(), i.getDomicilio(), i.getEmail(), i.getSexo(), i.getEdad()));
-*/
         listaPacientesButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -84,11 +83,17 @@ public class MaestroPacientesUI {
         });
 
 
-        /*borrarPacienteButton.addActionListener(new ActionListener() {
+        borrarPacienteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String value = listPacientes.getSelectedValue();
+                Integer cod = Integer.valueOf(value.split(" ")[0]);
+//LIMITACIONES DE BORRAR PACIENTE
+
+
                 try {
-                    pacic.borrarUsuario(listUsuarios.getSelectedValue());
+                    //falta controller borrar paciente
+                    //pacic.pac(cod);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -96,12 +101,12 @@ public class MaestroPacientesUI {
                 frame.dispose();
 
                 try {
-                    new MaestroUsuariosUI();
+                    new MaestroPacientesUI();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
             }
-        });*/
+        });
     }
 
 }

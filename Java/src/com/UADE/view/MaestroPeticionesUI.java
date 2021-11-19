@@ -27,17 +27,15 @@ public class MaestroPeticionesUI {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
-        DefaultListModel<String> listModel = new DefaultListModel<String>();
+        DefaultListModel<String> listModel = new DefaultListModel<>();
         listPeticiones.setModel(listModel);
-
-        //DefaultListModel<String> listModel = new DefaultListModel<String>();
 
         peticionc = new PeticionController();
 
         List<ListaPeticionesDTO> lista = peticionc.obtenerListaPeticiones();
 
         for (ListaPeticionesDTO i : lista)
-            //listModel.addElement(i.getCodigo(), i.getFechaInicio(), i.getPaciente());
+            listModel.addElement(i.getCodigo() + " " + i.getFechaInicio() + " " + i.getPaciente());
 
 
 
@@ -61,8 +59,27 @@ public class MaestroPeticionesUI {
         borrarPeticiónButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //BORRAR PETICIÓN
 
+
+                //TO-DO: CHECK PETICIONES YA INICIALIZADAS!!
+                String value = listPeticiones.getSelectedValue();
+                Integer cod = Integer.valueOf(value.split(" ")[0]);
+
+                try {
+                    peticionc.eliminarPeticion(cod);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+                frame.dispose();
+
+                try {
+                    new MaestroPeticionesUI();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+                //JOptionPane.showMessageDialog(null, "No se puede borrar una petición en curso o finalizada.");
             }
         });
         verPeticionButton.addActionListener(new ActionListener() {
