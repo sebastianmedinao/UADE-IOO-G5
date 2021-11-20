@@ -73,8 +73,6 @@ public class PracticaController {
             }
         }
 
-        // TODO: Faltan reglas de negocio
-
         practicas.remove(practABorrar);
 
         DAO_Practica.saveAll(practicas);
