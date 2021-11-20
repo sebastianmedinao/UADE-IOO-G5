@@ -142,7 +142,6 @@ public class PeticionController {
             }
         }
 
-        // TODO: Faltan reglas de negocio
         if (petABorrar == null) {
             return false;
         } else {
