@@ -10,6 +10,7 @@ import com.UADE.dto.PracticaDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,7 +21,6 @@ public class PeticionesUI {
     private JButton cargarResultadosButton;
     private JPanel panel1;
     private JList<String> listPracticas;
-    private JButton volverAlListadoDeButton;
     private JTable tableResultados;
     private JLabel lblPaciente;
     private JLabel lblFechaInicio;
@@ -40,6 +40,8 @@ public class PeticionesUI {
         frame.setVisible(true);
         DefaultListModel<String> listModel = new DefaultListModel<>();
         listPracticas.setModel(listModel);
+        DefaultTableModel tableModel = new DefaultTableModel();
+        tableResultados.setModel(tableModel);
 
         pacientec = Singleton.getInstance().pacienteController;
         peticionc = Singleton.getInstance().peticionController;

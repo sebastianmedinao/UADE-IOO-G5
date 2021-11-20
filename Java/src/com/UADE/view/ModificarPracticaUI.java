@@ -24,7 +24,7 @@ public class ModificarPracticaUI {
     private Integer oldGrupoIndex = null;
 
     public ModificarPracticaUI(Integer codigo) throws Exception {
-        JFrame frame = new JFrame("Modificar práctica" + codigo);
+        JFrame frame = new JFrame("Modificar práctica " + codigo);
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
         frame.setSize(500, 500);
