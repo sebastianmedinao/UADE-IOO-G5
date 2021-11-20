@@ -9,7 +9,7 @@ import java.util.List;
 
 public class PacienteController {
     private final PacienteDAO DAO_Paciente;
-    private List<Paciente> pacientes = new ArrayList<Paciente>();
+    private final List<Paciente> pacientes;
 
     public PacienteController() throws Exception {
         DAO_Paciente = new PacienteDAO();

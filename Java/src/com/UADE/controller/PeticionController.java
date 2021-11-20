@@ -15,8 +15,8 @@ import java.util.List;
 public class PeticionController {
     private final PeticionDAO DAO_Peticion;
     private final ResultadoPracticaDAO DAO_ResultadoPractica;
-    private List<Peticion> peticiones = new ArrayList<Peticion>();
-    private List<ResultadoPractica> resultadosPracticas = new ArrayList<>();
+    private final List<Peticion> peticiones;
+    private final List<ResultadoPractica> resultadosPracticas;
 
     public PeticionController() throws Exception {
         DAO_Peticion = new PeticionDAO();

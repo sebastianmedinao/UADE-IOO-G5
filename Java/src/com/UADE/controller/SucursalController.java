@@ -12,7 +12,7 @@ import java.util.List;
 
 public class SucursalController {
     private final SucursalDAO DAO_Sucursal;
-    private List<Sucursal> sucursales = new ArrayList<Sucursal>();
+    private final List<Sucursal> sucursales;
 
     public SucursalController() throws Exception {
         DAO_Sucursal = new SucursalDAO();

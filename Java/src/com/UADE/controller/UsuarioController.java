@@ -13,7 +13,7 @@ import java.util.List;
 
 public class UsuarioController {
     private final UsuarioDAO DAO_Usuario;
-    private List<Usuario> usuarios = new ArrayList<Usuario>();
+    private final List<Usuario> usuarios;
 
     public UsuarioController() throws Exception {
         DAO_Usuario = new UsuarioDAO();
