@@ -1,5 +1,2 @@
-{"codigo":1,"dni":43578987,"nombreCompleto":"ana@uade.edu.ar","domicilio":"Independencia 45","email":"ana@uade.edu.ar","sexo":"MASCULINO","edad":20}
-{"codigo":2,"dni":41665890,"nombreCompleto":"Tomas Perez","domicilio":"Guido 50","email":"tomas@uade.edu","sexo":"MASCULINO","edad":30}
-{"codigo":3,"dni":12345678,"nombreCompleto":"Santiago s","domicilio":"Cuba","email":"ss@uade.edu","sexo":"MASCULINO","edad":40}
-{"codigo":1,"dni":123,"nombreCompleto":"asd","domicilio":"asd","email":"asd","sexo":"FEMENINO","edad":2}
-{"codigo":2,"dni":333333,"nombreCompleto":"asd","domicilio":"123","email":"asd","sexo":"MASCULINO","edad":3}
+{"codigo":1,"dni":3132,"nombreCompleto":"Ala","domicilio":"alem","email":"asd","sexo":"MASCULINO","edad":3}
+{"codigo":2,"dni":123,"nombreCompleto":"Len","domicilio":"lima","email":"asd","sexo":"FEMENINO","edad":34}
