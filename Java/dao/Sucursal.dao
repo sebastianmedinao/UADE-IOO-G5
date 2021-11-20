@@ -1,3 +1,3 @@
-{"codigo":1,"direccion":"Lima 775","telefono":"123456","codUsuarios":[1],"codUsuarioRespTecnico":1}
-{"codigo":2,"direccion":"Alem 700","telefono":"54432","codUsuarios":[2]}
+{"codigo":2,"direccion":"Alem 700","telefono":"54432","codUsuarios":[2,1]}
 {"codigo":3,"direccion":"Paraguay 254","telefono":"1451","codUsuarios":[]}
+{"codigo":4,"direccion":"Humboldt 1","telefono":"12345678","codUsuarios":[]}
