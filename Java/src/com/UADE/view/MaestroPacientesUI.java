@@ -2,7 +2,6 @@ package com.UADE.view;
 
 import com.UADE.controller.PacienteController;
 import com.UADE.dto.PacienteDTO;
-import com.UADE.dto.UsuarioDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
