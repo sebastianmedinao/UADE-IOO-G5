@@ -53,13 +53,13 @@ public class SucursalController {
         return sucdto;
     }
 
-    public void eliminarSucursal(Integer codigo) throws Exception {
+    public boolean eliminarSucursal(Integer codigo) throws Exception {
         List<Peticion> peticiones = new PeticionDAO().getAll();
 
         for (Peticion i : peticiones) { // Regla de negocio
             if (i.getCodSucursal().intValue() == codigo.intValue()) {
                 if (i.getEstadoPeticion() == EstadoPeticion.FINALIZADO) {
-                    return;
+                    return false;
                 }
             }
         }
@@ -72,6 +72,8 @@ public class SucursalController {
         }
 
         DAO_Sucursal.saveAll(sucursales);
+
+        return true;
     }
 
     public boolean sucursalTienePeticionesActivas(Integer codigo) throws Exception {

@@ -1,3 +1,3 @@
-{"codigo":1,"obraSocial":"Swiss","fechaInicio":"Nov 20, 2021, 2:43:12 AM","estadoPeticion":"FINALIZADO","codPaciente":1,"codPracticas":[1]}
+{"codigo":1,"obraSocial":"Swiss","fechaInicio":"Nov 20, 2021, 2:43:12 AM","estadoPeticion":"FINALIZADO","codPaciente":1,"codSucursal":1,"codPracticas":[1]}
 {"codigo":2,"obraSocial":"Galeno","fechaInicio":"Nov 20, 2021, 9:14:41 AM","estadoPeticion":"INICIO","codPaciente":1,"codSucursal":1,"codPracticas":[2,3]}
 {"codigo":3,"obraSocial":"Galeno","fechaInicio":"Nov 20, 2021, 9:15:45 AM","estadoPeticion":"INICIO","codPaciente":1,"codSucursal":1,"codPracticas":[2]}

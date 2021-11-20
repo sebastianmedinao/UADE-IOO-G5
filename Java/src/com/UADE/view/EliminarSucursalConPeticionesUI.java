@@ -48,10 +48,16 @@ public class EliminarSucursalConPeticionesUI {
                     ex.printStackTrace();
                 }
 
+                boolean result = false;
+
                 try {
-                    succ.eliminarSucursal(codSucursal);
+                    result = succ.eliminarSucursal(codSucursal);
                 } catch (Exception ex) {
                     ex.printStackTrace();
+                }
+
+                if (!result) {
+                    JOptionPane.showMessageDialog(null, "No se pudo eliminar la sucursal. Verifique si tiene peticiones finalizadas.", "Error", JOptionPane.INFORMATION_MESSAGE);
                 }
 
                 frame.dispose();
