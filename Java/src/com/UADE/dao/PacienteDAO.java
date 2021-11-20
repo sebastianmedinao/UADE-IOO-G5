@@ -3,8 +3,7 @@ package com.UADE.dao;
 import com.UADE.model.Paciente;
 
 public class PacienteDAO extends GenericDAO<Paciente> {
-
-    public PacienteDAO(Class<Paciente> clase, String file) throws Exception {
-        super(clase, file);
+    public PacienteDAO() throws Exception {
+        super(Paciente.class, "dao/Paciente.dao");
     }
 }

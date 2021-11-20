@@ -19,10 +19,10 @@ public class PeticionController {
     private List<ResultadoPractica> resultadosPracticas = new ArrayList<>();
 
     public PeticionController() throws Exception {
-        DAO_Peticion = new PeticionDAO(Peticion.class, "dao/Peticion.dao");
+        DAO_Peticion = new PeticionDAO();
         peticiones = DAO_Peticion.getAll();
 
-        DAO_ResultadoPractica = new ResultadoPracticaDAO(ResultadoPractica.class, "dao/ResultadoPractica.dao");
+        DAO_ResultadoPractica = new ResultadoPracticaDAO();
         resultadosPracticas = DAO_ResultadoPractica.getAll();
     }
 

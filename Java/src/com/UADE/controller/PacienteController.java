@@ -12,7 +12,7 @@ public class PacienteController {
     private List<Paciente> pacientes = new ArrayList<Paciente>();
 
     public PacienteController() throws Exception {
-        DAO_Paciente = new PacienteDAO(Paciente.class, "dao/Paciente.dao");
+        DAO_Paciente = new PacienteDAO();
         pacientes = DAO_Paciente.getAll();
     }
 

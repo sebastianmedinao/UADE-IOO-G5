@@ -18,10 +18,10 @@ public class PracticaController {
     private final List<Criterio> criterios;
 
     public PracticaController() throws Exception {
-        DAO_Practica = new PracticaDAO(Practica.class, "dao/Practica.dao");
+        DAO_Practica = new PracticaDAO();
         practicas = DAO_Practica.getAll();
 
-        DAO_Criterio = new CriterioDAO(Criterio.class, "dao/Criterio.dao");
+        DAO_Criterio = new CriterioDAO();
         criterios = DAO_Criterio.getAll();
     }
 

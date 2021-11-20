@@ -15,7 +15,7 @@ public class SucursalController {
     private List<Sucursal> sucursales = new ArrayList<Sucursal>();
 
     public SucursalController() throws Exception {
-        DAO_Sucursal = new SucursalDAO(Sucursal.class, "dao/Sucursal.dao");
+        DAO_Sucursal = new SucursalDAO();
         sucursales = DAO_Sucursal.getAll();
     }
 
@@ -132,7 +132,7 @@ public class SucursalController {
     }
 
     public List<UsuarioDTO> obtenerUsuariosSucursal(Integer codigo) throws Exception {
-        UsuarioDAO DAO_Usuario = new UsuarioDAO(Usuario.class, "dao/Usuario.dao");
+        UsuarioDAO DAO_Usuario = new UsuarioDAO();
         List<Usuario> usuarios = DAO_Usuario.getAll();
 
         List<UsuarioDTO> us = new ArrayList<>();

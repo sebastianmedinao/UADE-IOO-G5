@@ -3,8 +3,7 @@ package com.UADE.dao;
 import com.UADE.model.Peticion;
 
 public class PeticionDAO extends GenericDAO<Peticion> {
-
-    public PeticionDAO(Class<Peticion> clase, String file) throws Exception {
-        super(clase, file);
+    public PeticionDAO() throws Exception {
+        super(Peticion.class, "dao/Peticion.dao");
     }
 }

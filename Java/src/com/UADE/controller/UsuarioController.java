@@ -16,7 +16,7 @@ public class UsuarioController {
     private List<Usuario> usuarios = new ArrayList<Usuario>();
 
     public UsuarioController() throws Exception {
-        DAO_Usuario = new UsuarioDAO(Usuario.class, "dao/Usuario.dao");
+        DAO_Usuario = new UsuarioDAO();
         usuarios = DAO_Usuario.getAll();
 
         this.nuevoUsuario(new UsuarioDTO(1, "admin", "1234", "uade@uade.edu.ar", "administrador", "lima 1", 10444322, new Date(), RolSistema.ADMINISTRADOR));
@@ -144,7 +144,7 @@ public class UsuarioController {
     }
 
     public Integer obtenerSucursalUsuario(Integer codigo) throws Exception {
-        SucursalDAO DAO_Sucursal= new SucursalDAO(Sucursal.class, "dao/Sucursal.dao");
+        SucursalDAO DAO_Sucursal= new SucursalDAO();
         List<Sucursal> sucursales = DAO_Sucursal.getAll();
 
         for (Sucursal i : sucursales) {
