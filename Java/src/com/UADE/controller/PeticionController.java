@@ -46,7 +46,22 @@ public class PeticionController {
     }
 
     public Integer nuevaPeticion(PeticionDTO petdto) throws Exception {
-        Peticion peticion = new Peticion(this.getNuevoCodigoPeticion(), petdto.getObraSocial(), petdto.getFechaInicio(), petdto.getEstadoPeticion(), petdto.getCodPaciente(), petdto.getCodSucursal(), petdto.getCodPracticas());
+        List<Practica> practicas = new PracticaDAO().getAll();
+        List<Integer> practicasfinal = new ArrayList<>();
+
+        for (Integer cod : petdto.getCodPracticas()) { // Manejo de subpracticas / grupos de practicas
+            for (Practica i : practicas) {
+                if (i.getCodigo().intValue() == cod.intValue()) {
+                    if (i.getCodSubPracticas().size() > 0) {
+                        practicasfinal.addAll(i.getCodSubPracticas());
+                    } else {
+                        practicasfinal.add(i.getCodigo());
+                    }
+                }
+            }
+        }
+
+        Peticion peticion = new Peticion(this.getNuevoCodigoPeticion(), petdto.getObraSocial(), petdto.getFechaInicio(), petdto.getEstadoPeticion(), petdto.getCodPaciente(), petdto.getCodSucursal(), practicasfinal);
         peticiones.add(peticion);
 
         DAO_Peticion.saveAll(peticiones);

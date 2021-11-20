@@ -1,1 +1,3 @@
-{"codigo":1,"nombre":"Orina","tiempoEstimado":1,"codSubPracticas":[]}
+{"codigo":1,"nombre":"Orina","tiempoEstimado":1,"codSubPracticas":[2,3]}
+{"codigo":2,"nombre":"Color Orina","tiempoEstimado":1,"codSubPracticas":[]}
+{"codigo":3,"nombre":"Densidad Orina","tiempoEstimado":1,"codSubPracticas":[]}
