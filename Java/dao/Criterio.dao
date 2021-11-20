@@ -1,2 +1,2 @@
-{"codigo":3,"codPractica":2,"sexo":"MASCULINO","condicionesPreexistentes":"","edadDesde":1,"edadHasta":100,"interpretacion":"","referenciaInferior":0.0,"referenciaSuperior":1.0,"unidadMedida":"m","reservado":true}
-{"codigo":4,"codPractica":1,"sexo":"MASCULINO","condicionesPreexistentes":"a","edadDesde":1,"edadHasta":100,"interpretacion":"","referenciaInferior":0.0,"referenciaSuperior":5.0,"unidadMedida":"m","reservado":false}
+{"codigo":1,"codPractica":1,"sexo":"MASCULINO","condicionesPreexistentes":"-","edadDesde":1,"edadHasta":100,"interpretacion":"-","referenciaInferior":1.0,"referenciaSuperior":10.0,"unidadMedida":"mol","reservado":true}
+{"codigo":2,"codPractica":1,"sexo":"FEMENINO","condicionesPreexistentes":"-","edadDesde":1,"edadHasta":100,"interpretacion":"-","referenciaInferior":1.0,"referenciaSuperior":10.0,"unidadMedida":"mol","reservado":true}

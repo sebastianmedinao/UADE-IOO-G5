@@ -1,2 +1,1 @@
-{"codigo":1,"obraSocial":"Galeno","fechaInicio":"Nov 20, 2021, 12:32:56 AM","estadoPeticion":"INICIO","codPaciente":2,"codSucursal":1,"codPracticas":[1]}
-{"codigo":2,"obraSocial":"TEST","fechaInicio":"Nov 20, 2021, 2:11:54 AM","estadoPeticion":"FINALIZADO","codPaciente":2,"codSucursal":1,"codPracticas":[2]}
+{"codigo":1,"obraSocial":"Swiss","fechaInicio":"Nov 20, 2021, 2:43:12 AM","estadoPeticion":"FINALIZADO","codPaciente":1,"codPracticas":[1]}

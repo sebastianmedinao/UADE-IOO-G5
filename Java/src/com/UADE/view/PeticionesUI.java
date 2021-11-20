@@ -114,7 +114,7 @@ public class PeticionesUI {
                 if (petic.getEstadoPeticion() != EstadoPeticion.FINALIZADO) {
                     JOptionPane.showMessageDialog(null, "La petición no está finalizada.", "Error", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    if (Reservado) {
+                    if (!Reservado) {
                         JOptionPane.showMessageDialog(null, "Envio de resultados por e-mail", "Envio", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(null, "Retiro por sucursal obligatorio", "Retiro", JOptionPane.INFORMATION_MESSAGE);
