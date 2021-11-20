@@ -48,6 +48,12 @@ public class PeticionesUI {
         PeticionDTO petic = peticionc.obtenerDatosPeticion(codigoPeticion);
         PacienteDTO pac = pacientec.obtenerPaciente(petic.getCodPaciente());
 
+        lblPaciente.setText(pac.getCodigo() + " " + pac.getNombreCompleto());
+        lblObraSocial.setText(petic.getObraSocial());
+        lblFechaInicio.setText(petic.getFechaInicio().toString());
+        lblFechaEntrega.setText("TODO");
+        lblEstado.setText(petic.getEstadoPeticion().toString());
+
         for (Integer i : petic.getCodPracticas()) {
             PracticaDTO pracdto = practicac.obtenerDatosPractica(i);
 

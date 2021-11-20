@@ -83,9 +83,7 @@ public class NuevaPeticionUI {
 
                 for (Iterator<String> it = listModel.elements().asIterator(); it.hasNext(); ) {
                     String i = it.next();
-
-                    String auxval = (String) comboBoxPacientes.getSelectedItem();
-                    listpract.add(Integer.valueOf(value.split(" ")[0]));
+                    listpract.add(Integer.valueOf(i.split(" ")[0]));
                 }
 
                 try {

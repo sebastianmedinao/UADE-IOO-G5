@@ -2,7 +2,6 @@ package com.UADE.controller;
 
 import com.UADE.dao.PeticionDAO;
 import com.UADE.dao.ResultadoPracticaDAO;
-import com.UADE.dto.ListaPeticionesDTO;
 import com.UADE.dto.PeticionDTO;
 import com.UADE.dto.ResultadoPracticaDTO;
 import com.UADE.enums.EstadoPeticion;
@@ -122,11 +121,11 @@ public class PeticionController {
         }
     }
 
-    public List<ListaPeticionesDTO> obtenerListaPeticiones() {
-        List<ListaPeticionesDTO> petlist = new ArrayList<>();
+    public List<PeticionDTO> obtenerListaPeticiones() {
+        List<PeticionDTO> petlist = new ArrayList<>();
 
         for (Peticion i : peticiones) {
-            petlist.add(new ListaPeticionesDTO(i.getCodigo(), i.getFechaInicio(), i.getCodPaciente()));
+            petlist.add(new PeticionDTO(i.getCodigo(), i.getObraSocial(), i.getFechaInicio(), i.getEstadoPeticion(), i.getCodPaciente(), i.getCodSucursal(), i.getCodPracticas(), i.getCodResultadosPracticas()));
         }
 
         return petlist;
