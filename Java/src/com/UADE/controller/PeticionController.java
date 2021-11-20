@@ -1,11 +1,15 @@
 package com.UADE.controller;
 
 import com.UADE.dao.PeticionDAO;
+import com.UADE.dao.PracticaDAO;
 import com.UADE.dao.ResultadoPracticaDAO;
 import com.UADE.dto.PeticionDTO;
+import com.UADE.dto.PracticaDTO;
 import com.UADE.dto.ResultadoPracticaDTO;
 import com.UADE.enums.EstadoPeticion;
+import com.UADE.enums.EstadoResultado;
 import com.UADE.model.Peticion;
+import com.UADE.model.Practica;
 import com.UADE.model.ResultadoPractica;
 
 import java.util.ArrayList;
@@ -33,8 +37,16 @@ public class PeticionController {
         }
     }
 
+    private Integer getNuevoCodigoResultadoPractica() {
+        if (resultadosPracticas.size() > 0) {
+            return resultadosPracticas.get(resultadosPracticas.size() - 1).getCodigo() + 1;
+        } else {
+            return 1;
+        }
+    }
+
     public Integer nuevaPeticion(PeticionDTO petdto) throws Exception {
-        Peticion peticion = new Peticion(this.getNuevoCodigoPeticion(), petdto.getObraSocial(), petdto.getFechaInicio(), petdto.getEstadoPeticion(), petdto.getCodPaciente(), petdto.getCodSucursal(), petdto.getCodPracticas(), petdto.getCodResultadosPracticas());
+        Peticion peticion = new Peticion(this.getNuevoCodigoPeticion(), petdto.getObraSocial(), petdto.getFechaInicio(), petdto.getEstadoPeticion(), petdto.getCodPaciente(), petdto.getCodSucursal(), petdto.getCodPracticas());
         peticiones.add(peticion);
 
         DAO_Peticion.saveAll(peticiones);
@@ -47,7 +59,7 @@ public class PeticionController {
 
         for (Peticion i : this.peticiones) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
-                petdto = new PeticionDTO(i.getCodigo(), i.getObraSocial(), i.getFechaInicio(), i.getEstadoPeticion(), i.getCodPaciente(), i.getCodSucursal(), i.getCodPracticas(), i.getCodResultadosPracticas());
+                petdto = new PeticionDTO(i.getCodigo(), i.getObraSocial(), i.getFechaInicio(), i.getEstadoPeticion(), i.getCodPaciente(), i.getCodSucursal(), i.getCodPracticas());
                 break;
             }
         }
@@ -58,28 +70,64 @@ public class PeticionController {
     public List<ResultadoPracticaDTO> obtenerResultadosPeticion(Integer codigo) {
         List<ResultadoPracticaDTO> rp = new ArrayList<>();
 
-        for (Peticion i : this.peticiones) {
+        for (ResultadoPractica i : this.resultadosPracticas) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
-                for (Integer j : i.getCodResultadosPracticas()) {
-                    rp.add(this.obtenerResultadoPractica(j));
-                }
+                rp.add(new ResultadoPracticaDTO(i.getCodigo(), i.getCodPractica(), i.getCodPeticion(), i.getResultadoNumerico(), i.getResultadoLiteral(), i.getResultadoLiteral(), i.getEstado()));
             }
         }
 
         return rp;
     }
 
-    public ResultadoPracticaDTO obtenerResultadoPractica(Integer codigoResultado) {
+    public ResultadoPracticaDTO obtenerResultadoPracticaPorCodigo(Integer codigoResultado) {
         ResultadoPracticaDTO res = null;
 
         for (ResultadoPractica i : this.resultadosPracticas) {
             if (codigoResultado.intValue() == i.getCodigo().intValue()) {
-                res = new ResultadoPracticaDTO(i.getCodigo(), i.getCodPractica(), i.getResultadoNumerico(), i.getResultadoLiteral(), i.getResultadoLiteral(), i.getEstado());
+                res = new ResultadoPracticaDTO(i.getCodigo(), i.getCodPractica(), i.getCodPeticion(), i.getResultadoNumerico(), i.getResultadoLiteral(), i.getResultadoLiteral(), i.getEstado());
                 break;
             }
         }
 
         return res;
+    }
+
+    public Boolean nuevoResultadoPractica(ResultadoPracticaDTO result) throws Exception {
+        Peticion pet = null;
+
+        for (Peticion i : this.peticiones) {
+            if (result.getCodPeticion().intValue() == i.getCodigo().intValue()) {
+                pet = i;
+                break;
+            }
+        }
+
+        if (pet.getEstadoPeticion() == EstadoPeticion.FINALIZADO) {
+            return false;
+        }
+
+        resultadosPracticas.add(new ResultadoPractica(this.getNuevoCodigoResultadoPractica(), result.getCodPractica(), result.getCodPeticion(), result.getResultadoNumerico(), result.getResultadoLiteral(), result.getTranscription(), result.getEstado()));
+
+        DAO_ResultadoPractica.saveAll(resultadosPracticas);
+
+        boolean failed = false;
+        List<ResultadoPracticaDTO> resultados = this.obtenerResultadosPeticion(pet.getCodigo());
+
+        for (ResultadoPracticaDTO r : resultados) {
+            if (r.getEstado() != EstadoResultado.FINALIZADO) {
+                failed = true;
+            }
+        }
+
+        if (pet.getCodPracticas().size() == resultados.size() && !failed) {
+            pet.setEstadoPeticion(EstadoPeticion.FINALIZADO);
+        } else {
+            pet.setEstadoPeticion(EstadoPeticion.ENPROCESO);
+        }
+
+        DAO_Peticion.saveAll(this.peticiones);
+
+        return true;
     }
 
     public boolean eliminarPeticion(Integer codigo) throws Exception {
@@ -114,7 +162,6 @@ public class PeticionController {
                 i.setCodPaciente(petdto.getCodPaciente());
                 i.setCodPracticas(petdto.getCodPracticas());
                 i.setCodSucursal(petdto.getCodSucursal());
-                i.setCodResultadosPracticas(petdto.getCodResultadosPracticas());
                 DAO_Peticion.saveAll(peticiones);
                 break;
             }
@@ -125,10 +172,20 @@ public class PeticionController {
         List<PeticionDTO> petlist = new ArrayList<>();
 
         for (Peticion i : peticiones) {
-            petlist.add(new PeticionDTO(i.getCodigo(), i.getObraSocial(), i.getFechaInicio(), i.getEstadoPeticion(), i.getCodPaciente(), i.getCodSucursal(), i.getCodPracticas(), i.getCodResultadosPracticas()));
+            petlist.add(new PeticionDTO(i.getCodigo(), i.getObraSocial(), i.getFechaInicio(), i.getEstadoPeticion(), i.getCodPaciente(), i.getCodSucursal(), i.getCodPracticas()));
         }
 
         return petlist;
+    }
+
+    public void migrarSucursalPeticiones(Integer oldSucursal, Integer newSucursal) throws Exception {
+        for (Peticion i : peticiones) { // Regla de negocio
+            if (i.getCodSucursal().intValue() == oldSucursal.intValue()) {
+                i.setCodSucursal(newSucursal);
+            }
+        }
+
+        DAO_Peticion.saveAll(peticiones);
     }
 
 }

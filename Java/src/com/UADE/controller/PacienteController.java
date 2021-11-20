@@ -1,8 +1,11 @@
 package com.UADE.controller;
 
 import com.UADE.dao.PacienteDAO;
+import com.UADE.dao.PeticionDAO;
 import com.UADE.dto.PacienteDTO;
+import com.UADE.enums.EstadoPeticion;
 import com.UADE.model.Paciente;
+import com.UADE.model.Peticion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +64,15 @@ public class PacienteController {
     }
 
     public void borrarPaciente(Integer codigo) throws Exception {
-        Paciente p = null;
+        List<Peticion> peticiones = new PeticionDAO().getAll();
+
+        for (Peticion i : peticiones) { // Regla de negocio
+            if (i.getCodPaciente().intValue() == codigo.intValue()) {
+                if (i.getEstadoPeticion() == EstadoPeticion.FINALIZADO) { // Verificacion de estado
+                    return;
+                }
+            }
+        }
 
         for (Paciente i : this.pacientes) {
             if (i.getCodigo().intValue() == codigo.intValue()) {

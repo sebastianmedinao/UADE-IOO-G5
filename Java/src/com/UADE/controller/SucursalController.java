@@ -1,9 +1,13 @@
 package com.UADE.controller;
 
+import com.UADE.dao.PeticionDAO;
 import com.UADE.dao.SucursalDAO;
 import com.UADE.dao.UsuarioDAO;
 import com.UADE.dto.SucursalDTO;
 import com.UADE.dto.UsuarioDTO;
+import com.UADE.enums.EstadoPeticion;
+import com.UADE.model.Paciente;
+import com.UADE.model.Peticion;
 import com.UADE.model.Sucursal;
 import com.UADE.model.Usuario;
 
@@ -50,20 +54,38 @@ public class SucursalController {
     }
 
     public void eliminarSucursal(Integer codigo) throws Exception {
-        Sucursal sucABorrar = null;
+        List<Peticion> peticiones = new PeticionDAO().getAll();
+
+        for (Peticion i : peticiones) { // Regla de negocio
+            if (i.getCodSucursal().intValue() == codigo.intValue()) {
+                if (i.getEstadoPeticion() == EstadoPeticion.FINALIZADO) {
+                    return;
+                }
+            }
+        }
 
         for (Sucursal i : this.sucursales) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
-                sucABorrar = i;
+                sucursales.remove(i);
                 break;
             }
         }
 
-        // TODO: Faltan reglas de negocio
-
-        sucursales.remove(sucABorrar);
-
         DAO_Sucursal.saveAll(sucursales);
+    }
+
+    public boolean sucursalTienePeticionesActivas(Integer codigo) throws Exception {
+        List<Peticion> peticiones = new PeticionDAO().getAll();
+
+        for (Peticion i : peticiones) { // Regla de negocio
+            if (i.getCodSucursal().intValue() == codigo.intValue()) {
+                if (i.getEstadoPeticion() != EstadoPeticion.FINALIZADO) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     public void actualizarSucursal(SucursalDTO sucdto) throws Exception {

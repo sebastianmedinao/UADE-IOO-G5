@@ -73,7 +73,7 @@
         </constraints>
         <properties>
           <background color="-1"/>
-          <text value="Informes"/>
+          <text value="Peticiones con Valores Criticos"/>
         </properties>
       </component>
     </children>

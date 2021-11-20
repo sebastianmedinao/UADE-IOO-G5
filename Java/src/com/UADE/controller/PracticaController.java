@@ -129,7 +129,7 @@ public class PracticaController {
         List<CriterioDTO> listdto = new ArrayList<>();
 
         for (Criterio i : this.criterios) {
-            if (codPractica.intValue() == i.getCodigo().intValue()) {
+            if (codPractica.intValue() == i.getCodPractica().intValue()) {
                 listdto.add(new CriterioDTO(i.getCodigo(), i.getCodPractica(), i.getSexo(), i.getCondicionesPreexistentes(), i.getEdadDesde(), i.getEdadHasta(), i.getInterpretacion(), i.getReferenciaInferior(), i.getReferenciaSuperior(), i.getUnidadMedida(), i.getReservado()));
             }
         }

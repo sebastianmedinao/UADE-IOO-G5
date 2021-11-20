@@ -40,6 +40,11 @@ public class MenuUI {
             sucursalesButton.setVisible(false);
         }
 
+        if (singleton.rolSistema == RolSistema.LABORATORISTA) {
+            maestroDePacientesButton.setVisible(false);
+            informesButton.setVisible(false);
+        }
+
         sucursalesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -87,7 +92,7 @@ public class MenuUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new InformesUI();
+                    new PeticionesCriticasUI();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

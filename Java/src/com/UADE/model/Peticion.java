@@ -13,9 +13,8 @@ public class Peticion {
     private Integer codPaciente;
     private Integer codSucursal;
     private List<Integer> codPracticas;
-    private List<Integer> codResultadosPracticas;
 
-    public Peticion(Integer codigo, String obraSocial, Date fechaInicio, EstadoPeticion estadoPeticion, Integer codPaciente, Integer codSucursal, List<Integer> codPracticas, List<Integer> codResultadosPracticas) {
+    public Peticion(Integer codigo, String obraSocial, Date fechaInicio, EstadoPeticion estadoPeticion, Integer codPaciente, Integer codSucursal, List<Integer> codPracticas) {
         this.codigo = codigo;
         this.obraSocial = obraSocial;
         this.fechaInicio = fechaInicio;
@@ -23,7 +22,6 @@ public class Peticion {
         this.codPaciente = codPaciente;
         this.codSucursal = codSucursal;
         this.codPracticas = codPracticas;
-        this.codResultadosPracticas = codResultadosPracticas;
     }
 
     public Integer getCodigo() {
@@ -76,13 +74,5 @@ public class Peticion {
 
     public void setCodPracticas(List<Integer> codPracticas) {
         this.codPracticas = codPracticas;
-    }
-
-    public List<Integer> getCodResultadosPracticas() {
-        return codResultadosPracticas;
-    }
-
-    public void setCodResultadosPracticas(List<Integer> codResultadosPracticas) {
-        this.codResultadosPracticas = codResultadosPracticas;
     }
 }

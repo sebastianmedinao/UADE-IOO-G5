@@ -58,18 +58,30 @@ public class MaestroSucursalesUI {
                 Integer cod = Integer.valueOf(value.split(" ")[0]);
 
                 try {
-                    sucursalc.eliminarSucursal(cod);
+                    if (sucursalc.sucursalTienePeticionesActivas(cod)) {
+                        try {
+                            new EliminarSucursalConPeticionesUI(cod);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    } else {
+                        try {
+                            sucursalc.eliminarSucursal(cod);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+
+                        try {
+                            new MaestroSucursalesUI();
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    }
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
 
                 frame.dispose();
-
-                try {
-                    new MaestroSucursalesUI();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
             }
         });
         modificarSucursalButton.addActionListener(new ActionListener() {

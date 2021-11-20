@@ -87,7 +87,7 @@ public class NuevaPeticionUI {
                 }
 
                 try {
-                    peticionc.nuevaPeticion(new PeticionDTO(null, txtObraSocial.getText(), new Date(), EstadoPeticion.INICIO, codP, Singleton.getInstance().codigoSucursal, listpract, new ArrayList<>()));
+                    peticionc.nuevaPeticion(new PeticionDTO(null, txtObraSocial.getText(), new Date(), EstadoPeticion.INICIO, codP, Singleton.getInstance().codigoSucursal, listpract));
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

@@ -28,7 +28,7 @@ public class CriteriosUI {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
-        DefaultTableModel tableModel = new DefaultTableModel();
+        DefaultTableModel tableModel = new DefaultTableModel(0, 0);
         tableModel.setColumnIdentifiers(new String[]{"Código", "Sexo", "Edad", "Condiciones preexistentes", "Interpretación", "Rango de referencia", "Reservado"});
         tablaCriterios.setModel(tableModel);
 
@@ -37,7 +37,7 @@ public class CriteriosUI {
         List<CriterioDTO> lista = practicac.obtenerCriteriosPractica(codPractica);
 
         for (CriterioDTO i : lista) {
-            tableModel.addRow(new Object[]{i.getCodigo(), i.getSexo().toString(), i.getEdadDesde() + "-" + i.getEdadHasta(), i.getCondicionesPreexistentes(), i.getInterpretacion(), i.getReferenciaInferior() + "-" + i.getReferenciaSuperior() + i.getUnidadMedida(), i.getReservado().toString()});
+            tableModel.insertRow(tableModel.getRowCount(), new Object[]{i.getCodigo(), i.getSexo().toString(), i.getEdadDesde() + "-" + i.getEdadHasta(), i.getCondicionesPreexistentes(), i.getInterpretacion(), i.getReferenciaInferior() + "-" + i.getReferenciaSuperior() + i.getUnidadMedida(), i.getReservado().toString()});
         }
 
         agregarCriterioButton.addActionListener(new ActionListener() {
