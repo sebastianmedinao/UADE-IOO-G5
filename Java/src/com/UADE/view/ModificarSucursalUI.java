@@ -13,7 +13,7 @@ public class ModificarSucursalUI {
     private JPanel panel1;
     private JTextField txtDirecion;
     private JTextField txtTelefono;
-    private SucursalController sucursalc;
+    private final SucursalController sucursalc;
 
     public ModificarSucursalUI(Integer codigo) throws Exception {
         JFrame frame = new JFrame("Modificar sucursal " + codigo);

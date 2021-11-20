@@ -13,7 +13,7 @@ public class LoginUI {
     private JTextField txtUsuario;
     private JTextField txtClave;
     private JButton ingresarButton;
-    private UsuarioController usercontroller;
+    private final UsuarioController usercontroller;
 
     public LoginUI() throws Exception {
         JFrame frame = new JFrame("Ingresar a Sistema Laboratorio");
@@ -33,7 +33,7 @@ public class LoginUI {
                 UsuarioDTO usuarioencontrado = usercontroller.buscarUsuarioPorCredenciales(txtUsuario.getText(), txtClave.getText());
 
                 if (usuarioencontrado == null) {
-                    JOptionPane.showMessageDialog(null,"Las credenciales no coinciden con un usuario existente.","Error",1);
+                    JOptionPane.showMessageDialog(null, "Las credenciales no coinciden con un usuario existente.", "Error", 1);
                 } else {
                     new MenuUI(usuarioencontrado.getNombreUsuario(), usuarioencontrado.getRolSistema());
                     frame.dispose();

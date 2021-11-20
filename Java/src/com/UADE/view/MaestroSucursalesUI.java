@@ -15,7 +15,7 @@ public class MaestroSucursalesUI {
     private JButton nuevaSucursalButton;
     private JButton modificarSucursalButton;
     private JButton borrarSucursalButton;
-    private SucursalController sucursalc;
+    private final SucursalController sucursalc;
 
     public MaestroSucursalesUI() throws Exception {
         JFrame frame = new JFrame("Maestro de Sucursales");

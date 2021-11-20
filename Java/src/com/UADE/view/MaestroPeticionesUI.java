@@ -16,7 +16,7 @@ public class MaestroPeticionesUI {
     private JButton borrarPeticiónButton;
     private JList<String> listPeticiones;
     private JButton verPeticionButton;
-    private PeticionController peticionc;
+    private final PeticionController peticionc;
 
     public MaestroPeticionesUI(Integer codigo) throws Exception {
         JFrame frame = new JFrame("Maestro de Peticiones");
@@ -72,9 +72,10 @@ public class MaestroPeticionesUI {
                 Integer cod = Integer.valueOf(value.split(" ")[0]);
 
                 try {
-                    if (peticionc.eliminarPeticion(cod) == false)
-                    {JOptionPane.showMessageDialog(null, "No se puede borrar una petición en curso o finalizada.");
-                    return;}
+                    if (peticionc.eliminarPeticion(cod) == false) {
+                        JOptionPane.showMessageDialog(null, "No se puede borrar una petición en curso o finalizada.");
+                        return;
+                    }
 
                 } catch (Exception ex) {
                     ex.printStackTrace();

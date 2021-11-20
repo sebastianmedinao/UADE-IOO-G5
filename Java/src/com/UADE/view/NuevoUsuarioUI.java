@@ -29,8 +29,8 @@ public class NuevoUsuarioUI {
     private JComboBox<Integer> comboSucursal;
     private JCheckBox responsableTecnicoCheckBox;
 
-    private UsuarioController usuc;
-    private SucursalController succ;
+    private final UsuarioController usuc;
+    private final SucursalController succ;
 
     public NuevoUsuarioUI() throws Exception {
         JFrame frame = new JFrame("Nuevo usuario");
@@ -64,12 +64,12 @@ public class NuevoUsuarioUI {
                     datenac = new SimpleDateFormat("dd/MM/yyyy").parse(txtNacimiento.getText());
                 } catch (ParseException ex) {
                     ex.printStackTrace();
-                    JOptionPane.showMessageDialog(null,"El formato de fecha de nacimiento no es correcto. Utilice dd/mm/aaaa", "Error", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "El formato de fecha de nacimiento no es correcto. Utilice dd/mm/aaaa", "Error", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
 
                 Integer result = null;
-                UsuarioDTO newuser = new UsuarioDTO(null, txtUsuario.getText(), txtClave.getText(), txtEmail.getText(), txtNombre.getText(), txtDomicilio.getText(), Integer.valueOf(txtDNI.getText()), datenac, (RolSistema) comboRol.getSelectedItem() );
+                UsuarioDTO newuser = new UsuarioDTO(null, txtUsuario.getText(), txtClave.getText(), txtEmail.getText(), txtNombre.getText(), txtDomicilio.getText(), Integer.valueOf(txtDNI.getText()), datenac, (RolSistema) comboRol.getSelectedItem());
 
                 try {
                     result = usuc.nuevoUsuario(newuser);
@@ -78,9 +78,9 @@ public class NuevoUsuarioUI {
                 }
 
                 if (result == null) {
-                    JOptionPane.showMessageDialog(null,"El nombre de usuario ya existe.", "Error", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "El nombre de usuario ya existe.", "Error", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null,"Se ha creado el usuario " + txtUsuario.getText(),"Nuevo usuario creado", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Se ha creado el usuario " + txtUsuario.getText(), "Nuevo usuario creado", JOptionPane.INFORMATION_MESSAGE);
 
                     try {
                         succ.agregarUsuarioASucursal((Integer) comboSucursal.getSelectedItem(), result, responsableTecnicoCheckBox.isSelected());

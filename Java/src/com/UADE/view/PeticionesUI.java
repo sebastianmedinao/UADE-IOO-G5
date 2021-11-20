@@ -1,13 +1,7 @@
 package com.UADE.view;
 
-import com.UADE.controller.PeticionController;
-import com.UADE.controller.SucursalController;
-import com.UADE.dto.PeticionDTO;
-import com.UADE.dto.SucursalDTO;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.xml.transform.Result;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -26,7 +20,6 @@ public class PeticionesUI {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
-
 
         cargarResultadosButton.addActionListener(new ActionListener() {
             @Override

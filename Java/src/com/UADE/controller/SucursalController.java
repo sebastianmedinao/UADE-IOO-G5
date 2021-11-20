@@ -1,21 +1,20 @@
 package com.UADE.controller;
 
+import com.UADE.dao.SucursalDAO;
 import com.UADE.dao.UsuarioDAO;
 import com.UADE.dto.SucursalDTO;
 import com.UADE.dto.UsuarioDTO;
 import com.UADE.model.Sucursal;
-import com.UADE.dao.SucursalDAO;
 import com.UADE.model.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SucursalController {
-    private List<Sucursal> sucursales = new ArrayList<Sucursal>();
     private final SucursalDAO DAO_Sucursal;
-
-    private List<Usuario> usuarios = new ArrayList<Usuario>();
     private final UsuarioDAO DAO_Usuario;
+    private List<Sucursal> sucursales = new ArrayList<Sucursal>();
+    private List<Usuario> usuarios = new ArrayList<Usuario>();
 
     public SucursalController() throws Exception {
         DAO_Sucursal = new SucursalDAO(Sucursal.class, "dao/Sucursal.dao");

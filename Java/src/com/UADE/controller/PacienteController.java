@@ -2,15 +2,14 @@ package com.UADE.controller;
 
 import com.UADE.dao.PacienteDAO;
 import com.UADE.dto.PacienteDTO;
-import com.UADE.enums.Sexo;
-import com.UADE.model.*;
+import com.UADE.model.Paciente;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PacienteController {
-    private List<Paciente> pacientes = new ArrayList<Paciente>();
     private final PacienteDAO DAO_Paciente;
+    private List<Paciente> pacientes = new ArrayList<Paciente>();
 
     public PacienteController() throws Exception {
         DAO_Paciente = new PacienteDAO(Paciente.class, "dao/Paciente.dao");

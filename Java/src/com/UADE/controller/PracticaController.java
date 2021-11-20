@@ -1,21 +1,21 @@
 package com.UADE.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.UADE.dao.CriterioDAO;
 import com.UADE.dao.PracticaDAO;
 import com.UADE.dto.CriterioDTO;
 import com.UADE.dto.ListaPracticasDTO;
 import com.UADE.dto.PracticaDTO;
-import com.UADE.model.*;
+import com.UADE.model.Criterio;
+import com.UADE.model.Practica;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PracticaController {
-    private List<Practica> practicas;
     private final PracticaDAO DAO_Practica;
-
-    private List<Criterio> criterios;
     private final CriterioDAO DAO_Criterio;
+    private final List<Practica> practicas;
+    private final List<Criterio> criterios;
 
     public PracticaController() throws Exception {
         DAO_Practica = new PracticaDAO(Practica.class, "dao/Practica.dao");
@@ -96,7 +96,7 @@ public class PracticaController {
         List<PracticaDTO> listaPracticas = new ArrayList<>();
 
         for (Practica i : this.practicas) {
-            listaPracticas.add(new PracticaDTO(i.getCodigo(),i.getNombre(),i.getTiempoEstimado(), i.getCodSubPracticas()));
+            listaPracticas.add(new PracticaDTO(i.getCodigo(), i.getNombre(), i.getTiempoEstimado(), i.getCodSubPracticas()));
         }
 
         return listaPracticas;
@@ -106,7 +106,7 @@ public class PracticaController {
         List<ListaPracticasDTO> listaPracticas = new ArrayList<>();
 
         for (Practica i : this.practicas) {
-            listaPracticas.add(new ListaPracticasDTO(i.getCodigo(),i.getNombre()));
+            listaPracticas.add(new ListaPracticasDTO(i.getCodigo(), i.getNombre()));
         }
 
         return listaPracticas;

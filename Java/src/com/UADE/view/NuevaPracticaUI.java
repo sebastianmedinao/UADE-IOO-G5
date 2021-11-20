@@ -17,9 +17,9 @@ public class NuevaPracticaUI {
     private JTextField txtDemora;
     private JButton guardarPrácticaButton;
     private JComboBox<String> comboGrupo;
-    private PracticaController practicasC;
+    private final PracticaController practicasC;
 
-    NuevaPracticaUI() throws Exception{
+    NuevaPracticaUI() throws Exception {
         JFrame frame = new JFrame("Nueva práctica");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);

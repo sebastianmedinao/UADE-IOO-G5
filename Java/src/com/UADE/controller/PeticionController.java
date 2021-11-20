@@ -1,21 +1,22 @@
 package com.UADE.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import com.UADE.dao.PeticionDAO;
 import com.UADE.dao.ResultadoPracticaDAO;
-import com.UADE.dto.*;
+import com.UADE.dto.ListaPeticionesDTO;
+import com.UADE.dto.PeticionDTO;
+import com.UADE.dto.ResultadoPracticaDTO;
 import com.UADE.enums.EstadoPeticion;
-import com.UADE.model.*;
+import com.UADE.model.Peticion;
+import com.UADE.model.ResultadoPractica;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PeticionController {
-    private List<Peticion> peticiones = new ArrayList<Peticion>();
     private final PeticionDAO DAO_Peticion;
-
-    private List<ResultadoPractica> resultadosPracticas = new ArrayList<>();
     private final ResultadoPracticaDAO DAO_ResultadoPractica;
+    private List<Peticion> peticiones = new ArrayList<Peticion>();
+    private List<ResultadoPractica> resultadosPracticas = new ArrayList<>();
 
     public PeticionController() throws Exception {
         DAO_Peticion = new PeticionDAO(Peticion.class, "dao/Peticion.dao");
@@ -88,14 +89,16 @@ public class PeticionController {
         for (Peticion i : this.peticiones) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
                 if (i.getEstadoPeticion() == EstadoPeticion.INICIO) {
-                petABorrar = i; }
+                    petABorrar = i;
+                }
                 break;
             }
         }
 
         // TODO: Faltan reglas de negocio
-        if (petABorrar == null){return false;}
-        else {
+        if (petABorrar == null) {
+            return false;
+        } else {
             peticiones.remove(petABorrar);
             DAO_Peticion.saveAll(peticiones);
             return true;

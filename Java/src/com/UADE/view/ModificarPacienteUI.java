@@ -20,7 +20,7 @@ public class ModificarPacienteUI {
     private JRadioButton femeninoRadioButton;
     private JRadioButton masculinoRadioButton;
     private JButton guardarButton;
-    private PacienteController pacientec;
+    private final PacienteController pacientec;
 
     public ModificarPacienteUI(Integer codigo) throws Exception {
         pacientec = new PacienteController();
@@ -37,7 +37,6 @@ public class ModificarPacienteUI {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
-
 
 
         nroDni.setText(String.valueOf(pacdto.getDni()));
@@ -61,12 +60,12 @@ public class ModificarPacienteUI {
                 pacdto.setNombreCompleto(txtNombreCompleto.getText());
                 pacdto.setDomicilio(txtDomicilio.getText());
                 pacdto.setEmail(txtMail.getText());
-                if (femeninoRadioButton.isSelected()){
+                if (femeninoRadioButton.isSelected()) {
                     pacdto.setSexo(Sexo.FEMENINO);
-                }else if(masculinoRadioButton.isSelected()){
+                } else if (masculinoRadioButton.isSelected()) {
                     pacdto.setSexo(Sexo.MASCULINO);
-                } else{
-                    JOptionPane.showMessageDialog(null,"Seleccione el sexo", "Error", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Seleccione el sexo", "Error", JOptionPane.INFORMATION_MESSAGE);
                 }
                 pacdto.setEdad(Integer.valueOf(txtEdad.getText()));
 
@@ -76,7 +75,7 @@ public class ModificarPacienteUI {
                     ex.printStackTrace();
                 }
 
-                JOptionPane.showMessageDialog(null,"Se ha modificado el paciente " + txtNombreCompleto.getText(),"Nuevo paciente creado", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha modificado el paciente " + txtNombreCompleto.getText(), "Nuevo paciente creado", JOptionPane.INFORMATION_MESSAGE);
 
                 frame.dispose();
 

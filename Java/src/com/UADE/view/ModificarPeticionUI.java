@@ -44,19 +44,19 @@ public class ModificarPeticionUI {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    try {
-                        /*peticionc.actualizarPeticion();*/
-                        // agregar prácticas y borrar las seleccionadas --> ver como hacer
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                    frame.dispose();
+                try {
+                    /*peticionc.actualizarPeticion();*/
+                    // agregar prácticas y borrar las seleccionadas --> ver como hacer
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                frame.dispose();
 
-                    try {
-                        new MaestroPeticionesUI(null);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
+                try {
+                    new MaestroPeticionesUI(null);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 

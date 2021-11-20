@@ -1,17 +1,17 @@
 package com.UADE.controller;
 
+import com.UADE.dao.UsuarioDAO;
 import com.UADE.dto.UsuarioDTO;
 import com.UADE.enums.RolSistema;
 import com.UADE.model.Usuario;
-import com.UADE.dao.UsuarioDAO;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class UsuarioController {
-    private List<Usuario> usuarios = new ArrayList<Usuario>();
     private final UsuarioDAO DAO_Usuario;
+    private List<Usuario> usuarios = new ArrayList<Usuario>();
 
     public UsuarioController() throws Exception {
         DAO_Usuario = new UsuarioDAO(Usuario.class, "dao/Usuario.dao");

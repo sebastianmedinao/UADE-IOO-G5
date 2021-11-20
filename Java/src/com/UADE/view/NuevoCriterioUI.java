@@ -34,6 +34,7 @@ public class NuevoCriterioUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
+
         practicac = new PracticaController();
 
         for (Sexo i : Sexo.values()) {

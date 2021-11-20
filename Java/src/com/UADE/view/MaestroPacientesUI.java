@@ -1,13 +1,8 @@
 package com.UADE.view;
 
 import com.UADE.controller.PacienteController;
-import com.UADE.controller.SucursalController;
-import com.UADE.controller.UsuarioController;
-import com.UADE.dao.PacienteDAO;
 import com.UADE.dto.PacienteDTO;
-import com.UADE.dto.SucursalDTO;
 import com.UADE.dto.UsuarioDTO;
-import com.UADE.model.Paciente;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -17,6 +12,7 @@ import java.util.List;
 
 public class MaestroPacientesUI {
 
+    private final PacienteController pacic;
     private JList<String> listPacientes;
     private JPanel panel1;
     private JButton listaPacientesButton;
@@ -24,7 +20,6 @@ public class MaestroPacientesUI {
     private JButton modificarPacienteButton;
     private JButton borrarPacienteButton;
     private JButton consultarPeticionesDelPacienteButton;
-    private PacienteController pacic;
 
     public MaestroPacientesUI() throws Exception {
         JFrame frame = new JFrame("Maestro de Pacientes");
@@ -43,7 +38,7 @@ public class MaestroPacientesUI {
         List<PacienteDTO> lista = pacic.obtenerListaPacientes();
 
         for (PacienteDTO i : lista)
-            listModel.addElement(i.getCodigo() + " " + i.getDni() + "-" + i.getNombreCompleto());
+            listModel.addElement(i.getCodigo() + " | " + i.getDni() + " | " + i.getNombreCompleto());
 
         nuevoPacienteButton.addActionListener(new ActionListener() {
             @Override
@@ -80,8 +75,6 @@ public class MaestroPacientesUI {
             public void actionPerformed(ActionEvent e) {
                 String value = listPacientes.getSelectedValue();
                 Integer cod = Integer.valueOf(value.split(" ")[0]);
-//LIMITACIONES DE BORRAR PACIENTE
-
 
                 try {
                     pacic.borrarPaciente(cod);

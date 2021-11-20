@@ -1,9 +1,7 @@
 package com.UADE.view;
 
 import com.UADE.controller.PracticaController;
-import com.UADE.dto.ListaPracticasDTO;
 import com.UADE.dto.PracticaDTO;
-import com.UADE.dto.SucursalDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

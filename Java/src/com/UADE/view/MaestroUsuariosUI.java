@@ -15,7 +15,7 @@ public class MaestroUsuariosUI {
     private JButton nuevoUsuarioButton;
     private JButton modificarUsuarioButton;
     private JButton borrarUsuarioButton;
-    private UsuarioController usuc;
+    private final UsuarioController usuc;
 
     public MaestroUsuariosUI() throws Exception {
         JFrame frame = new JFrame("Maestro de Usuarios");

@@ -20,9 +20,9 @@ public class NuevoPacienteUI {
     private JTextField nroDni;
     private JRadioButton femeninoRadioButton;
     private JRadioButton masculinoRadioButton;
-    private PacienteController pacientec;
+    private final PacienteController pacientec;
 
-    public NuevoPacienteUI() throws Exception{
+    public NuevoPacienteUI() throws Exception {
         JFrame frame = new JFrame("Nuevo Paciente");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
@@ -34,8 +34,6 @@ public class NuevoPacienteUI {
 
         pacientec = new PacienteController();
 
-
-
         guardarButton.addActionListener(new ActionListener() {
 
             @Override
@@ -43,12 +41,12 @@ public class NuevoPacienteUI {
 
                 Sexo sexo = null;
 
-                if (femeninoRadioButton.isSelected()){
+                if (femeninoRadioButton.isSelected()) {
                     sexo = (Sexo.FEMENINO);
-                }else if(masculinoRadioButton.isSelected()){
+                } else if (masculinoRadioButton.isSelected()) {
                     sexo = (Sexo.MASCULINO);
-                } else{
-                    JOptionPane.showMessageDialog(null,"Seleccione el sexo", "Error", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Seleccione el sexo", "Error", JOptionPane.INFORMATION_MESSAGE);
                 }
 
                 Integer codigoNuevoPac = null;
@@ -62,7 +60,7 @@ public class NuevoPacienteUI {
                     ex.printStackTrace();
                 }
 
-                JOptionPane.showMessageDialog(null,"Se ha creado el paciente " + nombrePac,"Nuevo paciente creado", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha creado el paciente " + nombrePac, "Nuevo paciente creado", JOptionPane.INFORMATION_MESSAGE);
 
                 try {
                     new MaestroPacientesUI();
@@ -72,7 +70,6 @@ public class NuevoPacienteUI {
                 frame.dispose();
             }
         });
-
 
 
     }

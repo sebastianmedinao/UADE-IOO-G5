@@ -16,6 +16,8 @@ import java.util.Date;
 import java.util.List;
 
 public class ModificarUsuarioUI {
+    private final UsuarioController usuc;
+    private final SucursalController succ;
     private JPanel panel1;
     private JTextField txtUsuario;
     private JTextField txtClave;
@@ -28,10 +30,6 @@ public class ModificarUsuarioUI {
     private JComboBox<Integer> comboSucursal;
     private JCheckBox responsableTecnicoCheckBox;
     private JButton guardarButton;
-
-    private final UsuarioController usuc;
-    private final SucursalController succ;
-
     private Integer oldSucursal = null;
 
     public ModificarUsuarioUI(Integer code) throws Exception {
@@ -92,7 +90,7 @@ public class ModificarUsuarioUI {
                     datenac = new SimpleDateFormat("dd/MM/yyyy").parse(txtNacimiento.getText());
                 } catch (ParseException ex) {
                     ex.printStackTrace();
-                    JOptionPane.showMessageDialog(null,"El formato de fecha de nacimiento no es correcto. Utilice dd/mm/aaaa", "Error", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "El formato de fecha de nacimiento no es correcto. Utilice dd/mm/aaaa", "Error", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
 
@@ -104,11 +102,11 @@ public class ModificarUsuarioUI {
                 }
 
                 if (result == null) {
-                    JOptionPane.showMessageDialog(null,"Datos invàlidos.", "Error", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Datos invàlidos.", "Error", JOptionPane.INFORMATION_MESSAGE);
                 } else if (!result) {
-                    JOptionPane.showMessageDialog(null,"Ha ocurrido un error.", "Error", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ha ocurrido un error.", "Error", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null,"Se ha actualizado el usuario " + txtUsuario.getText(),"Usuario modificado", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Se ha actualizado el usuario " + txtUsuario.getText(), "Usuario modificado", JOptionPane.INFORMATION_MESSAGE);
 
                     if (comboSucursal.getSelectedItem() != oldSucursal) {
                         if (oldSucursal != null) {

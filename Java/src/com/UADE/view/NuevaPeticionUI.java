@@ -22,8 +22,8 @@ public class NuevaPeticionUI {
     private JButton agregarButton;
     private JComboBox comboBox1;
 
-    private PeticionController peticionc;
-    private PracticaController practicac;
+    private final PeticionController peticionc;
+    private final PracticaController practicac;
 
     public NuevaPeticionUI() throws Exception {
         JFrame frame = new JFrame("Nueva petición");

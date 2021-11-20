@@ -2,7 +2,6 @@ package com.UADE.view;
 
 import com.UADE.controller.SucursalController;
 import com.UADE.dto.SucursalDTO;
-import com.UADE.model.Sucursal;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -15,7 +14,7 @@ public class NuevaSucursalUI {
     private JButton guardarButton;
     private JTextField txtDireccion;
     private JTextField txtTelefono;
-    private SucursalController sucursalc;
+    private final SucursalController sucursalc;
 
     public NuevaSucursalUI() throws Exception {
         JFrame frame = new JFrame("Nueva sucursal");
@@ -40,7 +39,7 @@ public class NuevaSucursalUI {
                     ex.printStackTrace();
                 }
 
-                JOptionPane.showMessageDialog(null,"Se ha creado la sucursal " + codigoNuevaSuc,"Nueva sucursal creada", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha creado la sucursal " + codigoNuevaSuc, "Nueva sucursal creada", JOptionPane.INFORMATION_MESSAGE);
 
                 try {
                     new MaestroSucursalesUI();

@@ -11,7 +11,7 @@ public class InformesUI {
     private PeticionController peticionController;
 
 
-    public InformesUI(){
+    public InformesUI() {
         JFrame frame = new JFrame("Informes");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);

@@ -1,11 +1,7 @@
 package com.UADE.view;
 
-import com.UADE.controller.PeticionController;
 import com.UADE.controller.PracticaController;
-import com.UADE.dto.ListaPeticionesDTO;
 import com.UADE.dto.ListaPracticasDTO;
-import com.UADE.dto.PracticaDTO;
-import com.UADE.enums.RolSistema;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -21,10 +17,10 @@ public class PracticasUI {
     private JButton eliminarPracticaButton;
     private JButton volverAlMenúPrincipalButton;
     private JList listPracticas;
-    private PracticaController practicasC;
+    private final PracticaController practicasC;
 
 
-    PracticasUI() throws Exception{
+    PracticasUI() throws Exception {
         JFrame frame = new JFrame("Prácticas");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
