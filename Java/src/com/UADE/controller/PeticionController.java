@@ -111,7 +111,6 @@ public class PeticionController {
             if (petdto.getCodigo().intValue() == i.getCodigo().intValue()) {
                 i.setObraSocial(petdto.getObraSocial());
                 i.setFechaInicio(petdto.getFechaInicio());
-                i.setFechaEstimadaEntrega(petdto.getFechaEstimadaEntrega());
                 i.setEstadoPeticion(petdto.getEstadoPeticion());
                 i.setCodPaciente(petdto.getCodPaciente());
                 i.setCodPracticas(petdto.getCodPracticas());
