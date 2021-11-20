@@ -5,12 +5,16 @@ import com.UADE.controller.PacienteController;
 import com.UADE.controller.PeticionController;
 import com.UADE.controller.PracticaController;
 import com.UADE.dto.PacienteDTO;
+import com.UADE.dto.PeticionDTO;
 import com.UADE.dto.PracticaDTO;
+import com.UADE.enums.EstadoPeticion;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -68,6 +72,28 @@ public class NuevaPeticionUI {
                 }
 
                 listModel.addElement(comboBoxPractica.getSelectedItem().toString());
+            }
+        });
+        guardarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String value = (String) comboBoxPacientes.getSelectedItem();
+                Integer codP = Integer.valueOf(value.split(" ")[0]);
+
+                List<Integer> listpract = new ArrayList<>();
+
+                for (Iterator<String> it = listModel.elements().asIterator(); it.hasNext(); ) {
+                    String i = it.next();
+
+                    String auxval = (String) comboBoxPacientes.getSelectedItem();
+                    listpract.add(Integer.valueOf(value.split(" ")[0]));
+                }
+
+                try {
+                    peticionc.nuevaPeticion(new PeticionDTO(null, txtObraSocial.getText(), new Date(), new Date(), EstadoPeticion.INICIO, codP, Singleton.getInstance().codigoSucursal, listpract, new ArrayList<>()));
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
         });
     }

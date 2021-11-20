@@ -50,20 +50,6 @@ public class MaestroPeticionesUI {
                 }
             }
         });
-        modificarPeticiónButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                String value = listPeticiones.getSelectedValue();
-                Integer cod = Integer.valueOf(value.split(" ")[0]);
-
-                try {
-                    new ModificarPeticionUI(cod);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
         borrarPeticiónButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
