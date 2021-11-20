@@ -3,7 +3,10 @@ package com.UADE.view;
 import com.UADE.base.Singleton;
 import com.UADE.controller.PacienteController;
 import com.UADE.controller.PeticionController;
-import com.UADE.controller.UsuarioController;
+import com.UADE.controller.PracticaController;
+import com.UADE.dto.PacienteDTO;
+import com.UADE.dto.PeticionDTO;
+import com.UADE.dto.PracticaDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -13,13 +16,21 @@ import java.awt.event.ActionListener;
 public class PeticionesUI {
     private final PacienteController pacientec;
     private final PeticionController peticionc;
+    private final PracticaController practicac;
     private JButton cargarResultadosButton;
     private JPanel panel1;
-    private JList listPeticiones;
+    private JList<String> listPracticas;
     private JButton volverAlListadoDeButton;
+    private JTable tableResultados;
+    private JLabel lblPaciente;
+    private JLabel lblFechaInicio;
+    private JLabel lblFechaEntrega;
+    private JLabel lblObraSocial;
+    private JLabel lblEstado;
+    private JButton enviarResultadosButton;
 
-    public PeticionesUI(Integer codigo) throws Exception {
-        JFrame frame = new JFrame("Peticiones del paciente");
+    public PeticionesUI(Integer codigoPeticion) throws Exception {
+        JFrame frame = new JFrame("Detalle de la petición " + codigoPeticion);
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
         frame.setSize(500, 500);
@@ -27,16 +38,28 @@ public class PeticionesUI {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        listPracticas.setModel(listModel);
 
         pacientec = Singleton.getInstance().pacienteController;
         peticionc = Singleton.getInstance().peticionController;
+        practicac = Singleton.getInstance().practicaController;
 
+        PeticionDTO petic = peticionc.obtenerDatosPeticion(codigoPeticion);
+        PacienteDTO pac = pacientec.obtenerPaciente(petic.getCodPaciente());
+
+        for (Integer i : petic.getCodPracticas()) {
+            PracticaDTO pracdto = practicac.obtenerDatosPractica(i);
+
+            listModel.addElement(i + " " + pracdto.getNombre());
+        }
 
         cargarResultadosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String value = String.valueOf(listPeticiones.getSelectedValue());
+                String value = String.valueOf(listPracticas.getSelectedValue());
                 Integer cod = Integer.valueOf(value.split(" ")[0]);
+
                 try {
                     new ResultadoUI(cod);
                 } catch (Exception ex) {
@@ -45,16 +68,10 @@ public class PeticionesUI {
             }
 
         });
-
-
-        volverAlListadoDeButton.addActionListener(new ActionListener() {
+        cargarResultadosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    new MaestroPeticionesUI(null);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
+
             }
         });
     }

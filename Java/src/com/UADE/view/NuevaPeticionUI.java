@@ -19,6 +19,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class NuevaPeticionUI {
+    private final PeticionController peticionc;
+    private final PracticaController practicac;
+    private final PacienteController pacientec;
     private JButton guardarButton;
     private JPanel panel1;
     private JComboBox<String> comboBoxPacientes;
@@ -27,10 +30,6 @@ public class NuevaPeticionUI {
     private JLabel JLabelObraSocial;
     private JComboBox<String> comboBoxPractica;
     private JButton agregarButton;
-
-    private final PeticionController peticionc;
-    private final PracticaController practicac;
-    private final PacienteController pacientec;
 
     public NuevaPeticionUI() throws Exception {
         JFrame frame = new JFrame("Nueva petición");
@@ -90,7 +89,15 @@ public class NuevaPeticionUI {
                 }
 
                 try {
-                    peticionc.nuevaPeticion(new PeticionDTO(null, txtObraSocial.getText(), new Date(), new Date(), EstadoPeticion.INICIO, codP, Singleton.getInstance().codigoSucursal, listpract, new ArrayList<>()));
+                    peticionc.nuevaPeticion(new PeticionDTO(null, txtObraSocial.getText(), new Date(), EstadoPeticion.INICIO, codP, Singleton.getInstance().codigoSucursal, listpract, new ArrayList<>()));
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+                frame.dispose();
+
+                try {
+                    new MaestroPeticionesUI(null);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
