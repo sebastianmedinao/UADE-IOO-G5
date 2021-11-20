@@ -4,14 +4,15 @@ import com.UADE.enums.EstadoResultado;
 
 public class ResultadoPractica {
     private final Integer codigo;
+    private final Integer codPractica;
     private Float resultadoNumerico;
     private String resultadoLiteral;
     private String transcripcion;
     private EstadoResultado estado;
 
-    public ResultadoPractica(Integer codigo, Float resultadoNumerico, String resultadoLiteral, String transcripcion, EstadoResultado estado)
-    {
+    public ResultadoPractica(Integer codigo, Integer codPractica, Float resultadoNumerico, String resultadoLiteral, String transcripcion, EstadoResultado estado) {
         this.codigo = codigo;
+        this.codPractica = codPractica;
         this.resultadoNumerico = resultadoNumerico;
         this.resultadoLiteral = resultadoLiteral;
         this.transcripcion = transcripcion;
@@ -20,6 +21,10 @@ public class ResultadoPractica {
 
     public Integer getCodigo() {
         return codigo;
+    }
+
+    public Integer getCodPractica() {
+        return codPractica;
     }
 
     public Float getResultadoNumerico() {

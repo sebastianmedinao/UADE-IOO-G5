@@ -69,12 +69,12 @@ public class PeticionController {
         return rp;
     }
 
-    public ResultadoPracticaDTO obtenerResultadoPractica(Integer codigo) {
+    public ResultadoPracticaDTO obtenerResultadoPractica(Integer codigoResultado) {
         ResultadoPracticaDTO res = null;
 
         for (ResultadoPractica i : this.resultadosPracticas) {
-            if (codigo.intValue() == i.getCodigo().intValue()) {
-                res = new ResultadoPracticaDTO(i.getCodigo(), i.getResultadoNumerico(), i.getResultadoLiteral(), i.getResultadoLiteral(), i.getEstado());
+            if (codigoResultado.intValue() == i.getCodigo().intValue()) {
+                res = new ResultadoPracticaDTO(i.getCodigo(), i.getCodPractica(), i.getResultadoNumerico(), i.getResultadoLiteral(), i.getResultadoLiteral(), i.getEstado());
                 break;
             }
         }
