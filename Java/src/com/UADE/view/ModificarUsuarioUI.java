@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.controller.SucursalController;
 import com.UADE.controller.UsuarioController;
 import com.UADE.dto.SucursalDTO;
@@ -43,8 +44,8 @@ public class ModificarUsuarioUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
-        usuc = new UsuarioController();
-        succ = new SucursalController();
+        usuc = Singleton.getInstance().usuarioController;
+        succ = Singleton.getInstance().sucursalController;
 
         UsuarioDTO usermod = usuc.buscarUsuarioPorCodigo(code);
 

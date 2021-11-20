@@ -1,0 +1,2 @@
+{"codigo":1,"codPractica":2,"sexo":"MASCULINO","condicionesPreexistentes":"leucemia","edadDesde":1,"edadHasta":133,"interpretacion":"","referenciaInferior":1.0,"referenciaSuperior":2.0,"unidadMedida":"","reservado":true}
+{"codigo":2,"codPractica":2,"sexo":"MASCULINO","condicionesPreexistentes":"asd","edadDesde":3,"edadHasta":7,"interpretacion":"a","referenciaInferior":4.0,"referenciaSuperior":6.0,"unidadMedida":"m","reservado":true}

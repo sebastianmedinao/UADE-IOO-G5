@@ -14,7 +14,9 @@
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <autoCreateRowSorter value="false"/>
+        </properties>
       </component>
       <component id="773f0" class="javax.swing.JButton" binding="agregarCriterioButton" default-binding="true">
         <constraints>

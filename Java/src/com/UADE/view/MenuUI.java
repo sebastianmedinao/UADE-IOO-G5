@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.enums.RolSistema;
 
 import javax.swing.*;
@@ -19,7 +20,7 @@ public class MenuUI {
     private JButton informesButton;
     private String usuario;
 
-    public MenuUI(String usuario, RolSistema rol) {
+    public MenuUI() throws Exception {
         JFrame frame = new JFrame("Menu principal");
         panel1.setBorder(new EmptyBorder(15, 15, 15, 15));
         frame.setContentPane(panel1);
@@ -29,9 +30,11 @@ public class MenuUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
-        lblBienvenido.setText("Bienvenido, " + usuario);
+        Singleton singleton = Singleton.getInstance();
 
-        if (rol != RolSistema.ADMINISTRADOR) {
+        lblBienvenido.setText("Bienvenido, " + singleton.nombreUsuario + " - Sucursal: " + singleton.codigoSucursal);
+
+        if (singleton.rolSistema != RolSistema.ADMINISTRADOR) {
             practicasButton.setVisible(false);
             usuariosButton.setVisible(false);
             sucursalesButton.setVisible(false);

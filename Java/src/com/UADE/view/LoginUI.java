@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.controller.UsuarioController;
 import com.UADE.dto.UsuarioDTO;
 
@@ -25,7 +26,9 @@ public class LoginUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
-        usercontroller = new UsuarioController();
+        Singleton singleton = Singleton.getInstance();
+
+        usercontroller = singleton.usuarioController;
 
         ingresarButton.addActionListener(new ActionListener() {
             @Override
@@ -35,8 +38,27 @@ public class LoginUI {
                 if (usuarioencontrado == null) {
                     JOptionPane.showMessageDialog(null, "Las credenciales no coinciden con un usuario existente.", "Error", 1);
                 } else {
-                    new MenuUI(usuarioencontrado.getNombreUsuario(), usuarioencontrado.getRolSistema());
+                    singleton.codigoUsuario = usuarioencontrado.getCodigo();
+                    singleton.nombreUsuario = usuarioencontrado.getNombreUsuario();
+                    singleton.rolSistema = usuarioencontrado.getRolSistema();
+
+                    try {
+                        singleton.codigoSucursal = usercontroller.obtenerSucursalUsuario(usuarioencontrado.getCodigo());
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+                    if (singleton.codigoSucursal == null) {
+                        JOptionPane.showMessageDialog(null, "Usted no posee una sucursal cargada.", "Advertencia", 1);
+                    }
+
                     frame.dispose();
+
+                    try {
+                        new MenuUI();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                 }
             }
         });

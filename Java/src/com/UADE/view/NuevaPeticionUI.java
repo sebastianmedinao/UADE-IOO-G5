@@ -1,7 +1,10 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
+import com.UADE.controller.PacienteController;
 import com.UADE.controller.PeticionController;
 import com.UADE.controller.PracticaController;
+import com.UADE.dto.PacienteDTO;
 import com.UADE.dto.PracticaDTO;
 
 import javax.swing.*;
@@ -14,16 +17,16 @@ import java.util.List;
 public class NuevaPeticionUI {
     private JButton guardarButton;
     private JPanel panel1;
-    private JComboBox comboBoxPacientes;
+    private JComboBox<String> comboBoxPacientes;
     private JTextField txtObraSocial;
     private JList<String> listPracticas;
     private JLabel JLabelObraSocial;
     private JComboBox<String> comboBoxPractica;
     private JButton agregarButton;
-    private JComboBox comboBox1;
 
     private final PeticionController peticionc;
     private final PracticaController practicac;
+    private final PacienteController pacientec;
 
     public NuevaPeticionUI() throws Exception {
         JFrame frame = new JFrame("Nueva petición");
@@ -37,12 +40,20 @@ public class NuevaPeticionUI {
         DefaultListModel<String> listModel = new DefaultListModel<String>();
         listPracticas.setModel(listModel);
 
-        peticionc = new PeticionController();
-        practicac = new PracticaController();
+        peticionc = Singleton.getInstance().peticionController;
+        practicac = Singleton.getInstance().practicaController;
+        pacientec = Singleton.getInstance().pacienteController;
+
         List<PracticaDTO> listadoPracticas = practicac.obtenerListaPracticas();
 
         for (PracticaDTO datprac : listadoPracticas) {
             comboBoxPractica.addItem(datprac.getCodigo() + " " + datprac.getNombre());
+        }
+
+        List<PacienteDTO> pacientes = pacientec.obtenerListaPacientes();
+
+        for (PacienteDTO pac : pacientes) {
+            comboBoxPacientes.addItem(pac.getCodigo() + " " + pac.getNombreCompleto());
         }
 
         agregarButton.addActionListener(new ActionListener() {

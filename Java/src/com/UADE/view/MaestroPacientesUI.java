@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.controller.PacienteController;
 import com.UADE.dto.PacienteDTO;
 
@@ -10,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class MaestroPacientesUI {
-
     private final PacienteController pacic;
     private JList<String> listPacientes;
     private JPanel panel1;
@@ -32,7 +32,8 @@ public class MaestroPacientesUI {
 
         DefaultListModel<String> listModel = new DefaultListModel<>();
         listPacientes.setModel(listModel);
-        pacic = new PacienteController();
+
+        pacic = Singleton.getInstance().pacienteController;
 
         List<PacienteDTO> lista = pacic.obtenerListaPacientes();
 

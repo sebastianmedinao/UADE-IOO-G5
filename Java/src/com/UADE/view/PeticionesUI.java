@@ -1,11 +1,18 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
+import com.UADE.controller.PacienteController;
+import com.UADE.controller.PeticionController;
+import com.UADE.controller.UsuarioController;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PeticionesUI {
+    private final PacienteController pacientec;
+    private final PeticionController peticionc;
     private JButton cargarResultadosButton;
     private JPanel panel1;
     private JList listPeticiones;
@@ -20,6 +27,10 @@ public class PeticionesUI {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
+
+        pacientec = Singleton.getInstance().pacienteController;
+        peticionc = Singleton.getInstance().peticionController;
+
 
         cargarResultadosButton.addActionListener(new ActionListener() {
             @Override

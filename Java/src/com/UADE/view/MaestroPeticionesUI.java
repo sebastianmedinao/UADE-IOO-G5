@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.controller.PeticionController;
 import com.UADE.dto.ListaPeticionesDTO;
 
@@ -28,11 +29,9 @@ public class MaestroPeticionesUI {
         frame.setResizable(false);
         frame.setVisible(true);
         DefaultListModel<String> listModel = new DefaultListModel<>();
-
-
         listPeticiones.setModel(listModel);
 
-        peticionc = new PeticionController();
+        peticionc = Singleton.getInstance().peticionController;
 
         List<ListaPeticionesDTO> lista = peticionc.obtenerListaPeticiones();
 

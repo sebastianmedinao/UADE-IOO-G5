@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.controller.SucursalController;
 import com.UADE.dto.SucursalDTO;
 
@@ -26,7 +27,7 @@ public class NuevaSucursalUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
-        sucursalc = new SucursalController();
+        sucursalc = Singleton.getInstance().sucursalController;
 
         guardarButton.addActionListener(new ActionListener() {
             @Override

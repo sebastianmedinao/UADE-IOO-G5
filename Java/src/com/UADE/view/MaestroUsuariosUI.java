@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.controller.UsuarioController;
 import com.UADE.dto.UsuarioDTO;
 
@@ -29,7 +30,7 @@ public class MaestroUsuariosUI {
         DefaultListModel<String> listModel = new DefaultListModel<>();
         listUsuarios.setModel(listModel);
 
-        usuc = new UsuarioController();
+        usuc = Singleton.getInstance().usuarioController;
 
         List<UsuarioDTO> lista = usuc.obtenerListaUsuarios();
 

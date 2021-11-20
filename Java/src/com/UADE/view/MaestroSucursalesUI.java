@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.controller.SucursalController;
 import com.UADE.dto.SucursalDTO;
 
@@ -29,7 +30,7 @@ public class MaestroSucursalesUI {
         DefaultListModel<String> listModel = new DefaultListModel<String>();
         listSucursales.setModel(listModel);
 
-        sucursalc = new SucursalController();
+        sucursalc = Singleton.getInstance().sucursalController;
 
         List<SucursalDTO> lista = sucursalc.obtenerListaSucursales();
 

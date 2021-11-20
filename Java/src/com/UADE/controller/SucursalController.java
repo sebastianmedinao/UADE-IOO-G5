@@ -12,16 +12,11 @@ import java.util.List;
 
 public class SucursalController {
     private final SucursalDAO DAO_Sucursal;
-    private final UsuarioDAO DAO_Usuario;
     private List<Sucursal> sucursales = new ArrayList<Sucursal>();
-    private List<Usuario> usuarios = new ArrayList<Usuario>();
 
     public SucursalController() throws Exception {
         DAO_Sucursal = new SucursalDAO(Sucursal.class, "dao/Sucursal.dao");
         sucursales = DAO_Sucursal.getAll();
-
-        DAO_Usuario = new UsuarioDAO(Usuario.class, "dao/Usuario.dao");
-        usuarios = DAO_Usuario.getAll();
     }
 
     private Integer getNuevoCodigoSucursal() {
@@ -119,11 +114,11 @@ public class SucursalController {
         for (Sucursal i : this.sucursales) {
             if (codigoSucursal.intValue() == i.getCodigo().intValue()) {
 
-                List<Integer> usuarios = i.getCodUsuarios();
+                List<Integer> uss = i.getCodUsuarios();
 
-                usuarios.remove(codigoUsuario);
+                uss.remove(codigoUsuario);
 
-                i.setCodUsuarios(usuarios);
+                i.setCodUsuarios(uss);
 
                 if (i.getCodUsuarioRespTecnico().intValue() == codigoUsuario.intValue()) {
                     i.setCodUsuarioRespTecnico(null);
@@ -136,13 +131,16 @@ public class SucursalController {
         DAO_Sucursal.saveAll(sucursales);
     }
 
-    public List<UsuarioDTO> obtenerUsuariosSucursal(Integer codigo) {
+    public List<UsuarioDTO> obtenerUsuariosSucursal(Integer codigo) throws Exception {
+        UsuarioDAO DAO_Usuario = new UsuarioDAO(Usuario.class, "dao/Usuario.dao");
+        List<Usuario> usuarios = DAO_Usuario.getAll();
+
         List<UsuarioDTO> us = new ArrayList<>();
 
         for (Sucursal i : this.sucursales) {
             if (codigo.intValue() == i.getCodigo().intValue()) {
                 for (Integer j : i.getCodUsuarios()) {
-                    for (Usuario k : this.usuarios) {
+                    for (Usuario k : usuarios) {
                         if (j.intValue() == k.getCodigo().intValue()) {
                             us.add(new UsuarioDTO(k.getCodigo(), k.getNombreUsuario(), k.getPassword(), k.getEmail(), k.getNombreCompleto(), k.getDomicilio(), k.getDni(), k.getFechaDeNacimiento(), k.getRolSistema()));
                         }

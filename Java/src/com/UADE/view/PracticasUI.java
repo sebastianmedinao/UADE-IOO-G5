@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.controller.PracticaController;
 import com.UADE.dto.ListaPracticasDTO;
 
@@ -31,10 +32,9 @@ public class PracticasUI {
         frame.setVisible(true);
         DefaultListModel<String> listModel = new DefaultListModel<>();
 
-
         listPracticas.setModel(listModel);
 
-        practicasC = new PracticaController();
+        practicasC = Singleton.getInstance().practicaController;
 
         List<ListaPracticasDTO> lista = practicasC.obtenerListaPracticasSimplificada();
 

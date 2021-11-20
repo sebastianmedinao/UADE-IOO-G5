@@ -1,8 +1,10 @@
 package com.UADE.controller;
 
+import com.UADE.dao.SucursalDAO;
 import com.UADE.dao.UsuarioDAO;
 import com.UADE.dto.UsuarioDTO;
 import com.UADE.enums.RolSistema;
+import com.UADE.model.Sucursal;
 import com.UADE.model.Usuario;
 
 import java.util.ArrayList;
@@ -139,6 +141,21 @@ public class UsuarioController {
                 break;
             }
         }
+    }
+
+    public Integer obtenerSucursalUsuario(Integer codigo) throws Exception {
+        SucursalDAO DAO_Sucursal= new SucursalDAO(Sucursal.class, "dao/Sucursal.dao");
+        List<Sucursal> sucursales = DAO_Sucursal.getAll();
+
+        for (Sucursal i : sucursales) {
+            List<Integer> usuarios = i.getCodUsuarios();
+
+            if (usuarios.contains(codigo)) {
+                return i.getCodigo();
+            }
+        }
+
+        return null;
     }
 }
 

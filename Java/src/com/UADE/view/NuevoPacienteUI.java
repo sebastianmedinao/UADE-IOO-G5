@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.controller.PacienteController;
 import com.UADE.dto.PacienteDTO;
 import com.UADE.enums.Sexo;
@@ -32,7 +33,7 @@ public class NuevoPacienteUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
-        pacientec = new PacienteController();
+        pacientec = Singleton.getInstance().pacienteController;
 
         guardarButton.addActionListener(new ActionListener() {
 

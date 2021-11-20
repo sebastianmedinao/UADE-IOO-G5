@@ -1,4 +1,4 @@
-package com.UADE.controller;
+package com.UADE.base;
 
 import com.UADE.view.LoginUI;
 

@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.controller.PracticaController;
 import com.UADE.dto.CriterioDTO;
 
@@ -27,10 +28,11 @@ public class CriteriosUI {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
-        DefaultTableModel tableModel = new DefaultTableModel(new String[]{"Código", "Sexo", "Edad", "Condiciones preexistentes", "Interpretación", "Rango de referencia", "Reservado"}, 0);
+        DefaultTableModel tableModel = new DefaultTableModel();
+        tableModel.setColumnIdentifiers(new String[]{"Código", "Sexo", "Edad", "Condiciones preexistentes", "Interpretación", "Rango de referencia", "Reservado"});
         tablaCriterios.setModel(tableModel);
 
-        practicac = new PracticaController();
+        practicac = Singleton.getInstance().practicaController;
 
         List<CriterioDTO> lista = practicac.obtenerCriteriosPractica(codPractica);
 

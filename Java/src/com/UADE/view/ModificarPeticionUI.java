@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.controller.PeticionController;
 
 import javax.swing.*;
@@ -28,6 +29,8 @@ public class ModificarPeticionUI {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
+
+        peticionc = Singleton.getInstance().peticionController;
 
         agregarPracticaButton.addActionListener(new ActionListener() {
             @Override

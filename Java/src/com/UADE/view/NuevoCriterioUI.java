@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.controller.PracticaController;
 import com.UADE.dto.CriterioDTO;
 import com.UADE.enums.Sexo;
@@ -35,7 +36,7 @@ public class NuevoCriterioUI {
         frame.setVisible(true);
 
 
-        practicac = new PracticaController();
+        practicac = Singleton.getInstance().practicaController;
 
         for (Sexo i : Sexo.values()) {
             comboSexo.addItem(i);

@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.controller.PracticaController;
 import com.UADE.dto.ListaPracticasDTO;
 import com.UADE.dto.PracticaDTO;
@@ -29,7 +30,7 @@ public class NuevaPracticaUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
-        practicasC = new PracticaController();
+        practicasC = Singleton.getInstance().practicaController;
 
         List<ListaPracticasDTO> lista = practicasC.obtenerListaPracticasSimplificada();
 

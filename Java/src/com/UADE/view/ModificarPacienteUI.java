@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.controller.PacienteController;
 import com.UADE.dto.PacienteDTO;
 import com.UADE.enums.Sexo;
@@ -10,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ModificarPacienteUI {
-
     private JPanel panel1;
     private JTextField nroDni;
     private JTextField txtNombreCompleto;
@@ -23,7 +23,7 @@ public class ModificarPacienteUI {
     private final PacienteController pacientec;
 
     public ModificarPacienteUI(Integer codigo) throws Exception {
-        pacientec = new PacienteController();
+        pacientec = Singleton.getInstance().pacienteController;
 
         PacienteDTO pacdto = pacientec.obtenerPaciente(codigo);
         txtNombreCompleto.setText(pacdto.getNombreCompleto());

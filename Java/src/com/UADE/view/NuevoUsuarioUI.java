@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.controller.SucursalController;
 import com.UADE.controller.UsuarioController;
 import com.UADE.dto.SucursalDTO;
@@ -46,8 +47,8 @@ public class NuevoUsuarioUI {
             comboRol.addItem(rol);
         }
 
-        usuc = new UsuarioController();
-        succ = new SucursalController();
+        usuc = Singleton.getInstance().usuarioController;
+        succ = Singleton.getInstance().sucursalController;
 
         List<SucursalDTO> listasuc = succ.obtenerListaSucursales();
 

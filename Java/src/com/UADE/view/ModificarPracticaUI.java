@@ -1,5 +1,6 @@
 package com.UADE.view;
 
+import com.UADE.base.Singleton;
 import com.UADE.controller.PracticaController;
 import com.UADE.dto.PracticaDTO;
 
@@ -8,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Objects;
 
 public class ModificarPracticaUI {
     private final PracticaController practicasC;
@@ -31,7 +33,7 @@ public class ModificarPracticaUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
-        practicasC = new PracticaController();
+        practicasC = Singleton.getInstance().practicaController;
 
         PracticaDTO practicaDTO = practicasC.obtenerDatosPractica(codigo);
 
@@ -40,8 +42,12 @@ public class ModificarPracticaUI {
 
         List<PracticaDTO> lista = practicasC.obtenerListaPracticas();
 
+        comboGrupo.addItem("Sin grupo");
+
         for (PracticaDTO i : lista) {
-            comboGrupo.addItem(i.getCodigo() + " " + i.getNombre());
+            if (i.getCodigo().intValue() != practicaDTO.getCodigo().intValue()) { // No es si misma
+                comboGrupo.addItem(i.getCodigo() + " " + i.getNombre());
+            }
 
             if (oldGrupo == null) {
                 for (Integer codpr : i.getCodSubPracticas()) { // Para cada subpractica de todas las practicas
@@ -65,7 +71,7 @@ public class ModificarPracticaUI {
                 practicaDTO.setNombre(txtNombre.getText());
                 practicaDTO.setTiempoEstimado(Integer.valueOf(txtDemora.getText()));
 
-                if (comboGrupo.getSelectedIndex() != oldGrupoIndex) {
+                if (oldGrupoIndex == null || comboGrupo.getSelectedIndex() != oldGrupoIndex) {
                     if (oldGrupo != null) {
                         try {
                             practicasC.retirarPracticaDeSubPractica(practicaDTO.getCodigo(), oldGrupo);
@@ -75,12 +81,15 @@ public class ModificarPracticaUI {
                     }
 
                     String value = String.valueOf(comboGrupo.getSelectedItem());
-                    Integer cod = Integer.valueOf(value.split(" ")[0]);
 
-                    try {
-                        practicasC.agregarPracticaASubPractica(practicaDTO.getCodigo(), cod);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
+                    if (!Objects.equals(value, "Sin grupo")) {
+                        Integer cod = Integer.valueOf(value.split(" ")[0]);
+
+                        try {
+                            practicasC.agregarPracticaASubPractica(practicaDTO.getCodigo(), cod);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
                     }
                 }
 

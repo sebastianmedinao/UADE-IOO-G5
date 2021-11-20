@@ -1,1 +1,2 @@
 {"codigo":1,"nombreUsuario":"admin","password":"1234","email":"uade@uade.edu.ar","nombreCompleto":"administrador","domicilio":"lima 1","dni":10444322,"fechaDeNacimiento":"Nov 19, 2021, 3:47:35 PM","rolSistema":"ADMINISTRADOR"}
+{"codigo":2,"nombreUsuario":"troll","password":"123","email":"123","nombreCompleto":"123","domicilio":"123","dni":123,"fechaDeNacimiento":"Jan 1, 1990, 12:00:00 AM","rolSistema":"ADMINISTRADOR"}
